@@ -14,6 +14,7 @@
 //*Material UI, Styled Component, Sass, Bootstrap etc. gibi 3. part kütüphaneler de stil için kullanılabilir.
 
 // import React from 'react'  // bu satir silinebiir cunku app.js de cagirdik ve hepsine etki etti.
+import Clock from "../clock/Clock"
 import resim from "../img/a.jpg"
 //! External css
 import "./Msg.css"
@@ -30,6 +31,7 @@ const Msg = () => {
   return (
     <div>
       <h2 style={styleA}>burasi MSG alani</h2>
+      <Clock/>
       <p style={{color:"red",fontSize:"30px"}}>Hosgeldin REACT</p>
 
       <img className="msg-img" src="https://cdn.pixabay.com/photo/2023/04/28/14/35/leaf-7956829_640.jpg" alt=""/>
