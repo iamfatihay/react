@@ -1,0 +1,16 @@
+@import "./variable";
+
+.btn-div{
+    button{
+        color:white;
+        margin-top:5px;
+        border-radius:5px;
+        margin-bottom:5px;
+    }
+    &-small{     //! buradaki "&" isareti ".btn-div" yazmak yerine geciyor.
+        background-color: $lightGreen;
+    }
+    &--large{
+        background-color: $darkGreen;
+    }
+}

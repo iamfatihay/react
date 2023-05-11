@@ -3,11 +3,11 @@ import "./Header.scss"
 
 const Header = () => {
   return (
-    <Header>
+    <header>
         <h1>
             COMMENTS
         </h1>
-    </Header>
+    </header>
   )
 }
 
