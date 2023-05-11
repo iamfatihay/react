@@ -13,13 +13,15 @@ const CourseCard = ({ data }) => {
   //?Bu ilk return react in ekrana bastirilan ilk kismi
   return (
     <Container>
-      <Row>
-        {data.map(({img,text,name}) => {
+      <Row className='g-3 text-center'>
+        {data.map(({img,text,name,id}) => {
           //? arrow (map) süslü kullanildiginda return kullanimi ister. 
           //? react da süslü koymayabilirsiniz, böylece return e de ihtiyac kalmaz. Bu örnekte degistirmedik.
+          //! Database den cekilen veriler ekrana bastirilirken en dis div unique bir veri ister,
+          //! bunu da key={id} eklinde yazariz. id olmak zorunda degil unique herhangi bir property olabilir, mesela img.
           return (
-            <Col>
-              <Card>
+            <Col className=' d-flex justify-content-center' key={id} sm={12} md={6} lg={4}>
+              <Card style={{width:"18rem"}} >
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
                   <Card.Title>{name}</Card.Title>
