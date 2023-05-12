@@ -4,6 +4,8 @@
     text-align: center;
     margin: 1rem;
     padding: 0.5rem;
+    margin-top: 10rem;
+
     .text-shadow{
         color: $cardNavBgColor;
         font-size: 3rem;
@@ -11,6 +13,11 @@
         letter-spacing: 0.2em;  //!parent ina göre artip azalir, parent dan inherit alir.
         text-decoration: underline;
         animation: flicker 0.5s ease-in-out infinite alternate;
+
+        &:hover{
+            color: black !important;
+            cursor: pointer;
+        }
     }
     @keyframes flicker {
         0%{
