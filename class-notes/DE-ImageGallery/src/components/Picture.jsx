@@ -3,9 +3,11 @@ import "../styles/style.css";
 import {data} from "../helper/data";
 
 const Picture = () => {
-    console.log(data);
+    // console.log(data);
   return (
-    <div>Picture</div>
+    <div className='image-card'>
+        {data.map((item,index)=> <h1>hello</h1> )} 
+    </div>
   )
 }
 
