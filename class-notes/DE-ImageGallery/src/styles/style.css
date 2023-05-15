@@ -13,6 +13,7 @@
     height:350px;
     position: relative;
     overflow: hidden;
+    border-radius: 15px;
 }
 img{
     width: 100%;
@@ -24,8 +25,6 @@ img:hover{
     cursor: pointer;
     transform: scale(1.2);
 }
-
-
 .name{
     font-size: 1.3rem;
     margin-top: 10px;
