@@ -1,5 +1,6 @@
 import React from "react";
 import Picture from "./components/Picture";
+import "./app.css";
 
 
 function App() {
