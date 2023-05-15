@@ -7,7 +7,8 @@ const CardContainer = () => {
     console.log(data);
   return (
     <div className="card-container">
-            {data.map((item, index)=> <PlayerCard {...item} key={index}/>)}
+    
+      {data.map((item, index)=> <PlayerCard {...item} key={index}/>)}
     </div>
   )
 }

@@ -9,8 +9,6 @@ const Header = () => {
             <img className='logo-nba' src={image} alt="####"  />
         </div>
         <h1>NBA Legends</h1>
-
-
     </div>
   )
 }
