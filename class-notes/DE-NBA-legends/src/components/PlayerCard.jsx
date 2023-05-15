@@ -7,31 +7,27 @@ const PlayerCard = (data) => {
   const [isImageVisible, setImageVisible] = useState(true);
   const [isInfoVisible, setInfoVisible] = useState(false);
 
-  // const toggleInfo = () => {
-  //   if (isImageVisible) {
-  //     setImageVisible(false);
-  //     setInfoVisible(true);
-  //   } else {
-  //     setImageVisible(true);
-  //     setInfoVisible(false);
-  //   }
+  // const toggleInfo = (e) => {
+  //   e.stopPropagation();
+  //   setImageVisible(prevImageVisible => !prevImageVisible);
+  //   setInfoVisible(prevInfoVisible => !prevInfoVisible);
   // };
+
   const toggleInfo = () => {
-    setImageVisible(prevImageVisible => !prevImageVisible);
-    setInfoVisible(prevInfoVisible => !prevInfoVisible);
+    setImageVisible(!isImageVisible);
+    setInfoVisible(!isInfoVisible);
   };
-  
 
   return (
     <div className='cards'>
       <div className='image' onClick={toggleInfo}>
-        {isImageVisible && (
+        {isImageVisible ? (
           <img src={data.img} alt="" />
-        )}
+        ) : null}
       </div>
       <h2 className='name'>{data.name}</h2>
 
-      {isInfoVisible && (
+      {isInfoVisible ? (
         <ul>
           <li>
             <FontAwesomeIcon icon={faBasketballBall} style={{ color: "#e67205" }} /> {data.statistics[0]}
@@ -46,9 +42,9 @@ const PlayerCard = (data) => {
             <FontAwesomeIcon icon={faBasketballBall} style={{ color: "#e67205" }} /> {data.statistics[3]}
           </li>
         </ul>
-      )}
+      ) : null}
     </div>
   );
-};
+}
 
 export default PlayerCard;

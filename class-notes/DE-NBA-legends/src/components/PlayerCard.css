@@ -1,6 +1,7 @@
 
 .cards{
-    border: 2px solid red;
+    margin-top: 1rem;
+    border: 2px solid rgb(19, 12, 12);
     border-radius: 25px;
     position: relative;
     
@@ -17,7 +18,7 @@ img{
 }
 img:hover{
     cursor: pointer;
-    transform: scale(0.9);
+    transform: scale(0.93);
 }
 
 h2{
