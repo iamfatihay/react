@@ -6,7 +6,7 @@ import Hooks from "./2-hooks/Hooks";
 function App() {
   return (
     <div >
-      <Events/>
+      {/* <Events/> */}
       <Hooks/>
 
     </div>
