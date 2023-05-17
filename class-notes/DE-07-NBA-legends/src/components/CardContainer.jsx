@@ -9,12 +9,10 @@ import { useState } from "react";
 //? süslü kullanmasaydik return e de gerek yoktu. Arrow function kendisi return yapabiliyor, eger tek satirsa kod.
 
 //? bu alternatif yöntemi kullansaydık jsx içerisinde data yerine filteredData'yı map etmemiz gerekirdi
-  //   const filteredData = data
-  //   .filter((player) =>
-  //     player.name.toLowerCase().includes(search.trim().toLowerCase())
-  //   )
-
-
+//   const filteredData = data
+//   .filter((player) =>
+//     player.name.toLowerCase().includes(search.trim().toLowerCase())
+//   )
 
 const CardContainer = () => {
     const [search, setSearch] = useState("");
