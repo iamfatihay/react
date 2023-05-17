@@ -3,6 +3,8 @@ import { useState } from "react";
 
 const PlayerCard = ({ img, name, statistics }) => {
     //? onClick={() => setshowImage(!showImage)}    bu sekilde de olur
+    //? statistics de map kullandik, az eleman oldugu icin indexlerine ulasarak da yazilabilirdi. Best practice map ile.
+    
     const [showImage, setshowImage] = useState(true)
     const handleClick = () => setshowImage(!showImage);
 
