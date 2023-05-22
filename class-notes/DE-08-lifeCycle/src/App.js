@@ -5,7 +5,7 @@ import "./App.css";
 import { useState } from "react";
 import OrnekUseEffect from "./components/OrnekUseEffect";
 import Clock from "./components/Clock";
-import People from "./components/useEffect-fetch-axios/people";
+import People from "./components/useEffect-fetch-axios/People";
 
 function App() {
   const[goster,setGoster]=useState(true)
