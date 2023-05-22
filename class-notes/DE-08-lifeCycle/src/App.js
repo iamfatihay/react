@@ -5,6 +5,7 @@ import "./App.css";
 import { useState } from "react";
 import OrnekUseEffect from "./components/OrnekUseEffect";
 import Clock from "./components/Clock";
+import People from "./components/useEffect-fetch-axios/people";
 
 function App() {
   const[goster,setGoster]=useState(true)
@@ -16,7 +17,7 @@ function App() {
 
 
 
-      <button className="btn btn-danger" onClick={()=>setGoster(!goster)}>GOSTER</button>
+      {/* <button className="btn btn-danger" onClick={()=>setGoster(!goster)}>GOSTER</button> */}
 
       {/* {goster ? <OrnekUseEffect/> : ""} */}
             {/* goster true iken OrnekUseEffect componenti görünsün, false durumunda hiçbirşey yapma */}
@@ -25,7 +26,8 @@ function App() {
       {/* && iki parametrede doğruyken kullanılır, || soldaki doğruysa yada
       sağdaki doğruysa, hangisi true ise onu al */}
 
-      {goster && <Clock/>} 
+      {/* {goster && <Clock/>}  */}
+      <People/>
     </div>
   );
 }
