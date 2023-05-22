@@ -10,21 +10,33 @@ const Home = () => {
   
   //!GET (Read)
  
-  //!then zinciriyle de yazabilirsiniz
- 
+  const getBilgiler=async()=>{
+     const veri= await axios.get(url)
+     setBilgiler(veri.data)
+  }
 
+ useEffect(()=>{getBilgiler()},[]) 
+
+  //!then zinciriyle de yazabilirsiniz
+  // useEffect(()=>{
+  // axios.get(url).then((res) => setBilgiler(res.data))},[])
+  
+// console.log(bilgiler);
   //? Sadece Component mount oldugunda istek yapar
  
 
   
   //!POST (create) database e veri gönderme
- 
+ const postBilgi=async()=>{
+
+  await axios.post(url,{title:"hayat bilgisi",description:"naber"})
+ }
 
  
   return (
     <>
-    <AddBilgi/>
-    <BilgiList/>
+    <AddBilgi postBilgi={postBilgi}/>
+    <BilgiList  bilgiler={bilgiler}/>
     </>
   );
 };

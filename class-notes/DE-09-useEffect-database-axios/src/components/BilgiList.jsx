@@ -1,11 +1,11 @@
 
 import { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
-const BilgiList = () => {
-  const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
+const BilgiList = ({bilgiler}) => {
+  // const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
 
 
-
+console.log(bilgiler);
 
 
   return (
@@ -22,14 +22,14 @@ const BilgiList = () => {
           </tr>
         </thead>
         <tbody>
-          {[].map((eleman) => {
+          {bilgiler.map((eleman) => {
           
             return (
               <tr >
-                <th>{}</th>
-                <td>{}</td>
-                <td>{} </td>
-                <td className="text-center text-nowrap">
+                <th>{eleman.id}</th>
+                <td>{eleman.title}</td>
+                <td>{eleman.description} </td>
+                <td className="text-center ">
                
              
 
