@@ -5,14 +5,24 @@ import GorevleriGoster from "../components/GorevleriGoster";
 import Data from "../helper/Data";
 
 const Home = () => {
+  const [array, setArray] = useState([])
 
+  const getData=()=>{
+    setArray(Data)
+  }
+  useEffect(()=>{getData()},[])
   
+  // const addGorev=()=>{
+  //   setArray()
+
+  // }
+
 
   return (
     <div>
-      <GorevEkle  />
+      <GorevEkle array={array} setArray={setArray} />
 
-      <GorevleriGoster  />
+      <GorevleriGoster array={array} setArray={setArray} />
     </div>
   );
 };

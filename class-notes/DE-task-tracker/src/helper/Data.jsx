@@ -1,37 +1,37 @@
 const Data = [
   {
     id: 1,
-    text: "Study React Pre-Class Notes",
+    text: "Say hello to everyone!",
     day: "Dec 12th at 2:30pm",
-    bitti: false,
-  },
-  {
-    id: 2,
-    text: "Feed the Dog",
-    day: "Dec 13th at 1:30pm",
     bitti: true,
   },
   {
+    id: 2,
+    text: "Listen to the Ashley !!!",
+    day: "Dec 13th at 1:30pm",
+    bitti: false,
+  },
+  {
     id: 3,
-    text: "Attend In-Class",
+    text: "Trust your classmates",
     day: "Dec 14th at 3:00pm",
     bitti: false,
   },
   {
     id: 4,
-    text: "Study React Pre-Class Notes",
+    text: "Everything is possible :)",
     day: "Dec 12th at 2:30pm",
     bitti: false,
   },
   {
     id: 5,
-    text: "Feed the Dog",
+    text: "Work for your dreams",
     day: "Dec 13th at 1:30pm",
     bitti: true,
   },
   {
     id: 6,
-    text: "Attend In-Class",
+    text: "Enjoy your life",
     day: "Dec 14th at 3:00pm",
     bitti: false,
   },
