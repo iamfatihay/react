@@ -12,7 +12,7 @@ const Data = [
     bitti: false,
   },
   {
-    id: 3,
+    id: 3, 
     text: "Trust your classmates",
     day: "Dec 14th at 3:00pm",
     bitti: false,

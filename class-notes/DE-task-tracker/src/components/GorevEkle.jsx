@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const GorevEkle = ({array,setArray}) => {
  
-  const [isContainerVisible, setContainerVisible] = useState(false);
+    const [isContainerVisible, setContainerVisible] = useState(false);
     const[task,setTask]=useState("");
     const[date,setDate]=useState("");
 

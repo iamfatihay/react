@@ -12,11 +12,6 @@ const Home = () => {
   }
   useEffect(()=>{getData()},[])
   
-  // const addGorev=()=>{
-  //   setArray()
-
-  // }
-
 
   return (
     <div>
