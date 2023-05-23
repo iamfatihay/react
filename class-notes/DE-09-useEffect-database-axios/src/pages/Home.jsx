@@ -4,7 +4,7 @@ import axios from "axios";
 import AddBilgi from "../components/AddBilgi";
 import BilgiList from "../components/BilgiList";
 const Home = () => {
-  const [bilgiler, setBilgiler] = useState([]);
+ const [bilgiler, setBilgiler] = useState([]);
 
   const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
   
@@ -27,16 +27,23 @@ const Home = () => {
 
   
   //!POST (create) database e veri gönderme
- const postBilgi=async()=>{
+ const postBilgi=async(yeniVeri)=>{
 
-  await axios.post(url,{title:"hayat bilgisi",description:"naber"})
+  await axios.post(url,yeniVeri)
+  
+  getBilgiler()
  }
 
+// const deleteBilgi = async (id) => {
+//   await axios.delete(url/id);
+
+//   getBilgiler();
+// };
  
   return (
     <>
     <AddBilgi postBilgi={postBilgi}/>
-    <BilgiList  bilgiler={bilgiler}/>
+    <BilgiList  bilgiler={bilgiler} getBilgiler={getBilgiler}/>
     </>
   );
 };

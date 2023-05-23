@@ -13,7 +13,8 @@ const People = () => {
   // console.log(insanlar);
 
 
-  //! axios ile veri getirme 2.yol
+  //! axios ile veri getirme 2.yol, axios da json a cevirme yok kendisi yapiyor.
+  //! Json a cevirme yok ama kendisi veriyi baska bir objenin icinde getiriyor, o yuzden ".data" diyerek veriye ulasiyoruz.
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/users").then((res) => setInsanlar(res.data))
   }, [])
