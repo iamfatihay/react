@@ -10,7 +10,7 @@ const HastaListe = ({ hastalar, setHastalar, doktorlar }) => {
       {hastalar.map((hasta) => {
         return (
           <div key={hasta.id}>
-            {doktorlar.length > 1 ? (
+            {doktorlar.length === 4 ? (
               <div
                 className={hasta.bittiMi ? "trueBittiStil" : "falseBitmediStil"}
                 onDoubleClick={() =>
