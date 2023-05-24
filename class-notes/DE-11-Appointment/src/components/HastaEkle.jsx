@@ -7,7 +7,7 @@ const HastaEkle = ({ hastalar, setHastalar, doktorlar }) => {
 
   const handleSubmit=(e)=>{
     e.preventDefault()
-    setHastalar([...hastalar,{id:hastalar.length+1, text:isim, day:tarih, bittiMi:false, doktorum:"Ashley"}])
+    setHastalar([...hastalar,{id:hastalar.length+1, text:isim, day:tarih, bittiMi:false, doktorum:doktorlar[0].doktor}])
 
     //! react da submit sonrasi inputlardan value temizlemek icin, 
     //! hem alttaki islem yapilir hem de inputlarda value={isim} yazarak browser da gozukmesi saglanir.
