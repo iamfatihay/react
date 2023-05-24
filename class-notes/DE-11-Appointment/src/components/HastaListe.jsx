@@ -1,6 +1,6 @@
 import React from "react";
 import { FaTimesCircle } from "react-icons/fa";
-const HastaListe = ({ hastalar, setHastalar,doktorlar }) => {
+const HastaListe = ({ hastalar, setHastalar, doktorlar }) => {
   
 // console.log(doktorlar[0].doktor);
 
@@ -28,7 +28,7 @@ const HastaListe = ({ hastalar, setHastalar,doktorlar }) => {
                   <h4>{hasta.day}</h4>
                   <h3>{hasta.doktorum}</h3>
                 </div>
-                <FaTimesCircle style={{ color: "red" }} />
+                <FaTimesCircle style={{ color: "red" }} onClick={()=>setHastalar(hastalar.filter((a)=>a.id!==hasta.id))} />
               </div>
             ) : (
               doktorlar[0].doktor === hasta.doktorum && (
@@ -51,7 +51,7 @@ const HastaListe = ({ hastalar, setHastalar,doktorlar }) => {
                     <h4>{hasta.day}</h4>
                     <h3>{hasta.doktorum}</h3>
                   </div>
-                  <FaTimesCircle style={{ color: "red" }} />
+                  <FaTimesCircle style={{ color: "red" }} onClick={()=>setHastalar(hastalar.filter((a)=>a.id!==hasta.id))} />
                 </div>
               )
             )}
