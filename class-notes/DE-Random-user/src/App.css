@@ -12,7 +12,7 @@
 }
 .resimli, .mail, .tel, .konum{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 1rem 2rem;
 }
