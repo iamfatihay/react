@@ -1,10 +1,25 @@
 import { useState } from "react";
 
-const HastaEkle = () => {
+const HastaEkle = ({ hastalar, setHastalar }) => {
  
+  const[isim,setIsim]=useState("")
+  const[tarih,setTarih]=useState("")
+
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    setHastalar([...hastalar,{id:hastalar.length+1, text:isim, day:tarih, bittiMi:false, doktorum:"Ashley"}])
+
+    //! react da submit sonrasi inputlardan value temizlemek icin, 
+    //! hem alttaki islem yapilir hem de inputlarda value={isim} yazarak browser da gozukmesi saglanir.
+    setIsim("")
+    setTarih("")
+  }
+
+  
+
   return (
     <div>
-      <form >
+      <form onSubmit={handleSubmit} >
         <div className="form-control">
           <label htmlFor="text">Hasta Bilgileri</label>
 
@@ -13,6 +28,8 @@ const HastaEkle = () => {
             type="text"
             placeholder="Add Name"
             name="text"
+            value={isim}
+            onChange={(e)=>setIsim(e.target.value)}
           />
         </div>
 
@@ -23,7 +40,8 @@ const HastaEkle = () => {
             id="day"
             type="datetime-local"
             name="day"
-           
+            value={tarih}
+            onChange={(e)=>setTarih(e.target.value)}
           />
         </div>
 

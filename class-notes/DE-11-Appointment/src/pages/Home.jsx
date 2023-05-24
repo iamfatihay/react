@@ -1,13 +1,23 @@
 import { useState } from "react";
 import HastaEkle from "../components/HastaEkle";
 import HastaListe from "../components/HastaListe";
+import { doktorData, hastaData } from "../helper/Data";
 
 
 const Home = () => {
-  
 
+  const [hastalar, setHastalar] = useState(hastaData)
+  const [doktorlar, setDoktorlar] = useState(doktorData)
+  const [tikla, setTikla] = useState(true)
 
-  
+  const doktorClick = (abc) => {
+    setTikla(!tikla)
+
+    // console.log(doktorlar.filter((dok)=>dok.id===abc));
+    setDoktorlar(doktorlar.filter((dok) => dok.id === abc));
+
+  }
+
 
   return (
     <div >
@@ -15,34 +25,33 @@ const Home = () => {
         <header className="header">
           <h1>HOSPİTAL</h1>
           <div className="dr">
-            {[].map((dr) => (
-              <div>
+            {doktorlar.map((dr) => (
+              <div key={dr.id} >
                 <img
-                  // src={}
-                  alt=""
+                  src={dr.resim}
+                  alt="#"
                   width="180px"
                   height="150px"
                   className="btn"
-               
+                  style={{ backgroundColor: tikla===true ? "aqua" : "lightgreen" }}
+                  onClick={() => doktorClick(dr.id)}
                 />
                 <h4
-                
+                  style={{ backgroundColor: tikla ? "aqua" : "lightgreen" , borderLeft: `10px solid ${tikla ? "blue" : "green" } `}}
                 >
-                  {}
+                  {dr.doktor}
                 </h4>
               </div>
             ))}
           </div>
         </header>
 
-          <HastaEkle
-         
-          />
+
+        {!tikla && <HastaEkle hastalar={hastalar} setHastalar={setHastalar} />}
+
       </div>
 
-      <HastaListe
-       
-      />
+      <HastaListe hastalar={hastalar} setHastalar={setHastalar} />
     </div>
   );
 };
