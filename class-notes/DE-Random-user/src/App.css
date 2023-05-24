@@ -1,0 +1,43 @@
+.ilk{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container{
+    border: 1px solid rgb(206, 195, 37);
+    background-color: rgb(199, 191, 81);
+    width: 470px;
+    box-shadow: 14px 14px 10px rgba(54, 49, 19, 0.4);
+
+}
+.resimli, .mail, .tel, .konum{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+.resim{
+    border-radius: 60px;
+
+}
+h2{
+    margin-left: 50px;
+}
+.icon{
+    margin-left: 40px;
+}
+p{
+   margin-left: 50px; 
+}
+.alt{
+    text-align: center;
+}
+.btn{
+    margin-top: 2rem;
+    padding: 0.6rem 1rem;
+    background-color: rgb(202, 130, 81);
+    border: none;
+}
+.btn:hover{
+    cursor: pointer;
+}
