@@ -32,6 +32,11 @@ function App() {
     
   }, [])
 
+  const random = () =>{
+    getInfo()
+  }
+
+
 
   return (
     <div className="ilk">
@@ -66,7 +71,7 @@ function App() {
         )
 
       })}
-      <button className="btn">
+      <button className="btn" onClick={random} >
         Random User
       </button>
 

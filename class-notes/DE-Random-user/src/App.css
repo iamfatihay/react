@@ -35,9 +35,12 @@ p{
 .btn{
     margin-top: 2rem;
     padding: 0.6rem 1rem;
-    background-color: rgb(202, 130, 81);
+    background-color: rgb(165, 79, 22);
     border: none;
+    border-radius: 5px;
+    color: white;
 }
 .btn:hover{
     cursor: pointer;
+    opacity: 0.7;
 }
