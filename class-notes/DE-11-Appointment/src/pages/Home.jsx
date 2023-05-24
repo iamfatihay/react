@@ -11,16 +11,21 @@ const Home = () => {
   const [tikla, setTikla] = useState(true)
 
   const doktorClick = (abc) => {
-    setTikla(!tikla)
+    
+    if(tikla){
+      setTikla(!tikla)
 
-    // console.log(doktorlar.filter((dok)=>dok.id===abc));
-    setDoktorlar(doktorlar.filter((dok) => dok.id === abc));
-
+      // console.log(doktorlar.filter((dok)=>dok.id===abc));
+      setDoktorlar(doktorlar.filter((dok) => dok.id === abc));
+    }else{
+      setTikla(true)
+    setDoktorlar(doktorData)
+    }
   }
 
 
   return (
-    <div >
+    <div style={{display: tikla ? "block" : "flex" }} >
       <div>
         <header className="header">
           <h1>HOSPİTAL</h1>
@@ -47,11 +52,11 @@ const Home = () => {
         </header>
 
 
-        {!tikla && <HastaEkle hastalar={hastalar} setHastalar={setHastalar} />}
+        {!tikla && <HastaEkle hastalar={hastalar} setHastalar={setHastalar} doktorlar={doktorlar} />}
 
       </div>
 
-      <HastaListe hastalar={hastalar} setHastalar={setHastalar} />
+      <HastaListe hastalar={hastalar} setHastalar={setHastalar} doktorlar={doktorlar} />
     </div>
   );
 };
