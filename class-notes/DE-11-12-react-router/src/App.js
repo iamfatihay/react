@@ -10,14 +10,15 @@ import CourseCard from './pages/CourseCard';
 import ContactForm from './pages/ContactForm';
 import NotFound from './pages/NotFound';
 
-
+   {/* / (ana yol) tüm yollara dahil edilmiştir, bu nedenle onu
+         / başlayan diğer yollardan ayırt etmek için exact anahtar kelimesine sahip olması gerekir . */}
 const App = () => {
   return (
     <div>
       <Router>
         <MyNavbar />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route exact path='/' element={<Home />} />
           <Route path='/teacher' element={<Teacher />} />
           <Route path='/courses' element={<CourseCard />} />
           <Route path='/contact' element={<ContactForm />} />
