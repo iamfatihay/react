@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 
 //!react-bootstrap MyNavbar component
 
+
 const MyNavbar = () => {
   return (
     <Navbar bg="light" expand="lg">
@@ -21,13 +22,13 @@ const MyNavbar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <NavLink className="nav-link" to="/">Home</NavLink>
+            <NavLink className="nav-link" to="/" style={({isActive})=>({color:isActive && "red"})} >Home</NavLink>
 
-            <NavLink className="nav-link" to="/teacher">Teacher</NavLink>
+            <NavLink className="nav-link" to="/teacher" style={({isActive})=>({backgroundColor:isActive && "red"})} >Teacher</NavLink>
 
-            <NavLink className="nav-link" to="/courses">Courses</NavLink>
+            <NavLink className="nav-link" to="/courses" style={({isActive})=>({fontSize:isActive && "50px"})} >Courses</NavLink>
 
-            <NavLink className="nav-link" to="/contact">Contact</NavLink>
+            <NavLink className="nav-link" to="/contact" style={({isActive})=>({border:isActive ? "2px solid red" : "1px solid blue"})} >Contact</NavLink>
 
             <a
               href="https://github.com/clarusway/clarusway-FS-DE-04-TR"
