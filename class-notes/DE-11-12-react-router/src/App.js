@@ -8,6 +8,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Teacher from './pages/Teacher';
 import CourseCard from './pages/CourseCard';
 import ContactForm from './pages/ContactForm';
+import NotFound from './pages/NotFound';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/teacher' element={<Teacher />} />
           <Route path='/courses' element={<CourseCard />} />
           <Route path='/contact' element={<ContactForm />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>
