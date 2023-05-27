@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import {Container,Col,Card,Row,Button} from 'react-bootstrap'
+import {Container,Col,Card,Row,Button} from 'react-bootstrap';
 
 
 
@@ -32,7 +32,7 @@ const Home = () => {
                   <Card.Title>{name.common}</Card.Title>
                   {/* <Card.Text>{text}</Card.Text> */}
                   <Button variant="danger"
-                 onClick={()=>navigate(`/Details/${name}`)}
+                 onClick={()=>navigate(`/Details/${name.common}`)}
                   >DETAYLAR</Button>
                 </Card.Body>
               </Card>
@@ -46,13 +46,3 @@ const Home = () => {
 }
 
 export default Home
-
-{/* <div>
-      {ülkeler.map((a) => {
-        return (
-          <div>
-            <button>DETAYLAR</button>
-          </div>
-        );
-      })}
-    </div> */}
