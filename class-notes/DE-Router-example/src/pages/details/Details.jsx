@@ -64,17 +64,18 @@ const Details = () => {
                         "Languages: N/A"
                       )}
                     </Card.Text>
-                    <button className='btn btn-warning' onClick={() => handleMapClick(maps.googleMaps)}>View on Google Maps</button>
-                  </Card.Body>
-                </Card>
-              </Container>
-              <div className='p-3 '>
-                <button
+                    <button className='btn btn-warning mb-1' onClick={() => handleMapClick(maps.googleMaps)}>View on Google Maps</button><br />
+                    <button
                   className="btn btn-warning"
                   onClick={() => navigate("/")}
                 >
                   HOME
                 </button>
+                  </Card.Body>
+                </Card>
+              </Container>
+              <div className='p-3 '>
+                
               </div>
             </div>
           );
