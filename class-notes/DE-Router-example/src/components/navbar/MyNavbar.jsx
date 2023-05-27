@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from "../../img/logo.png";
 import { Link, NavLink } from "react-router-dom";
 
@@ -14,28 +14,29 @@ function MyNavbar() {
                 </Link>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
-                    <Nav className="ms-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
+                    <Nav className="ms-auto my-2 my-lg-0 " style={{ maxHeight: "100px" }} navbarScroll>
                         <NavLink
-                            className="nav-link"
+                            className="nav-link fs-4 me-5"
                             to="/"
-                            style={({ isActive }) => ({ color: isActive && "red" })}
+                            style={({ isActive }) => ({ fontWeight: isActive ? "bold" : "normal" })}
                         >
                             Home
                         </NavLink>
                         <NavLink
-                            className="nav-link"
+                            className="nav-link fs-4 me-4"
                             to="/About"
-                            style={({ isActive }) => ({ backgroundColor: isActive && "red" })}
+                            style={({ isActive }) => ({ fontWeight: isActive ? "bold" : "normal" })}
                         >
                             About
                         </NavLink>
                         <a
-                            href="https://github.com/clarusway/clarusway-FS-DE-05-TR"
-                            className="nav-link"
+                            
+                            href="https://github.com/iamfatihay"
+                            className="nav-link fs-4"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Github
+                           🌟 Github
                         </a>
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
