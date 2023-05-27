@@ -47,7 +47,7 @@ import {Container,Col,Card,Row,Button} from 'react-bootstrap';
           return ( 
             <Col sm={12} md={6} lg={4} key={name.common}> 
               <Card style={{ width: "15rem" }}> 
-                <Card.Img variant="top" src={flags.png} /> 
+                <Card.Img variant="top" src={flags.png} onClick={() => handleDetailsClick(name.common)} /> 
                 <Card.Body> 
                   <Card.Title>{name.common}</Card.Title> 
                   <Button variant="danger" onClick={() => handleDetailsClick(name.common)}> 

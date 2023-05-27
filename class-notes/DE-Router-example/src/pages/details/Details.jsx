@@ -14,7 +14,7 @@ const Details = () => {
   const handleMapClick = (mapUrl) => {
     window.open(mapUrl, '_blank');
   };
-  
+
   return (
     <div className="container text-center d-flex justify-content-center mt-4">
       {ülke.map(a => {
@@ -22,31 +22,46 @@ const Details = () => {
         if (name.common === namee) {
           return (
             <div>
-              <Container className="text-center mt-4 p-4 ">
+              <Container className="text-center mt-4 p-4 " style={{ boxShadow: "0 0 30px rgba(0, 0, 0, 0.6)" }}>
                 <Card style={{ width: "30rem" }}>
                   <Card.Img variant="top" src={flags.png} />
                   <Card.Body>
-                    <Card.Title className='fw-bold'>{name.common}</Card.Title>
-                    <Card.Text>Turkish translation : {translations.tur.official}</Card.Text>
-                    <Card.Text>Population : {population}</Card.Text>
+                    <h1 className='fw-bold'>{name.common}</h1>
+                    <Card.Text >Turkish translation : <span className='fw-bold'>{translations.tur.official}</span> </Card.Text>
+                    <Card.Text>Population : <span className='fw-bold'>{population}</span> </Card.Text>
                     <Card.Text>
-                      {currencies && Object.values(currencies).length > 0 ? (
-                        `Currencies: ${Object.values(currencies)
+                      Currencies:
+                      {currencies && Object.values(currencies).length > 0
+                        ? Object.values(currencies)
                           .map((curr) => curr.name)
-                          .join(', ')}`
-                      ) : (
-                        'Currencies: N/A'
-                      )}
+                          .join(", ")
+                          .split(":")
+                          .map((el, i) =>
+                            i === 0 ? <span key={i} className="fw-bold">{` ${el}`}</span> : `: ${el}`
+                          )
+                        : "N/A"}
                     </Card.Text>
                     {capital && capital.length > 0 && (
-                      <Card.Text>Capital: {capital[0]}</Card.Text>
+                      <Card.Text>Capital: <span className='fw-bold'>{capital[0]}</span> </Card.Text>
                     )}
-                    <Card.Text>Region: {region}</Card.Text>
+                    <Card.Text>Region: <span className='fw-bold'>{region}</span> </Card.Text>
                     <Card.Text>
                       {languages && Object.values(languages).length > 0 ? (
-                        `Languages: ${Object.values(languages).join(', ')}`
+                        <>
+                          Languages:
+                          {Object.values(languages).map((language, index) => (
+                            <span key={language}>
+                              {index === 0 ? (
+                                ` ${language.substring(0, language.indexOf(":") + 1)}`
+                              ) : (
+                                `, ${language.substring(0, language.indexOf(":") + 1)}`
+                              )}
+                              <strong>{language.substring(language.indexOf(":") + 1)}</strong>
+                            </span>
+                          ))}
+                        </>
                       ) : (
-                        'Languages: N/A'
+                        "Languages: N/A"
                       )}
                     </Card.Text>
                     <button className='btn btn-warning' onClick={() => handleMapClick(maps.googleMaps)}>View on Google Maps</button>
