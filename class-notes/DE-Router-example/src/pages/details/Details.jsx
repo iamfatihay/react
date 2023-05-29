@@ -16,13 +16,13 @@ const Details = () => {
   };
 
   return (
-    <div className="container text-center d-flex justify-content-center mt-4">
+    <div className="container text-center d-flex justify-content-center" style={{marginTop:"4.5rem"}}>
       {ülke.map(a => {
         const { name, capital, currencies, languages, region, population, maps, translations, flags } = a;
         if (name.common === namee) {
           return (
             <div>
-              <Container className="text-center mt-4 p-4 " style={{ boxShadow: "0 0 30px rgba(0, 0, 0, 0.6)" }}>
+              <Container className="text-center mt-4 p-4 " style={{ boxShadow: "0 30px 30px rgba(0, 0, 0, 0.6)" }}>
                 <Card style={{ width: "30rem" }}>
                   <Card.Img variant="top" src={flags.png} />
                   <Card.Body>

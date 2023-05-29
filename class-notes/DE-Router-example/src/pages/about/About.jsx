@@ -3,7 +3,7 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div className='container mt-5'>
+    <div className='container' style={{marginTop:"6rem"}}>
       <div>
         <h1>About This App</h1>
         <p>The Country App is a great resource for people who are interested in learning more about different cultures, histories, and geographies. With detailed information about 250 countries around the world, you'll be able to explore and discover new things about the world we live in.</p>

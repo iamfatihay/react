@@ -5,20 +5,29 @@ import Navbar from 'react-bootstrap/Navbar';
 import logo from "../../img/logo.png";
 import { Link, NavLink } from "react-router-dom";
 
+
 function MyNavbar() {
+
+    const handleLogoClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+
+
     return (
-        <Navbar bg="light" expand="md">
+        <Navbar className='border-bottom' bg="light" expand="md" fixed="top">
             <Container>
-                <Link to="/">
+                <Link to="/" onClick={handleLogoClick}>
                     <img alt="" src={logo} />
                 </Link>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
-                    <Nav className="ms-auto my-2 my-lg-0 " style={{ maxHeight: "100px" }} navbarScroll>
+                    <Nav className="ms-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
                         <NavLink
                             className="nav-link fs-4 me-5"
                             to="/"
                             style={({ isActive }) => ({ fontWeight: isActive ? "bold" : "normal" })}
+                            onClick={handleLogoClick}
                         >
                             Home
                         </NavLink>

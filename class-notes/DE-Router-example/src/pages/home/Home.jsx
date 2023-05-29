@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react'; 
 import { useNavigate } from "react-router-dom"; 
 import {Container,Col,Card,Row,Button} from 'react-bootstrap'; 
+import { FaArrowCircleUp } from 'react-icons/fa';
 
  const Home = () => { 
   const navigate=useNavigate() 
@@ -26,6 +27,9 @@ import {Container,Col,Card,Row,Button} from 'react-bootstrap';
     navigate( `/Details/${name}` ); 
   }; 
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
    const [searchTerm, setSearchTerm] = useState(""); 
   const handleSearchChange = (event) => { 
@@ -45,13 +49,13 @@ import {Container,Col,Card,Row,Button} from 'react-bootstrap';
 
    return ( 
     <Container className="text-center mt-4 d-flex flex-column align-items-center" > 
-      <input className='input-group-text  w-50 mb-4' type="text" placeholder="Search countries..." onChange={handleSearchChange} autoFocus /> 
-      <Row className="g-3" style={{ }} > 
+      <input className='input-group-text  w-50' style={{marginTop:"6rem" }} type="text" placeholder="Search countries..." onChange={handleSearchChange} autoFocus /> 
+      <Row className="g-3 mt-3" > 
         {paginatedUlkeler.map(({ flags, name }) => { 
           return ( 
-            <Col className='m-auto' sm={12} md={6} lg={3} key={name.common}> 
+            <Col className='' sm={12} md={6} lg={3} key={name.common}> 
               <Card style={{width:"15rem"}}> 
-                <Card.Img variant="top" src={flags.png} onClick={() => handleDetailsClick(name.common)} /> 
+                <Card.Img variant="top" src={flags.png}  onClick={() => handleDetailsClick(name.common)} /> 
                 <Card.Body> 
                   <Card.Title>{name.common}</Card.Title> 
                   <Button variant="danger" onClick={() => handleDetailsClick(name.common)}> 
@@ -62,7 +66,10 @@ import {Container,Col,Card,Row,Button} from 'react-bootstrap';
             </Col> 
           ); 
         })} 
-      </Row> 
+      </Row>
+      <button className="scroll-to-top-btn" style={{position:"fixed", bottom:"60px",right:"20px",width:"40px",height:"40px" , zIndex:"333"}} onClick={handleScrollToTop}>
+        <FaArrowCircleUp />
+      </button> 
     </Container> 
   ); 
 }; 
