@@ -6,6 +6,8 @@ import MyNavbar from "./components/navbar/MyNavbar";
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Details from './pages/details/Details';
+import NotFound from './pages/notFound/NotFound';
+import "./App.css";
 
 function App() {
 
@@ -20,6 +22,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
           <Route path="/Details/:namee" element={<Details />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>

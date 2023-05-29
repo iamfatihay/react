@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState, useMemo } from 'react'; 
 import { useNavigate } from "react-router-dom"; 
 import {Container,Col,Card,Row,Button} from 'react-bootstrap'; 
 
@@ -16,8 +16,10 @@ import {Container,Col,Card,Row,Button} from 'react-bootstrap';
         console.log(error); 
       } 
     }; 
-    fetchData(); 
-  }, []); 
+    if (ulkeler.length === 0) {
+      fetchData(); 
+    } 
+  }, [ulkeler]); 
 
 
    const handleDetailsClick = (name) => { 
@@ -31,22 +33,24 @@ import {Container,Col,Card,Row,Button} from 'react-bootstrap';
   }; 
 
 
-   const filteredUlkeler = ulkeler.filter(({ name }) => 
+  const filteredUlkeler = useMemo(() => 
+  ulkeler.filter(({ name }) => 
     name.common.toLowerCase().includes(searchTerm.toLowerCase()) 
-  ); 
+  ), [ulkeler, searchTerm]
+); 
 
 
-   const paginatedUlkeler = filteredUlkeler.slice(0, 30); 
+   const paginatedUlkeler = filteredUlkeler.slice(0, 250); 
 
 
    return ( 
-    <Container className="text-center mt-4 p-4 d-flex flex-column align-items-center"> 
-      <input className='input-group-text  w-50 mb-4' type="text" placeholder="Search countries..." onChange={handleSearchChange} /> 
-      <Row className="g-3"> 
+    <Container className="text-center mt-4 d-flex flex-column align-items-center" > 
+      <input className='input-group-text  w-50 mb-4' type="text" placeholder="Search countries..." onChange={handleSearchChange} autoFocus /> 
+      <Row className="g-3" style={{ }} > 
         {paginatedUlkeler.map(({ flags, name }) => { 
           return ( 
-            <Col sm={12} md={6} lg={4} key={name.common}> 
-              <Card style={{ width: "15rem" }}> 
+            <Col className='m-auto' sm={12} md={6} lg={3} key={name.common}> 
+              <Card style={{width:"15rem"}}> 
                 <Card.Img variant="top" src={flags.png} onClick={() => handleDetailsClick(name.common)} /> 
                 <Card.Body> 
                   <Card.Title>{name.common}</Card.Title> 
