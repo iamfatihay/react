@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useMemo } from 'react'; 
+import React, { useEffect, useState, useCallback} from 'react'; 
 import { useNavigate } from "react-router-dom"; 
 import {Container,Col,Card,Row,Button} from 'react-bootstrap'; 
 import { FaArrowCircleUp } from 'react-icons/fa';
 
- const Home = () => { 
+const Home = () => { 
   const navigate=useNavigate() 
   const [ulkeler, setUlkeler] = useState([]); 
 
@@ -32,15 +32,13 @@ import { FaArrowCircleUp } from 'react-icons/fa';
   }
 
    const [searchTerm, setSearchTerm] = useState(""); 
-  const handleSearchChange = (event) => { 
+   const handleSearchChange = useCallback((event) => { 
     setSearchTerm(event.target.value); 
-  }; 
+  }, []); 
 
 
-  const filteredUlkeler = useMemo(() => 
-  ulkeler.filter(({ name }) => 
-    name.common.toLowerCase().includes(searchTerm.toLowerCase()) 
-  ), [ulkeler, searchTerm]
+  const filteredUlkeler = ulkeler.filter(({ name }) => 
+  name.common.toLowerCase().includes(searchTerm.toLowerCase()) 
 ); 
 
 
@@ -53,12 +51,12 @@ import { FaArrowCircleUp } from 'react-icons/fa';
       <Row className="g-3 mt-3" > 
         {paginatedUlkeler.map(({ flags, name }) => { 
           return ( 
-            <Col className='' sm={12} md={6} lg={3} key={name.common}> 
+            <Col className='m-auto' sm={12} md={6} lg={3} key={name.common}> 
               <Card style={{width:"15rem"}}> 
                 <Card.Img variant="top" src={flags.png}  onClick={() => handleDetailsClick(name.common)} /> 
                 <Card.Body> 
                   <Card.Title>{name.common}</Card.Title> 
-                  <Button variant="danger" onClick={() => handleDetailsClick(name.common)}> 
+                  <Button variant="danger" onClick={handleDetailsClick}> 
                     DETAYLAR 
                   </Button> 
                 </Card.Body> 
