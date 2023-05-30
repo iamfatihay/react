@@ -17,7 +17,6 @@ const Home = () => {
  
  return (
     <div>
-   
       <Header  />
 
       {[].length>0 ? (
