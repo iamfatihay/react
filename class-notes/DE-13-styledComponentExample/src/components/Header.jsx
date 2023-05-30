@@ -1,21 +1,22 @@
 import React from "react";
 import ButtonSSS, { DetayButton } from "./styles/ButonSSS";
 import ImageSSS, { LogoSSS } from "./styles/ImageSSS";
+import DisplaySSS from "./styles/DisplaySSS";
 
 
 const Header = () => {
   return (
     <div>
-      <div>
+      <DisplaySSS>
         <LogoSSS src="./images/logo.png" alt="" />
 
         <div>
           <ButtonSSS fatih="#A62440">Apply courses</ButtonSSS>
           <ButtonSSS halit>Talk to Adviser</ButtonSSS>
         </div>
-      </div>
-
-      <div>
+      </DisplaySSS>
+      <hr />
+      <DisplaySSS>
         <div>
           <h1>The IT Career of Your Dreams Starts Here!</h1>
           <p>
@@ -27,7 +28,7 @@ const Header = () => {
           <DetayButton>Details</DetayButton>
         </div>
         <ImageSSS src="./images/hero.jpg" alt="" />
-      </div>
+      </DisplaySSS>
     </div>
   );
 };
