@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const ButtonSSS = styled.button`
-  background-color: ${({halit})=>halit ? "#A62440" : "white"};
-  color: ${({fatih})=>fatih || "white" };
+  background-color: ${({ halit }) => (halit ? "#A62440" : "white")};
+color:${({ fatih }) => fatih || "white"};
   border: 1px solid #a62440;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -16,11 +16,11 @@ const ButtonSSS = styled.button`
   }
 `;
 
-export const DetayButton=styled(ButtonSSS)`
-    color: tomato;
-    background-color: white;
-    border-left: 3px solid blue;
-    border-radius: 20px 0;
+export const DetayButton = styled(ButtonSSS)`
+  color: tomato;
+  background-color: white;
+  border-radius: 20px 0;
+  border-left: 3px solid blue;
 `;
 
 export default ButtonSSS;
