@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Container, Card } from 'react-bootstrap';
 
 const Details = () => {
+  //*useParams, router ile gonderilen veriyi yakalamak icin kullanilir.
   const { namee } = useParams();
-  const navigate = useNavigate()
   const [ülke, setUlke] = useState([]);
 
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/name/${namee}`).then((res) => res.json()).then((data) => setUlke(data))
   }, [namee]);
 
+  //* Bu fonk. API den gelen googlemaps url si ile ayri bir sayfada buna erisim sagliyor.
   const handleMapClick = (mapUrl) => {
     window.open(mapUrl, '_blank');
   };
 
   return (
-    <div className="container text-center d-flex justify-content-center" style={{marginTop:"4.5rem"}}>
+    <div className="container text-center d-flex justify-content-center" style={{ marginTop: "4.5rem" }}>
       {ülke.map(a => {
         const { name, capital, currencies, languages, region, population, maps, translations, flags } = a;
         if (name.common === namee) {
@@ -31,17 +32,13 @@ const Details = () => {
                     <Card.Text>Population : <span className='fw-bold'>{population}</span> </Card.Text>
                     <Card.Text>
                       Currencies:
-                      {currencies && Object.values(currencies).length > 0
-                        ? Object.values(currencies)
-                          .map((curr) => curr.name)
-                          .join(", ")
-                          .split(":")
-                          .map((el, i) =>
-                            i === 0 ? <span key={i} className="fw-bold">{` ${el}`}</span> : `: ${el}`
-                          )
+                      {Object.values(currencies).length > 0
+                        ? Object.values(currencies).map((curr) => curr.name).join(", ")
+                          .split("*")
+                          .map((el, i) =><span key={i} className="fw-bold">{` ${el}`}</span>)
                         : "N/A"}
                     </Card.Text>
-                    {capital && capital.length > 0 && (
+                    {capital.length > 0 && (
                       <Card.Text>Capital: <span className='fw-bold'>{capital[0]}</span> </Card.Text>
                     )}
                     <Card.Text>Region: <span className='fw-bold'>{region}</span> </Card.Text>
@@ -66,17 +63,14 @@ const Details = () => {
                     </Card.Text>
                     <button className='btn btn-warning mb-1' onClick={() => handleMapClick(maps.googleMaps)}>View on Google Maps</button><br />
                     <button
-                  className="btn btn-warning"
-                  onClick={() => navigate("/")}
-                >
-                  HOME
-                </button>
+                      className="btn btn-warning"
+                      onClick={() => window.history.back()} 
+                    >
+                      BACK
+                    </button>
                   </Card.Body>
                 </Card>
               </Container>
-              <div className='p-3 '>
-                
-              </div>
             </div>
           );
         }
