@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const ButtonS = styled.button`
-  background-color: orange;
+  background-color: ${({ozlem})=>ozlem ? "lightblue" : "orange"};
   color: blue;
   cursor: pointer;
   padding: 1rem 1.5rem; 
@@ -14,7 +14,7 @@ const ButtonS = styled.button`
 `;
 
 export const DomatesButon=styled(ButtonS)`
-    color: green;
+    color: ${({yunus})=>yunus ? "tomato" : "green"};
     background-color: aquamarine;
     border: 5px solid red;
     width: 300px;

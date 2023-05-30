@@ -7,11 +7,12 @@ const Home = () => {
   return (
     <DivStyle>
         <HeaderS>STYLED COMPONENTS</HeaderS>
-        <LinkS>LINK</LinkS>
+        <LinkS href='#'>LINK</LinkS>
 
-        <ButtonS>TIKLA1</ButtonS>
+        <ButtonS ozlem>TIKLA1</ButtonS>
         <ButtonS>TIKLA2</ButtonS>
-        <DomatesButon>TIKLA3</DomatesButon>
+
+        <DomatesButon yunus>TIKLA3</DomatesButon>
         <DomatesButon>TIKLA4</DomatesButon>
     </DivStyle>
   )
