@@ -13,7 +13,6 @@ function App() {
   console.log(info);
   
   //! date kisminin sadece ilk 10 karakterini aldim
-  
   let registeredDate = ''; // Varsayılan değer
 
   if (info.length > 0 ) {

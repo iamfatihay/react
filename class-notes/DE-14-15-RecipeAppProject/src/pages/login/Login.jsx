@@ -17,7 +17,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const backendeYolla = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     //!fake bakend yaptığım için ilk etapta elimle name ve pass belirledim
     localStorage.setItem("kullanici", name);
@@ -28,11 +28,11 @@ const Login = () => {
 
   return (
     <LoginContainer>
-      <FormContainer onSubmit={backendeYolla}>
+      <FormContainer >
         <StyledImg src={mealSvg} />
         <Header>{"<Clarusway/>"}Recipe</Header>
 
-        <StyledForm>
+        <StyledForm onSubmit={handleSubmit} >
           <StyledInput
             type="text"
             placeholder="username"
