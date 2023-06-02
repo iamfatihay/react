@@ -20,8 +20,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //!fake bakend yaptığım için ilk etapta elimle name ve pass belirledim
-    localStorage.setItem("kullanici", name);
-    localStorage.setItem("kullanicipass", pass);
+    localStorage.setItem("username", name);
+    localStorage.setItem("password", pass);
 
     navigate("/home");
   };
