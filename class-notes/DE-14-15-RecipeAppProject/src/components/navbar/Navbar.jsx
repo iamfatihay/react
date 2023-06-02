@@ -10,6 +10,7 @@ const Navbar = () => {
       {/* logo daki setAcik ayrıntı bişey merdiven açıkken home a basılırsa kapansın diye*/}
       <Logo to="/home" onClick={() => setAcik(false)}>
         <i>{"<Clarusway>"}</i>
+        {/* tag lere özel < işaretlerini string gibi kullanmak istersek üstteki syntax la yazarız */}
         <span>recipe</span>
       </Logo>
 

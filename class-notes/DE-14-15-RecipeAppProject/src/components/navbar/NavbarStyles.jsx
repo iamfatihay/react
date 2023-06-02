@@ -58,14 +58,14 @@ export const Menu = styled.div`
     /* uzun yazı olurda taşarsa gizle (hamburgere dönüşünce)*/
     flex-direction: column;
     width: 100%;
-    height:200px;
+    /* height:200px; */
     /* props olarak, osman=true geldi mesela */
-    max-height: ${({ osman }) => (osman ? "300px" : "0")}; 
+    /* max-height: ${({ osman }) => (osman ? "300px" : "0")};  */
 
      /*  alttaki gibi de kontrol edebiliriz . Menu div i display flex ve flex-direction column old için alt altalar*/
     display: ${({ osman }) => (osman ? "flex" : "none")};
 
-    max-height:300px;
+    /* max-height:300px; */
     /* 3 çizgiye ilk tıklandığında 300 px açılsın, sonraki tıklamada kapansın */
     /* max-height:300px yazarsak hep açık olur */
   }
