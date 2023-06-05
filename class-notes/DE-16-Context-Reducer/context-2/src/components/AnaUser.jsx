@@ -14,7 +14,7 @@ const AnaUser = ({kullanici}) => {
         return (
           <div key={i.id}>
             <h3>{i.login}</h3>
-            <img src={i.avatar_url} alt=""  />
+            <img src={i.avatar_url} alt="" width={i.width} />
 
             <div>
               <label htmlFor={i.id}>Image width(px)</label>

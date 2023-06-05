@@ -14,8 +14,11 @@ const App = () => {
     fetch("https://api.github.com/users").then((res)=>res.json()).then((data)=>setKullanici(data));
   }, [])
   
-  const degistirWidth=()=>{
-    // diziye width ekle
+  const degistirWidth=(id,yeniWidth)=>{
+    //* diziye width ekle
+    setKullanici(
+      kullanici.map((a)=>a.id===id ? {...a, width:yeniWidth} : a)
+    )
   }
 
   return (
