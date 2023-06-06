@@ -5,7 +5,7 @@ const UserItem = ({ user }) => {
   return (
     <div className="useritem">
       <img
-        src={`https://avatars.dicebear.com/v2/avataaars/${user?.id}.svg`}
+        src={`https://avatars.dicebear.com/v2/avataaars/${user.id}.svg`}
         alt="random-user"
       />
       {user.name}

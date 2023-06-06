@@ -15,8 +15,7 @@ const Header = ({resim}) => {
     </div>
   );
 };
-//? React.memo sarmallayicisi sayesinde header componentinde degisiklik olmadigi surece yeni bir render gerceklesmez ,
-//? eger bu componente bir degisiklik yaparsaniz tekrar render olur.
 
+// React.memo sarmallayıcısı sayesinde header componentinde değişiklik olmadığı sürece yeni bir render gerçekleşmez, eğer bu comp.te bir değişiklik yaparsanız, o zaman tekrar render olur
 export default memo(Header);
 
