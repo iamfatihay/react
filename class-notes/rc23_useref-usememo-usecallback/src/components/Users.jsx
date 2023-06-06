@@ -1,16 +1,17 @@
 import React from "react";
 import UserItem from "./UserItem";
+import { memo } from "react";
 
-const Users = () => {
+const Users = ({kisiler}) => {
   console.log("USERS COMPONENT RENDERED");
 
   return (
     <div className="users">
-      {[].map((user) => (
+      {kisiler.map((user) => (
         <UserItem key={user.id} user={user} />
       ))}
     </div>
   );
 };
 
-export default Users;
+export default memo(Users);
