@@ -1,0 +1,22 @@
+.container{
+    text-align: center;
+    margin-top: 5rem;
+}
+.btn{
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+.btn1{
+    background-color: lightgreen;
+    color: black;
+}
+.btn2{
+    background-color: black;
+    color: white;
+}
+.btn3{
+    background-color: red;
+    color: white;
+}
