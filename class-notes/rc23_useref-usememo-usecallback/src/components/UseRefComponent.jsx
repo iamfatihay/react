@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react'
 
 const UseRefComponent = () => {
-  //? 1.kullanim
+//? 1.kullanim
+//* hafızada yeri değişmeyen bir obje oluşturur, her render da yeniden render olmaz,
+//* onu engellemek için.sürekli yeni referans numarası alarak hafızayı doldurmamak için
 //   const[sayac,setSayac]=useState(0);
 //   const sayacRef=useRef(0)
 
@@ -12,13 +14,21 @@ const UseRefComponent = () => {
 //   setSayac(sayac+1)
 //   sayacRef.current++
 // }
+ //? 2.kullanim DOM elemanlsrina ulasmamizi saglar
+  const inputRef=useRef()
+  const divRef=useRef()
+  const renkDegistir=()=>{
+    divRef.current.style.backgroundColor=inputRef.current.value;
+    // console.log(inputRef.current.value);
+  }
+
 
   return (
-    <div>
+    <div ref={divRef} >
       <h2>UseRef Component </h2>
       {/* <h3>{sayacRef.current}</h3> */}
-      <input type="text" placeholder='enter text...' />
-      <button>ChangeRenk </button>
+      <input ref={inputRef} type="text" placeholder='enter text...' />
+      <button onClick={renkDegistir} >ChangeRenk </button>
       {/* <button onClick={arttir} >Arttir</button> */}
     </div>
   )

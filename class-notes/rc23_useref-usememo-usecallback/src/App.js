@@ -6,8 +6,8 @@ import UseMemoCallBack from './UseMemoCallBack';
 function App() {
   return (
     <div className="App">
-      <UseRefComponent /> 
-       {/* <ReactMemo /> */}
+      {/* <UseRefComponent />  */}
+       <ReactMemo />
       {/* <UseMemoCallBack /> */}
     </div>
   );

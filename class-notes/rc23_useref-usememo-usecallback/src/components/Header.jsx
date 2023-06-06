@@ -17,5 +17,5 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
 
