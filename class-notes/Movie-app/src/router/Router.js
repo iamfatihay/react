@@ -7,7 +7,7 @@ import MovieDetail from "../pages/MovieDetail";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 
-const AppRouter = () => {
+const Router = () => {
   return (
     <BrowserRouter>
       <Navbar />
@@ -23,4 +23,4 @@ const AppRouter = () => {
   );
 };
 
-export default AppRouter;
+export default Router;
