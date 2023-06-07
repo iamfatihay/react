@@ -1,28 +1,17 @@
-import { useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
-import "./App.css";
-import { auth } from "./firebase-config";
+import React from "react";
+import { ToastContainer } from "react-toastify";
+import AuthContextProvider from "./context/AuthContextProvider";
+import AppRouter from "./router/AppRouter";
 
-
-function App() {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-
-  const [user, setUser] = useState({});
-
-
+const App = () => {
   return (
-    <div >
-      
+    <div className="dark:bg-[#23242a]">
+      <AuthContextProvider>
+        <AppRouter />
+        <ToastContainer />
+      </AuthContextProvider>
     </div>
   );
-}
+};
 
 export default App;
