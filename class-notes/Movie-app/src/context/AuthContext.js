@@ -7,7 +7,7 @@ export const useAuthContext = () => {
   return useContext(AuthContext);
 };
 
-const AuthContextProvider = ({ children }) => {
+const AuthContext = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
   console.log(currentUser);
 
@@ -21,4 +21,4 @@ const AuthContextProvider = ({ children }) => {
   );
 };
 
-export default AuthContextProvider;
+export default AuthContext;

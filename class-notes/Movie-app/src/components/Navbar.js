@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
 import { logOut } from "../auth/firebase";
-import { AuthContext } from "../context/AuthContextProvider";
+import { AuthContext } from "../context/AuthContext";
 import Switch from "./Switch";
 
 const Navbar = () => {

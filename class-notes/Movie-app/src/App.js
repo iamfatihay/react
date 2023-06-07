@@ -1,15 +1,15 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
-import AuthContextProvider from "./context/AuthContextProvider";
-import AppRouter from "./router/AppRouter";
+import AuthContext from "./context/AuthContext";
+import Router from "./router/Router";
 
 const App = () => {
   return (
     <div className="dark:bg-[#23242a]">
-      <AuthContextProvider>
-        <AppRouter />
+      <AuthContext>
+        <Router />
         <ToastContainer />
-      </AuthContextProvider>
+      </AuthContext>
     </div>
   );
 };
