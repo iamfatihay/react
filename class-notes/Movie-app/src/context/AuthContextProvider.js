@@ -3,11 +3,11 @@ import { userObserver } from "../auth/firebase";
 
 export const AuthContext = createContext();
 //* with custom hook
-export const useAuthContext = () => {
-  return useContext(AuthContext);
-};
+// export const useAuthContext = () => {
+//   return useContext(AuthContext);
+// };
 
-const AuthContext = ({ children }) => {
+const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
   console.log(currentUser);
 
@@ -21,4 +21,4 @@ const AuthContext = ({ children }) => {
   );
 };
 
-export default AuthContext;
+export default AuthContextProvider;

@@ -22,12 +22,13 @@ import {
 //* https://console.firebase.google.com/ => project settings
 //! firebase console settings bölümünden firebaseconfig ayarlarını al
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: "AIzaSyDc1vL8xsSyesCmAs7GJihoMlkEWUtwyBA",
+  authDomain: "movie-app-9c6b3.firebaseapp.com",
+  projectId: "movie-app-9c6b3",
+  storageBucket: "movie-app-9c6b3.appspot.com",
+  messagingSenderId: "110832041696",
+  appId: "1:110832041696:web:8126fc8b6c3f78ce799a85",
+  measurementId: "G-QM8VB9WJ9R"
 };
 
 // Initialize Firebase
@@ -49,7 +50,7 @@ export const createUser = async (email, password, navigate, displayName) => {
     });
     navigate("/");
     toastSuccessNotify("Registered successfully!");
-    // console.log(userCredential);
+    console.log(userCredential);
   } catch (error) {
     toastErrorNotify(error.message);
     // alert(error.message);
