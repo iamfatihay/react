@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import MovieDetail from "../pages/MovieDetail";
 import Navbar from "../components/Navbar";
 
+
 const AppRouter = () => {
   return <>
   <BrowserRouter>

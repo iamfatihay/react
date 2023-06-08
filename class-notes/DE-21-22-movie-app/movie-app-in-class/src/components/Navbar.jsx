@@ -1,16 +1,21 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Link } from "react-router-dom";
+import avatar from "../assets/icons/avatar.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
+
+  const currentUser = {displayName: "felix franko"}
+
   return (<>
     <Disclosure as="nav" className="bg-neutral-100 dark:bg-gray-900 py-3 dark:text-white fixed top-0 w-full z-20">
       <div className="mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between">
-          <a className="pr-2 text-2xl font-semibold" href="#" >React Movie App</a>
+          <Link className="pr-2 text-2xl font-semibold" to="/" >React Movie App</Link>
           <div className="absolute inset-y-0 right-0 flex items-center">
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
@@ -19,7 +24,7 @@ export default function Navbar() {
                   <span className="sr-only">Open user menu</span>
                   <img
                     className="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src={ currentUser.photoURL || avatar}
                     alt=""
                   />
                 </Menu.Button>
