@@ -10,6 +10,7 @@ function classNames(...classes) {
 export default function Navbar() {
 
   const currentUser = {displayName: "felix franko"}
+  // const currentUser = false
 
   return (<>
     <Disclosure as="nav" className="bg-neutral-100 dark:bg-gray-900 py-3 dark:text-white fixed top-0 w-full z-20">
@@ -17,6 +18,7 @@ export default function Navbar() {
         <div className="relative flex items-center justify-between">
           <Link className="pr-2 text-2xl font-semibold" to="/" >React Movie App</Link>
           <div className="absolute inset-y-0 right-0 flex items-center">
+            {currentUser && <h5 className="mr-2 capitalize" >{currentUser.displayName} </h5>  }
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
               <div>
@@ -25,6 +27,7 @@ export default function Navbar() {
                   <img
                     className="h-8 w-8 rounded-full"
                     src={ currentUser.photoURL || avatar}
+                    referrerPolicy="no-referrer"
                     alt=""
                   />
                 </Menu.Button>
@@ -41,41 +44,41 @@ export default function Navbar() {
                 <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <Link
+                        to="/register"
                         className={classNames(
                           active ? "bg-gray-100" : "",
                           "block px-4 py-2 text-sm text-gray-700"
                         )}
                       >
-                        Your Profile
-                      </a>
+                        Register
+                      </Link>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <Link
+                        to="/login"
                         className={classNames(
                           active ? "bg-gray-100" : "",
                           "block px-4 py-2 text-sm text-gray-700"
                         )}
                       >
-                        Settings
-                      </a>
+                        Login
+                      </Link>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <span
+                        role="button"
                         className={classNames(
                           active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-sm text-gray-700"
+                          "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                         )}
                       >
-                        Sign out
-                      </a>
+                        Log out
+                      </span>
                     )}
                   </Menu.Item>
                 </Menu.Items>
