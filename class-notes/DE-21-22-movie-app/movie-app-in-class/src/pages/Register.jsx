@@ -7,12 +7,12 @@ const Register = () => {
   const [password, setPassword] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
-  const { createUser,signUpProvider } = useContext(AuthContex);
+  const { createUser, signUpProvider } = useContext(AuthContex);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const displayName=`${firstName} ${lastName} `
-    createUser(email, password,displayName);
+    const displayName = `${firstName} ${lastName}`;
+    createUser(email, password, displayName);
   };
 
   return (
@@ -35,7 +35,7 @@ const Register = () => {
               className="peer"
               placeholder=" "
               required
-              onChange={(e)=>setFirstName(e.target.value)}
+              onChange={(e) => setFirstName(e.target.value)}
             />
             <label htmlFor="firstName">First Name</label>
           </div>
@@ -47,7 +47,7 @@ const Register = () => {
               className="peer"
               placeholder=" "
               required
-              onChange={(e)=>setLastName(e.target.value)}
+              onChange={(e) => setLastName(e.target.value)}
             />
             <label htmlFor="lastName">Last Name</label>
           </div>
@@ -81,7 +81,7 @@ const Register = () => {
           <button
             className="btn-danger flex justify-between items-center"
             type="button"
-            onClick={()=>signUpProvider()}
+            onClick={() => signUpProvider()}
           >
             Continue with Google
             <GoogleIcon color="currentColor" />

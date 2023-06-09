@@ -7,7 +7,6 @@ import MovieDetail from "../pages/MovieDetail";
 import Navbar from "../components/Navbar";
 import PrivateRouter from "./PrivateRouter";
 
-
 const AppRouter = () => {
   return (
     <>
