@@ -9,10 +9,10 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const {logOut} = useContext(AuthContex)
+  const {logOut, currentUser} = useContext(AuthContex);
 
 
-  const currentUser = {displayName: "felix franko"}
+  // const currentUser = {displayName: "felix franko"}
   // const currentUser = false
 
   return (<>
@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="relative flex items-center justify-between">
           <Link className="pr-2 text-2xl font-semibold" to="/" >React Movie App</Link>
           <div className="absolute inset-y-0 right-0 flex items-center">
-            {currentUser && <h5 className="mr-2 capitalize" >{currentUser.displayName} </h5>  }
+            {currentUser && <h5 className="mr-2 capitalize" >{currentUser?.displayName} </h5>  }
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
               <div>
@@ -29,7 +29,7 @@ export default function Navbar() {
                   <span className="sr-only">Open user menu</span>
                   <img
                     className="h-8 w-8 rounded-full"
-                    src={ currentUser.photoURL || avatar}
+                    src={ currentUser?.photoURL || avatar}
                     referrerPolicy="no-referrer"
                     alt=""
                   />

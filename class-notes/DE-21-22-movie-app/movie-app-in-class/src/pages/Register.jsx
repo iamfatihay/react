@@ -5,11 +5,14 @@ import { AuthContex } from "../context/AuthContext";
 const Register = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const { createUser } = useContext(AuthContex);
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const { createUser,signUpProvider } = useContext(AuthContex);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUser(email, password);
+    const displayName=`${firstName} ${lastName} `
+    createUser(email, password,displayName);
   };
 
   return (
@@ -24,7 +27,7 @@ const Register = () => {
           <h2 className="text-red-main text-2xl font-[500] text-center tracking-[0.1em] mb-3">
             Sign Up
           </h2>
-          <div class="relative z-0 w-full mb-6 group">
+          <div className="relative z-0 w-full mb-6 group">
             <input
               type="text"
               name="firstname"
@@ -32,10 +35,11 @@ const Register = () => {
               className="peer"
               placeholder=" "
               required
+              onChange={(e)=>setFirstName(e.target.value)}
             />
-            <label for="firstName">First Name</label>
+            <label htmlFor="firstName">First Name</label>
           </div>
-          <div class="relative z-0 w-full mb-6 group">
+          <div className="relative z-0 w-full mb-6 group">
             <input
               type="text"
               name="lastname"
@@ -43,10 +47,11 @@ const Register = () => {
               className="peer"
               placeholder=" "
               required
+              onChange={(e)=>setLastName(e.target.value)}
             />
-            <label for="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
           </div>
-          <div class="relative z-0 w-full mb-6 group">
+          <div className="relative z-0 w-full mb-6 group">
             <input
               type="email"
               name="email"
@@ -56,9 +61,9 @@ const Register = () => {
               required
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
           </div>
-          <div class="relative z-0 w-full mb-6 group">
+          <div className="relative z-0 w-full mb-6 group">
             <input
               type="password"
               name="password"
@@ -68,7 +73,7 @@ const Register = () => {
               required
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
           </div>
           <button className="btn-danger" type="submit">
             Register
@@ -76,6 +81,7 @@ const Register = () => {
           <button
             className="btn-danger flex justify-between items-center"
             type="button"
+            onClick={()=>signUpProvider()}
           >
             Continue with Google
             <GoogleIcon color="currentColor" />

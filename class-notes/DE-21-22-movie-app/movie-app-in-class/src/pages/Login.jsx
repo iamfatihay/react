@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const { signIn } = useContext(AuthContex);
+  const { signIn, signUpProvider } = useContext(AuthContex);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const Login = () => {
           <h2 className="text-red-main text-2xl font-[500] text-center tracking-[0.1em] mb-3">
             Sign In
           </h2>
-          <div class="relative z-0 w-full mb-6 group">
+          <div className="relative z-0 w-full mb-6 group">
             <input
               type="email"
               name="email"
@@ -35,7 +35,7 @@ const Login = () => {
               required
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
           </div>
           <div class="relative z-0 w-full mb-6 group">
             <input
@@ -47,7 +47,7 @@ const Login = () => {
               required
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
           </div>
           <div className="flex justify-between">
             <span className="py-3 font-[0.75em] cursor-pointer decoration-none text-gray-500 hover:text-[#ff4b45]">
@@ -66,6 +66,7 @@ const Login = () => {
           <button
             className="btn-danger flex justify-between items-center"
             type="button"
+            onClick={()=>signUpProvider()}
           >
             Continue with Google
             <GoogleIcon color="currentColor" />
