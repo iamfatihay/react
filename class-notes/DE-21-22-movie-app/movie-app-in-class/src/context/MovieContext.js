@@ -14,11 +14,12 @@ const MovieContextProvider = ({children}) => {
     }, [])
     
     const getMovies=(API)=>{
-        axios.get(API).then((res)=>setMovie(res.data.results)).catch((err)=>console.log(err))
+        setLoading(true)
+        axios.get(API).then((res)=>setMovie(res.data.results)).catch((err)=>console.log(err)).finally(()=>setLoading(false))
     }
 
   return (
-    <MovieContext.Provider value={{movie,loading}}>{children}</MovieContext.Provider>
+    <MovieContext.Provider value={{movie,loading,getMovies}}>{children}</MovieContext.Provider>
   )
 }
 
