@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
 import { logOut } from "../auth/firebase";
@@ -6,6 +6,26 @@ import { AuthContext } from "../context/AuthContextProvider";
 import Switch from "./Switch";
 
 const Navbar = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+  useEffect(() => {
+    const closeDropdown = () => {
+      setIsDropdownOpen(false);
+    };
+
+    // Dropdown menüsünün dışına tıklandığında menünün kapanmasını sağlamak için bir olay dinleyicisi ekleme
+    document.addEventListener("click", closeDropdown);
+
+    // Component temizlendiğinde olay dinleyicisini kaldırma
+    return () => {
+      document.removeEventListener("click", closeDropdown);
+    };
+  }, []);
+
+
+
   const { currentUser } = useContext(AuthContext);
   //* with custom hook
   // const { currentUser } = useAuthContext();
@@ -28,12 +48,10 @@ const Navbar = () => {
             )}
             <Switch />
             <div className="dropdown relative">
-              <span
-                className="dropdown-toggle flex items-center hidden-arrow"
+              <button
+                className="dropdown-toggle flex items-center hidden-arrow focus:outline-none"
                 id="dropdownMenuButton2"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+                onClick={handleDropdownToggle}
               >
                 <img
                   src={currentUser?.photoURL || avatar}
@@ -43,9 +61,9 @@ const Navbar = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer"
                 />
-              </span>
+              </button>
               <ul
-                className="dropdown-menu min-w-max absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                className={`dropdown-menu min-w-max absolute bg-white text-base z-500 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 ${isDropdownOpen ? "block" : "hidden"}`}
                 aria-labelledby="dropdownMenuButton2"
               >
                 <li>
