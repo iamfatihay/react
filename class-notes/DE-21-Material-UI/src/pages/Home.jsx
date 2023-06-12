@@ -6,8 +6,8 @@ const Home = () => {
   return (
     <>
       {/* <TypoButtons /> */}
-      {/* <TextFieldComp /> */}
-      <CardsGrid />
+      <TextFieldComp />
+      {/* <CardsGrid /> */}
     </>
   );
 };
