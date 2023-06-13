@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { arttir, azalt, reset } from "../../redux/actions/counterActions";
+import { arttir, azalt, resetle } from "../../redux/actions/counterActions";
 import "./Counter.css";
 
 
@@ -22,7 +22,7 @@ const Counter = () => {
           ARTTIR
         </button>
         <button className="counter-button zero"  
-        onClick={()=>dispatch1(reset())}
+        onClick={()=>dispatch1(resetle())}
         >reset</button>
         <button
           className="counter-button negative"
