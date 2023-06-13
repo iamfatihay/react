@@ -1,17 +1,19 @@
 
+import { useSelector } from "react-redux";
 import { temizle } from "../../redux/actions/todoActions";
 import TodoItem from "./TodoItem";
 
 
 const TodoList = () => {
 
- 
+ const gorevler1=useSelector((state)=>state.todoReducer.gorevler)
+//  console.log(gorevler1);
 
   return (
     <div>
       <div>
-        {[].map((gorev) => (
-          <TodoItem key={gorev.id} />
+        {gorevler1.map((gorev) => (
+          <TodoItem key={gorev.id} gorev={gorev}/>
         ))}
 
      
