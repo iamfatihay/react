@@ -18,13 +18,15 @@ export default function Login() {
 
   let {email,password}=useSelector((state)=>state.yetkiSlice)
   // console.log(email);
-
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
 
   
   
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+    dispatch(olusturKullanici({email,password}))
+    navigate("/")
   };
 
   return (

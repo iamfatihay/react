@@ -9,8 +9,17 @@ const yetkiSlice=createSlice({
         password:""
     },
     reducers:{
-        
+      olusturKullanici:(state,action)=>{
+        state.email=action.payload.email;
+        state.password=action.payload.password;
+         // console.log(action);
+      },
+      kullaniciSil:(state)=>{
+        state.email=""
+        state.password=""
+      } 
     }
 })
 
+export const {olusturKullanici, kullaniciSil} = yetkiSlice.actions;
 export default yetkiSlice.reducer;
