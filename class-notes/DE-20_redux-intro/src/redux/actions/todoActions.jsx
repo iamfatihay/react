@@ -1,2 +1,3 @@
-export const temizle=()=>({type:"TEMIZLE"})
-export const ekle=(veri)=>({type:"EKLE", payload:veri})
+export const temizle=()=>({type:"TEMİZLE"})
+
+export const ekle =(veri)=>({type:"EKLE", payload:veri})

@@ -10,6 +10,8 @@ function App() {
  
 
 const topluReducer=combineReducers({counterReducer:counterReducer,todoReducer:todoReducer})
+
+
 const store=createStore(topluReducer)
 
   return (

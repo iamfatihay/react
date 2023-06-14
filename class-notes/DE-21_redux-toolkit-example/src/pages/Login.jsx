@@ -13,8 +13,8 @@ import {olusturKullanici} from "../features/yetkiSlice"
 
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
 
   
@@ -52,8 +52,8 @@ export default function Login() {
             name="email"
             autoComplete="email"
             autoFocus
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            // value={email}
+            // onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             margin="normal"
@@ -64,8 +64,8 @@ export default function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            // value={password}
+            // onChange={(e) => setPassword(e.target.value)}
           />
 
           <Button

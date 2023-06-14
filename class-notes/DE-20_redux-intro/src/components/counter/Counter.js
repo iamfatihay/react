@@ -1,13 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
-import { arttir, azalt, resetle } from "../../redux/actions/counterActions";
-import "./Counter.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import "./Counter.css";
+import{arttir, azalt, resetle} from "../../redux/actions/counterActions"
 
 
 const Counter = () => {
-  const count1=  useSelector((state)=>state.counterReucer.counterSonuc)
-  const yazi= useSelector((state)=>state.counterReducer.text1)
-  const dispatch1=useDispatch()
+ 
+const count1= useSelector((state)=>state.counterReducer.counterSonuc)
+const yazi = useSelector((state) => state.counterReducer.text1);
+
+const dispatch1=useDispatch()
 
   return (
     <div className="app">
@@ -17,16 +19,16 @@ const Counter = () => {
       <div>
         <button
           className="counter-button positive"
-          onClick={()=>dispatch1(arttir())}
+         onClick={()=>dispatch1(arttir())}
         >
           ARTTIR
         </button>
         <button className="counter-button zero"  
-        onClick={()=>dispatch1(resetle())}
+     onClick={()=>dispatch1(resetle())}
         >reset</button>
         <button
           className="counter-button negative"
-          onClick={()=>dispatch1(azalt())}
+      onClick={()=>dispatch1(azalt())}
         >
           AZALT
         </button>
