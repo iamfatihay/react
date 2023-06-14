@@ -9,8 +9,9 @@ import { kullaniciSil } from '../features/yetkiSlice';
 
 
 export default function Navbar() {
-  const navigate=useNavigate()
-  const dispatch=useDispatch()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const email = useSelector((state) => state.yetkiSlice.email)
 
   const handleLogout = () => {
     dispatch(kullaniciSil())
@@ -28,7 +29,10 @@ export default function Navbar() {
           >
             Clarusway News
           </Typography>
-          <Button color="inherit" onClick={handleLogout} >Login</Button>
+          {email==="osman" ? <Button color="inherit" onClick={handleLogout} >Log Out</Button>
+           : <Button color="inherit" onClick={handleLogout} >Login</Button>}
+
+
         </Toolbar>
       </AppBar>
     </Box>
