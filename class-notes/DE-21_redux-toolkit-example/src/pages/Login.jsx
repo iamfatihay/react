@@ -8,13 +8,16 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import {olusturKullanici} from "../features/yetkiSlice"
 
 
 export default function Login() {
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
+
+  let {email,password}=useSelector((state)=>state.yetkiSlice)
+  // console.log(email);
 
 
   
@@ -54,6 +57,7 @@ export default function Login() {
             autoFocus
             // value={email}
             // onChange={(e) => setEmail(e.target.value)}
+            onChange={(e)=>email=e.target.value}
           />
           <TextField
             margin="normal"
@@ -66,6 +70,7 @@ export default function Login() {
             autoComplete="current-password"
             // value={password}
             // onChange={(e) => setPassword(e.target.value)}
+            onChange={(e)=>password=e.target.value}
           />
 
           <Button
