@@ -1,6 +1,8 @@
-// import axios from "axios";
+// import axios from "axios"
 
-// export const register = async(userInfo)=>{
-//     const dispatch=useDispatch()
-// }
-// react hooklarina ihtiyacim varsa bunlari Javascript fonksiyonlari icerisinde kullanamam bunun icin custom hook tanimlayabiliriz
+
+export const register = async (userInfo)=>{
+    const dispath = useDispatch()
+}
+
+// react hooklarına ihtiyacım varsa bunları js fonksiyonları içerisinde yazamam. Bunun için custom hokk tanımlayabiliriz.
