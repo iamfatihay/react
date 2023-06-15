@@ -1,18 +1,17 @@
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
-import LockIcon from "@mui/icons-material/Lock";
-import { Formik } from "formik";
-import image from "../assets/result.svg";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import RegisterForm, { registerSchema } from "../components/RegisterForm";
+import Typography from "@mui/material/Typography";
+import LockIcon from "@mui/icons-material/Lock";
+import image from "../assets/result.svg";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/material";
-
+import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
+import LoginForm, { loginScheme } from "../components/LoginForm";
 
-const Register = () => {
-  const { register } = useAuthCall();
+const Login = () => {
+  const { login } = useAuthCall();
 
   return (
     <Container maxWidth="lg">
@@ -20,12 +19,11 @@ const Register = () => {
         container
         justifyContent="center"
         direction="row-reverse"
-        rowSpacing={{ sm: 3 }}
         sx={{
           height: "100vh",
           p: 2,
         }}>
-        <Grid item xs={12}>
+        <Grid item xs={12} mb={3}>
           <Typography variant="h3" color="primary" align="center">
             STOCK APP
           </Typography>
@@ -44,33 +42,29 @@ const Register = () => {
           <Typography
             variant="h4"
             align="center"
-            mb={2}
+            mb={4}
             color="secondary.light">
-            Register
+            Login
           </Typography>
 
           <Formik
-            initialValues={{
-              username: "",
-              first_name: "",
-              last_name: "",
-              email: "",
-              password: "",
-            }}
-            validationSchema={registerSchema}
+            initialValues={{ email: "", password: "" }}
+            validationSchema={loginScheme}
             onSubmit={(values, actions) => {
-              register({ ...values, password2: values.password });
+              login(values);
               actions.resetForm();
+              actions.setSubmitting(false);
             }}
-            component={props => <RegisterForm {...props} />}></Formik>
+            component={props => <LoginForm {...props} />}></Formik>
+
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/">Do you have an account?</Link>
+            <Link to="/register">Do you have not an account?</Link>
           </Box>
         </Grid>
 
-        <Grid item xs={0} sm={7} md={6}>
+        <Grid item xs={10} sm={7} md={6}>
           <Container>
-            <img src={image} alt="" />
+            <img src={image} alt="img" />
           </Container>
         </Grid>
       </Grid>
@@ -78,4 +72,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

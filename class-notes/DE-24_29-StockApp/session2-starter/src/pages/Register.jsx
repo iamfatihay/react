@@ -61,6 +61,7 @@ const Register = () => {
             onSubmit={(values, actions) => {
               register({ ...values, password2: values.password });
               actions.resetForm();
+              actions.setSubmitting(false);
             }}
             component={props => <RegisterForm {...props} />}></Formik>
           <Box sx={{ textAlign: "center", mt: 2 }}>
