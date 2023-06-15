@@ -14,6 +14,7 @@ export default function Navbar() {
   const email = useSelector((state) => state.yetkiSlice.email)
 
   const handleLogout = () => {
+    //  ben sayfaya kendi bilgilerimle girdiğimde, biri gelip bu siteye girerse benim bilgilerimle girer, bu yüzden logout yaptığımda bilgilerim silinsin
     dispatch(kullaniciSil())
     navigate("/login")
   };
@@ -30,7 +31,7 @@ export default function Navbar() {
             Clarusway News
           </Typography>
           {email==="osman" ? <Button color="inherit" onClick={handleLogout} >Log Out</Button>
-           : <Button color="inherit" onClick={handleLogout} >Login</Button>}
+           : <Button color="inherit" >Login</Button>}
 
 
         </Toolbar>
