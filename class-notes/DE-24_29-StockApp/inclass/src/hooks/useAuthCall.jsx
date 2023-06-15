@@ -22,10 +22,7 @@ const useAuthCall = () => {
   const register = async userInfo => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios.post(
-        "http://15111.fullstack.clarusway.com/account/register/",
-        userInfo
-      );
+      const { data } = await axios.post("http://15111.fullstack.clarusway.com/account/register/",userInfo);
 
       console.log(data);
       dispatch(registerSuccess(data));
