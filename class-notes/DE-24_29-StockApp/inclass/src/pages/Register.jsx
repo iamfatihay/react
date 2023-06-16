@@ -56,10 +56,11 @@ const Register = () => {
               last_name: "",
               email: "",
               password: "",
+              password2:"",
             }}
             validationSchema={registerSchema}
             onSubmit={(values, actions) => {
-              register({ ...values, password2: values.password });
+              register(values);
               actions.resetForm();
             }}
             component={props => <RegisterForm {...props} />}></Formik>
