@@ -56,8 +56,7 @@ const Data = () => {
       </h1>
       <h3 className="home__subtitle">Full Stack Developer</h3>
       <p className="home__description">
-        Dedicated Full Stack Developer in Stuttgart. Creating innovative web apps with experience in front-end and back-end development.
-        Delivering high-quality solutions, staying updated on industry trends.</p>
+      I'm an enthusiastic developer and I'm passionate and dedicated to my work</p>
 
       <a href="#contact" className="button button--flex">
         Contact Me
