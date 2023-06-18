@@ -106,6 +106,10 @@
 .contact__form-area textarea {
     resize: none;
 }
+.form__button{
+    display: flex;
+    justify-content: center;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
