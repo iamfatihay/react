@@ -3,7 +3,7 @@
 // import axios from "axios";
 import { useEffect } from "react";
 import useStockCall from "../hooks/useStockCall";
-import Typography from "@mui/material/Typography";
+import Typography from "@mui/material/Typography"
 import { Button, Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import FirmCard from "../components/FirmCard";
@@ -12,8 +12,8 @@ const Firms = () => {
   // const dispatch = useDispatch();
   // const { token } = useSelector(state => state.auth);
 
-  const {getStockData} = useStockCall()
-  const {firms}=useSelector(state=>state.stock)
+  const { getStockData } = useStockCall();
+  const {firms} = useSelector(state=> state.stock)
 
   //? firms verileri bana birden fazla yerde lazım olduğu için fonksiyonu burada değil de her yerden erişebileceğim bir noktada tanımlıyorum. İçerisinde react hookları lazım olduğu için de bu ortak nokta en iyi custom hook olmuş oluyor.
   // const getFirms = async () => {
@@ -34,6 +34,7 @@ const Firms = () => {
   // };
 
   useEffect(() => {
+    // getFirms();
     getStockData("firms");
   }, []);
 
@@ -42,10 +43,15 @@ const Firms = () => {
       Firms
     </Typography>
     <Button variant="contained">New Firm</Button>
-    <Grid container>
-      {
-        firms?.map(firm=>(
-          <Grid item key={firm.id} >
+    <Grid container sx={{
+      display:"flex",
+      justifyContent:"center",
+      alignItems:"center",
+      gap:2
+    }} >
+      { 
+        firms?.map(firm =>(
+          <Grid item key={firm.id}>
             <FirmCard firm={firm} />
           </Grid>
         ))
