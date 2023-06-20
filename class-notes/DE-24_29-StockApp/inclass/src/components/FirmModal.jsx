@@ -19,58 +19,56 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({ open, handleClose ,info,setInfo}) {
+export default function FirmModal({ open, handleClose, info, setInfo }) {
   //   const [open, setOpen] = React.useState(false);
   //   const handleOpen = () => setOpen(true);
   //   const handleClose = () => setOpen(false);
   //   lifting state up
-  // const [info, setInfo] = useState({
-  //   name: "",
-  //   phone: "",
-  //   image: "",
-  //   address: "",
-  // });
-  const { postStockData , putStockData} = useStockCall();
+  //   const [info, setInfo] = useState({
+  //     name: "",
+  //     phone: "",
+  //     image: "",
+  //     address: "",
+  //   });
+  //! statelerimizi lifting state up yaparak bir üst componente taşıdık oradan gerekli olan yerlere dağıtım yapabilelim. Bizim örneğimizde FirmModal componenti hem yeni firma eklemek için hemde var olan firmayı update edebilmek için kullanılıyor. Bu nedenle modalı açabilmek ve update işleminde içini doldurabilmek için Firms componentine statelerimizi taşımış olduk oradan da FirmCard componentine props yoluyla göndermiş olduk.
+  const { postStockData, putStockData } = useStockCall();
 
   const handleChange = e => {
     // console.log(e.target)
     // console.log(e.target.name)
     // console.log(e.target.value)
-    setInfo({ ...info, [e.target.name]: e.target.value });
+    setInfo({ ...info, [e.target.name]: e.target.value }); //! inputların name attributelarındaki isimler ile info statetimin içindeki keyler aynı olduğu için bu şekilde tek bir fonksiyonla inputdaki verilerimi state e aktarabildim.
   };
   const handleSubmit = e => {
     e.preventDefault();
+
     if (info.id) {
-      putStockData("firms",info)
-    }else{
-      postStockData("firms",info)
+      putStockData("firms", info); //! update işleminde info dolu geldiği için içerisinde id bilgiside yer alıyor. Biz bu id üzerinden sorgulama yaparak id varsa yapacağın işlem put işlemi id yoksa yapacağın işlem post işlemi diye belirtmiş olduk.
+    } else {
+      postStockData("firms", info);
     }
 
-
-
-    postStockData("firms", info);
     // setInfo({
     //   name: "",
     //   phone: "",
     //   image: "",
     //   address: "",
     // });
-    handleClose()
+    handleClose(); //? submit işleminden sonra modalın kapanması için burada handleClose fonksiyonunu çağırıyoruz.
   };
   console.log(info);
-
   return (
     <div>
       <Modal
         open={open}
-        onClose={()=>{
-            handleClose()
-            setInfo({
-              name: "",
-              phone: "",
-              image: "",
-              address: "",
-            });
+        onClose={() => {
+          handleClose();
+          // setInfo({
+          //   name: "",
+          //   phone: "",
+          //   image: "",
+          //   address: "",
+          // });
         }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">

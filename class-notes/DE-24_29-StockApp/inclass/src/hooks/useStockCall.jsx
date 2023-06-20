@@ -64,10 +64,10 @@ const useStockCall = () => {
   //       headers: { Authorization: `Token ${token}` },
   //     });
   //     getStockData(url);
-  //     toastSuccessNotify(`${url} successfuly deleted!`)
+  //     toastSuccessNotify(`${url} successfully deleted!`)
   //   } catch (error) {
   //     dispatch(fetchFail());
-  //     toastErrorNotify(`${url} not successfuly deleted!`);
+  //     toastErrorNotify(`${url} not successfully deleted!`);
 
   //   }
   // };
@@ -88,10 +88,10 @@ const useStockCall = () => {
     try {
       await axiosWithToken.delete(`stock/${url}/${id}/`);
       getStockData(url);
-      toastSuccessNotify(`${url} successfuly deleted!`);
+      toastSuccessNotify(`${url} successfully deleted!`);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} not successfuly deleted!`);
+      toastErrorNotify(`${url} not successfully deleted!`);
     }
   };
   const postStockData = async (url, info) => {
@@ -99,10 +99,10 @@ const useStockCall = () => {
     try {
       await axiosWithToken.post(`stock/${url}/`, info);
       getStockData(url);
-      toastSuccessNotify(`${url} successfuly created!`);
+      toastSuccessNotify(`${url} successfully created!`);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} not successfuly created!`);
+      toastErrorNotify(`${url} not successfully created!`);
     }
   };
   const putStockData = async (url, info) => {
@@ -110,10 +110,10 @@ const useStockCall = () => {
     try {
       await axiosWithToken.put(`stock/${url}/${info.id}/`, info);
       getStockData(url);
-      toastSuccessNotify(`${url} successfuly updated!`);
+      toastSuccessNotify(`${url} successfully updated!`);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} not successfuly updated!`);
+      toastErrorNotify(`${url} not successfully updated!`);
     }
   };
 
