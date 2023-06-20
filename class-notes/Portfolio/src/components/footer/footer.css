@@ -1,9 +1,15 @@
 .footer{
     background-color: var(--container-color);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    
 }
 .footer__container{
-    padding: 2rem 0 6rem;
+    padding: 2rem 5rem 2rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
 }
 .footer__title, .footer__link{
     color: var(--title-color);
@@ -44,6 +50,9 @@
     text-align: center;
     font-size: var(--smaller-font-size);
 }
+.logo{
+    width: 280px;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
@@ -53,4 +62,14 @@
         border-radius: 0.25rem;
         font-size: 1rem;
     }
+    .footer__container{
+        width: 100%;
+    }
   }
+ 
+/* For small devices */
+@media screen and (max-width: 350px) {
+    .logo{
+        width: 230px;   
+    }
+}
