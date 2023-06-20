@@ -30,7 +30,7 @@ export default function FirmModal({ open, handleClose ,info,setInfo}) {
   //   image: "",
   //   address: "",
   // });
-  const { postStockData } = useStockCall();
+  const { postStockData , putStockData} = useStockCall();
 
   const handleChange = e => {
     // console.log(e.target)
@@ -40,6 +40,14 @@ export default function FirmModal({ open, handleClose ,info,setInfo}) {
   };
   const handleSubmit = e => {
     e.preventDefault();
+    if (info.id) {
+      putStockData("firms",info)
+    }else{
+      postStockData("firms",info)
+    }
+
+
+
     postStockData("firms", info);
     // setInfo({
     //   name: "",
@@ -50,6 +58,7 @@ export default function FirmModal({ open, handleClose ,info,setInfo}) {
     handleClose()
   };
   console.log(info);
+
   return (
     <div>
       <Modal
@@ -111,7 +120,7 @@ export default function FirmModal({ open, handleClose ,info,setInfo}) {
               required
             />
             <Button variant="contained" type="submit">
-              Submit Firm
+              {info.id ? "Update Firm" : "Submit Firm"}
             </Button>
           </Box>
         </Box>
