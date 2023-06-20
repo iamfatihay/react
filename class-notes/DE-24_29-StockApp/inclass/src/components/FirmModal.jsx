@@ -41,12 +41,12 @@ export default function FirmModal({ open, handleClose ,info,setInfo}) {
   const handleSubmit = e => {
     e.preventDefault();
     postStockData("firms", info);
-    setInfo({
-      name: "",
-      phone: "",
-      image: "",
-      address: "",
-    });
+    // setInfo({
+    //   name: "",
+    //   phone: "",
+    //   image: "",
+    //   address: "",
+    // });
     handleClose()
   };
   console.log(info);

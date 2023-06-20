@@ -10,12 +10,18 @@ import EditIcon from "@mui/icons-material/Edit";
 import { CardHeader } from "@mui/material";
 import useStockCall from "../hooks/useStockCall";
 
-export default function FirmCard({firm,handleOpen}) {
-
-const {deleteStockData} = useStockCall();
-
+export default function FirmCard({ firm, handleOpen, setInfo }) {
+  const { deleteStockData } = useStockCall();
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{
+        p: 2,
+        width: "300px",
+        height: "400px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}>
       {/* <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {firm?.name}
@@ -45,10 +51,16 @@ const {deleteStockData} = useStockCall();
           alignItems: "center",
           gap: 2,
         }}>
-        <EditIcon sx={{ cursor: "pointer", "&:hover": { color: "red" } }} onClick={handleOpen} />
+        <EditIcon
+          sx={{ cursor: "pointer", "&:hover": { color: "red" } }}
+          onClick={() => {
+            setInfo(firm); //! icona tıklanıldığında ınfo stateinin tıklanılan firmanın verileri ile dolması için statei burada güncelliyoruz.
+            handleOpen(); //! icona tıklanıldığında modalın açılmasını sağlıyoruz.
+          }}
+        />
         <DeleteOutlineIcon
           sx={{ cursor: "pointer", "&:hover": { color: "red" } }}
-          onClick={()=>deleteStockData("firms",firm.id)}
+          onClick={() => deleteStockData("firms", firm.id)}
         />
       </CardActions>
     </Card>
