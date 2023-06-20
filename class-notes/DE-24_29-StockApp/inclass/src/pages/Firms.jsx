@@ -18,6 +18,12 @@ const Firms = () => {
   const [open, setOpen] =useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [info, setInfo] = useState({
+    name: "",
+    phone: "",
+    image: "",
+    address: "",
+  });
 
   //? firms verileri bana birden fazla yerde lazım olduğu için fonksiyonu burada değil de her yerden erişebileceğim bir noktada tanımlıyorum. İçerisinde react hookları lazım olduğu için de bu ortak nokta en iyi custom hook olmuş oluyor.
   // const getFirms = async () => {
@@ -47,7 +53,7 @@ const Firms = () => {
       Firms
     </Typography>
     <Button variant="contained" onClick={handleOpen}>New Firm</Button>
-    <FirmModal open={open} handleClose={handleClose} />
+    <FirmModal open={open} handleClose={handleClose} info={info} setInfo={setInfo}/>
     <Grid container sx={{
       display:"flex",
       justifyContent:"center",
@@ -57,7 +63,7 @@ const Firms = () => {
       { 
         firms?.map(firm =>(
           <Grid item key={firm.id}>
-            <FirmCard firm={firm} />
+            <FirmCard firm={firm} handleOpen={handleOpen} setInfo={setInfo} />
           </Grid>
         ))
       }

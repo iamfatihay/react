@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
+import { useState } from "react";
+import useStockCall from "../hooks/useStockCall";
 
 const style = {
   position: "absolute",
@@ -17,28 +19,100 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({open,handleClose}) {
-//   const [open, setOpen] = React.useState(false);
-//   const handleOpen = () => setOpen(true);
-//   const handleClose = () => setOpen(false);
-//   lifting state up
+export default function FirmModal({ open, handleClose ,info,setInfo}) {
+  //   const [open, setOpen] = React.useState(false);
+  //   const handleOpen = () => setOpen(true);
+  //   const handleClose = () => setOpen(false);
+  //   lifting state up
+  // const [info, setInfo] = useState({
+  //   name: "",
+  //   phone: "",
+  //   image: "",
+  //   address: "",
+  // });
+  const { postStockData } = useStockCall();
 
+  const handleChange = e => {
+    // console.log(e.target)
+    // console.log(e.target.name)
+    // console.log(e.target.value)
+    setInfo({ ...info, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    postStockData("firms", info);
+    setInfo({
+      name: "",
+      phone: "",
+      image: "",
+      address: "",
+    });
+    handleClose()
+  };
+  console.log(info);
   return (
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={()=>{
+            handleClose()
+            setInfo({
+              name: "",
+              phone: "",
+              image: "",
+              address: "",
+            });
+        }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box sx={style}>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <TextField
-            label="User Name"
-            name="username"
-            id="userName"
-            type="text"
-            variant="outlined"
-          />
+          <Box
+            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+            component={"form"}
+            onSubmit={handleSubmit}>
+            <TextField
+              label="Firm Name"
+              name="name"
+              id="name"
+              type="text"
+              variant="outlined"
+              value={info.name}
+              onChange={handleChange}
+              required
+            />
+            <TextField
+              label="Address"
+              name="address"
+              id="address"
+              type="text"
+              variant="outlined"
+              value={info.address}
+              onChange={handleChange}
+              required
+            />
+            <TextField
+              label="Phone"
+              name="phone"
+              id="phone"
+              type="tel"
+              variant="outlined"
+              value={info.phone}
+              onChange={handleChange}
+              required
+            />
+            <TextField
+              label="Image"
+              name="image"
+              id="image"
+              type="url"
+              variant="outlined"
+              value={info.image}
+              onChange={handleChange}
+              required
+            />
+            <Button variant="contained" type="submit">
+              Submit Firm
+            </Button>
           </Box>
         </Box>
       </Modal>
