@@ -13,15 +13,15 @@ const Brands = () => {
   const handleClose = () => {
     setOpen(false);
     setInfo({
-      "name": "string",
-      "image": "string"
+      "name": "",
+      "image": ""
     });
     //* handleClose olduğunda yani modal kapnadığında formdaki verilerin temizlenmesi için burada tanımladık.
   };
 
   const [info, setInfo] = useState({
-    "name": "string",
-    "image": "string"
+    "name": "",
+    "image": ""
   });
 
   useEffect(() => {

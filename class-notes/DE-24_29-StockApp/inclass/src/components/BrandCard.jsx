@@ -24,7 +24,10 @@ const BrandCard = ({ brand, handleOpen, setInfo }) => {
           {brand?.address}
         </Typography>
       </CardContent> */}
-      <CardHeader title={brand?.name} subheader={brand?.name} />
+      <CardHeader 
+      title={brand?.name}
+    //   subheader={brand?.name}
+       />
       <CardMedia
         component="img"
         sx={{ height: 130, objectFit: "contain" }}
