@@ -3,7 +3,7 @@ import useStockCall from "../hooks/useStockCall";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import BrandCard from "../components/BrandCard";
-import BrandModal from "../components/BrandModal";
+import BrandModal from "../components/modal/BrandModal";
 
 const Brands = () => {
   const { getStockData } = useStockCall();

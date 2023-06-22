@@ -1,5 +1,5 @@
 import React from 'react';
-import useStockCall from '../hooks/useStockCall';
+import useStockCall from '../../hooks/useStockCall';
 import { Box, Button, Modal, TextField } from '@mui/material';
 
 

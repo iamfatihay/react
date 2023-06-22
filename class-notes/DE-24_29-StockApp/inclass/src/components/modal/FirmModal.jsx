@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import useStockCall from "../hooks/useStockCall";
+import useStockCall from "../../hooks/useStockCall";
 
 const style = {
   position: "absolute",
