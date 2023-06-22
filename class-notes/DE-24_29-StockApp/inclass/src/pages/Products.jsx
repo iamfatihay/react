@@ -10,7 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { btnStyle } from "../styles/globalStyle";
 
 const Products = () => {
-  const { getStockData, deleteStockData } = useStockCall();
+  const { getStockData, deleteStockData , getProCatBrand} = useStockCall();
   const { products } = useSelector(state => state.stock);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -105,9 +105,12 @@ const Products = () => {
   ];
 
   useEffect(() => {
-    getStockData("products");
-    getStockData("categories");
-    getStockData("brands");
+    // getStockData("products");
+    // getStockData("categories");
+    // getStockData("brands");
+    //! Promise all kullaniyoruz, birden fayla async islemimiz varsa ve bunlarin ayni anda islemek istiyorsak bunu kullaniyoruz.
+    //! Boylece islem sirasi beklemiyoruz.
+    getProCatBrand()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

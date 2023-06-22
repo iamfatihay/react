@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFail, fetchStart, getSucces } from "../features/stockSlice";
+import { fetchFail, fetchStart, getProCatBrandSucces, getSucces } from "../features/stockSlice";
 import axios from "axios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
@@ -116,8 +116,23 @@ const useStockCall = () => {
       toastErrorNotify(`${url} not successfully updated!`);
     }
   };
+  const getProCatBrand= async url => {
+    dispatch(fetchStart());
+    try {
+      // const { data } = await axiosWithToken.get(`stock/${url}/`);
+      const[products,brands,categories]=await Promise.all([
+        axiosWithToken.get(`stock/products/`),
+        axiosWithToken.get(`stock/brands/`),
+        axiosWithToken.get(`stock/categories/`),
+      ])
 
-  return { getStockData, deleteStockData , postStockData , putStockData};
+      dispatch(getProCatBrandSucces([products?.data,brands?.data,categories?.data]));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
+  return { getStockData, deleteStockData , postStockData , putStockData, getProCatBrand};
 };
 
 export default useStockCall;

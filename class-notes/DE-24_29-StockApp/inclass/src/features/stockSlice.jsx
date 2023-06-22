@@ -25,6 +25,12 @@ const stockSlice = createSlice({
       state.loading = false;
       state[payload.url] = payload.data; // state["firms"], state["brands"] anlamlarına gelerek tek bir reducerla tüm stateleri doldurabilmiş olduk.
     },
+    getProCatBrandSucces: (state, { payload }) => {
+      state.loading = false;
+      state.products = payload[0]; 
+      state.brands = payload[1]; 
+      state.categories = payload[2]; 
+    },
 
     fetchFail: state => {
       state.loading = false;
@@ -36,6 +42,7 @@ const stockSlice = createSlice({
 export const {
   fetchStart,
   getSucces,
+  getProCatBrandSucces,
   fetchFail,
 } = stockSlice.actions;
 export default stockSlice.reducer;
