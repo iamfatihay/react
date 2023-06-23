@@ -41,12 +41,12 @@ export default function KpiCards() {
             <Icon
               icon={item.icon}
               variant="light"
-              size="xl"
+              size="lg"
               color={item.color}
             />
-            <div className="flex-1 pl-4">
-              <Text className="text-xl" >{item.title}</Text>
-              <Metric>{item.metric}</Metric>
+            <div className="flex-1 pl-2">
+              <Text className="md:text-lg lg:text-xl" >{item.title}</Text>
+              <Metric className=" sm:text-md md:text-md lg:text-xl" >{item.metric}</Metric>
             </div>
           </Flex>
         </Card>
