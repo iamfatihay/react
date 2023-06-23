@@ -1,20 +1,21 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import React from "react";
+import { useDispatch } from "react-redux";
 import {
   fetchFail,
   fetchStart,
   getProCatBrandSucces,
   getProPurcFirBrandsSucces,
   getProSalBrandsSucces,
+  getPurcSalesSucces,
   getSucces,
 } from "../features/stockSlice";
-import axios from "axios";
+// import axios from "axios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
 const useStockCall = () => {
   const dispatch = useDispatch();
-  const { token } = useSelector(state => state.auth);
+  // const { token } = useSelector(state => state.auth);
   const { axiosWithToken } = useAxios();
 
   //   const getFirms = async () => {
@@ -50,7 +51,7 @@ const useStockCall = () => {
   //     }
   //   };
   //! yukarıdaki gib her seferinde yazmak yerine daha modüler bir yapı kurarak tek bir fonksiyonla bir den fazla get işlemini gerçekleştirebiliyoruz
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  // const BASE_URL = process.env.REACT_APP_BASE_URL;
   // const getStockData = async (url) => {
   //   dispatch(fetchStart());
   //   try {
@@ -183,6 +184,21 @@ const useStockCall = () => {
     }
   };
 
+
+  const getPurcSales = async () => {
+    dispatch(fetchStart());
+    try {
+      const [purchases, sales] = await Promise.all([
+        axiosWithToken.get(`stock/purchases/`),
+        axiosWithToken.get(`stock/sales/`),
+      ]);
+
+      dispatch(getPurcSalesSucces([purchases?.data, sales?.data]));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
   return {
     getStockData,
     deleteStockData,
@@ -191,6 +207,7 @@ const useStockCall = () => {
     getProCatBrand,
     getProSalBrands,
     getProPurcFirBrands,
+    getPurcSales
   };
   
 };

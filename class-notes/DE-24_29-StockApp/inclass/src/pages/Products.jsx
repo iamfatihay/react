@@ -10,7 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { btnStyle } from "../styles/globalStyle";
 
 const Products = () => {
-  const { getStockData, deleteStockData, getProCatBrand } = useStockCall();
+  const { deleteStockData, getProCatBrand } = useStockCall();
   const { products } = useSelector(state => state.stock);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
