@@ -3,14 +3,14 @@ import useStockCall from "../hooks/useStockCall";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { useSelector } from "react-redux";
-import ProductModal from "../components/modal/ProductModal";
+import ProductModal from "../components/modals/ProductModal";
 import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { btnStyle } from "../styles/globalStyle";
 
 const Products = () => {
-  const { getStockData, deleteStockData , getProCatBrand} = useStockCall();
+  const { getStockData, deleteStockData, getProCatBrand } = useStockCall();
   const { products } = useSelector(state => state.stock);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -92,25 +92,24 @@ const Products = () => {
     },
   ];
 
-  const rows = [
-    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-  ];
+  // const rows = [
+  //   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
+  //   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
+  //   { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
+  //   { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+  //   { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
+  //   { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
+  //   { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+  //   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
+  //   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+  // ];
 
   useEffect(() => {
     // getStockData("products");
     // getStockData("categories");
     // getStockData("brands");
-    //! Promise all kullaniyoruz, birden fayla async islemimiz varsa ve bunlarin ayni anda islemek istiyorsak bunu kullaniyoruz.
-    //! Boylece islem sirasi beklemiyoruz.
-    getProCatBrand()
+    //! Promise.all()
+    getProCatBrand();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -141,6 +140,12 @@ const Products = () => {
             },
           }}
           pageSizeOptions={[5, 10, 25, 50]}
+          sx={{
+            boxShadow: 4,
+          }}
+          slots={{
+            toolbar: GridToolbar,
+          }}
           disableRowSelectionOnClick
         />
       </Box>

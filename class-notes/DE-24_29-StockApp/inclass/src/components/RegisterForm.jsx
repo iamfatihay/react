@@ -95,7 +95,7 @@ const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           <TextField
             label="Confirm Password"
             name="password2"
-            id="password"
+            id="password2"
             type="password"
             variant="outlined"
             value={values.password2}

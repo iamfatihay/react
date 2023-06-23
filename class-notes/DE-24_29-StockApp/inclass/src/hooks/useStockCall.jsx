@@ -1,6 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFail, fetchStart, getProCatBrandSucces, getSucces } from "../features/stockSlice";
+import {
+  fetchFail,
+  fetchStart,
+  getProCatBrandSucces,
+  getProPurcFirBrandsSucces,
+  getProSalBrandsSucces,
+  getSucces,
+} from "../features/stockSlice";
 import axios from "axios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
@@ -64,10 +71,10 @@ const useStockCall = () => {
   //       headers: { Authorization: `Token ${token}` },
   //     });
   //     getStockData(url);
-  //     toastSuccessNotify(`${url} successfully deleted!`)
+  //     toastSuccessNotify(`${url} successfuly deleted!`)
   //   } catch (error) {
   //     dispatch(fetchFail());
-  //     toastErrorNotify(`${url} not successfully deleted!`);
+  //     toastErrorNotify(`${url} not successfuly deleted!`);
 
   //   }
   // };
@@ -88,21 +95,22 @@ const useStockCall = () => {
     try {
       await axiosWithToken.delete(`stock/${url}/${id}/`);
       getStockData(url);
-      toastSuccessNotify(`${url} successfully deleted!`);
+      toastSuccessNotify(`${url} successfuly deleted!`);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} not successfully deleted!`);
+      toastErrorNotify(`${url} not successfuly deleted!`);
     }
   };
+
   const postStockData = async (url, info) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`stock/${url}/`, info);
       getStockData(url);
-      toastSuccessNotify(`${url} successfully created!`);
+      toastSuccessNotify(`${url} successfuly created!`);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} not successfully created!`);
+      toastErrorNotify(`${url} not successfuly created!`);
     }
   };
   const putStockData = async (url, info) => {
@@ -110,29 +118,81 @@ const useStockCall = () => {
     try {
       await axiosWithToken.put(`stock/${url}/${info.id}/`, info);
       getStockData(url);
-      toastSuccessNotify(`${url} successfully updated!`);
+      toastSuccessNotify(`${url} successfuly updated!`);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} not successfully updated!`);
+      toastErrorNotify(`${url} not successfuly updated!`);
     }
   };
-  const getProCatBrand= async url => {
+
+  const getProCatBrand = async () => {
     dispatch(fetchStart());
     try {
       // const { data } = await axiosWithToken.get(`stock/${url}/`);
-      const[products,brands,categories]=await Promise.all([
+      const [products, brands, categories] = await Promise.all([
         axiosWithToken.get(`stock/products/`),
         axiosWithToken.get(`stock/brands/`),
         axiosWithToken.get(`stock/categories/`),
-      ])
+      ]);
 
-      dispatch(getProCatBrandSucces([products?.data,brands?.data,categories?.data]));
+      dispatch(
+        getProCatBrandSucces([products?.data, brands?.data, categories?.data])
+      );
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  const getProSalBrands = async () => {
+    dispatch(fetchStart());
+    try {
+      // const { data } = await axiosWithToken.get(`stock/${url}/`);
+      const [products, brands, sales] = await Promise.all([
+        axiosWithToken.get(`stock/products/`),
+        axiosWithToken.get(`stock/brands/`),
+        axiosWithToken.get(`stock/sales/`),
+      ]);
+
+      dispatch(
+        getProSalBrandsSucces([products?.data, brands?.data, sales?.data])
+      );
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  const getProPurcFirBrands = async () => {
+    dispatch(fetchStart());
+    try {
+      // const { data } = await axiosWithToken.get(`stock/${url}/`);
+      const [products, purchases,firms,brands] = await Promise.all([
+        axiosWithToken.get(`stock/products/`),
+        axiosWithToken.get(`stock/purchases/`),
+        axiosWithToken.get(`stock/firms/`),
+        axiosWithToken.get(`stock/brands/`),
+      ]);
+
+      dispatch(
+        getProPurcFirBrandsSucces([
+          products?.data,
+          purchases?.data,
+          firms?.data,
+          brands?.data,
+        ])
+      );
     } catch (error) {
       dispatch(fetchFail());
     }
   };
 
-  return { getStockData, deleteStockData , postStockData , putStockData, getProCatBrand};
+  return {
+    getStockData,
+    deleteStockData,
+    postStockData,
+    putStockData,
+    getProCatBrand,
+    getProSalBrands,
+    getProPurcFirBrands,
+  };
+  
 };
 
 export default useStockCall;

@@ -7,7 +7,8 @@ import Typography from "@mui/material/Typography";
 import { Button, Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import FirmCard from "../components/FirmCard";
-import FirmModal from "../components/modal/FirmModal";
+import FirmModal from "../components/modals/FirmModal";
+import { flex } from "../styles/globalStyle";
 
 const Firms = () => {
   // const dispatch = useDispatch();
@@ -55,6 +56,7 @@ const Firms = () => {
   useEffect(() => {
     // getFirms();
     getStockData("firms");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -71,14 +73,7 @@ const Firms = () => {
         info={info}
         setInfo={setInfo}
       />
-      <Grid
-        container
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 2,
-        }}>
+      <Grid container sx={flex}>
         {firms?.map(firm => (
           <Grid item key={firm.id}>
             <FirmCard firm={firm} handleOpen={handleOpen} setInfo={setInfo} />

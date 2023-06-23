@@ -5,14 +5,14 @@ const authSlice = createSlice({
 
   initialState: {
     currentUser: null,
-    loading: false,
+    loading: false, // const [loading,setLoading] = useState(false)
     error: false,
     isAdmin: false,
     token: null,
   },
   reducers: {
     fetchStart: state => {
-      state.loading = true;
+      state.loading = true; // setLoading(true)
       state.error = false;
     },
     loginSuccess: (state, { payload }) => {
@@ -21,6 +21,7 @@ const authSlice = createSlice({
       state.isAdmin = payload?.user?.is_superuser;
       state.token = payload?.key;
     },
+    // prop drilling
     logoutSuccess: state => {
       state.loading = false;
       state.currentUser = null;

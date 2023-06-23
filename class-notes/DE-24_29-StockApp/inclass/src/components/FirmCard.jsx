@@ -3,12 +3,13 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import { CardHeader } from "@mui/material";
 import useStockCall from "../hooks/useStockCall";
+import { btnStyle, flex } from "../styles/globalStyle";
+
 
 export default function FirmCard({ firm, handleOpen, setInfo }) {
   const { deleteStockData } = useStockCall();
@@ -45,21 +46,25 @@ export default function FirmCard({ firm, handleOpen, setInfo }) {
       </CardContent>
 
       <CardActions
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 2,
-        }}>
+        // sx={{
+        //   display: "flex",
+        //   justifyContent: "center",
+        //   alignItems: "center",
+        //   gap: 2,
+        // }}
+        sx={flex}
+        >
         <EditIcon
-          sx={{ cursor: "pointer", "&:hover": { color: "red" } }}
+          // sx={{ cursor: "pointer", "&:hover": { color: "red" } }}
+          sx={btnStyle}
           onClick={() => {
             setInfo(firm); //! icona tıklanıldığında ınfo stateinin tıklanılan firmanın verileri ile dolması için statei burada güncelliyoruz.
             handleOpen(); //! icona tıklanıldığında modalın açılmasını sağlıyoruz.
           }}
         />
         <DeleteOutlineIcon
-          sx={{ cursor: "pointer", "&:hover": { color: "red" } }}
+          // sx={{ cursor: "pointer", "&:hover": { color: "red" } }}
+          sx={btnStyle}
           onClick={() => deleteStockData("firms", firm.id)}
         />
       </CardActions>
