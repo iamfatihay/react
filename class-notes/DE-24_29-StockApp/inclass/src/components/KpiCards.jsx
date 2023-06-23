@@ -34,7 +34,7 @@ export default function KpiCards() {
 
 
   return (
-    <Grid numItemsSm={1} numItemsMd={2} numItemsLg={3} className="gap-6">
+    <Grid numItemsSm={1} numItemsMd={2} numItemsLg={3} className="gap-6 w-10/12 mx-auto">
       {categories.map(item => (
         <Card key={item.title} decoration="top" decorationColor={item.color}>
           <Flex justifyContent="start" className="space-x-4">

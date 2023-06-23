@@ -9,6 +9,7 @@ import {
   TabPanel,
   TabPanels,
 } from "@tremor/react";
+import { useSelector } from "react-redux";
 
 const data = {
   relative: [
@@ -39,25 +40,35 @@ const data = {
   ],
 };
 
-const valueFormatterRelative = (number) =>
-  `${Intl.NumberFormat("us").format(number).toString()}%`;
+
 
 const valueFormatterAbsolute = (number) =>
   Intl.NumberFormat("us").format(number).toString();
 
 export default function Charts() {
+  const {sales,purchases} = useSelector(state=>state.stock)
+
+  const salesData = sales.map(item=> ({
+    date : item.createds,
+    sale: Number(item.price_total),
+  }))
+  const purchasesData = purchases.map(item => ({
+    date: item.createds,
+    purchase: Number(item.price_total),
+  }));
+
   return (
-    <Card className="mt-4">
+    <Card className="mt-4 w-10/12 mx-auto">
       <TabGroup>
         <div className="block sm:flex sm:justify-between">
           <div>
-            <Title>Churn Rate</Title>
-            <Text>Lost customers per day</Text>
+            <Title>Sales and Purchases</Title>
+            {/* <Text>Lost customers per day</Text> */}
           </div>
           <div className="mt-4 sm:mt-0">
             <TabList variant="solid">
-              <Tab>relative</Tab>
-              <Tab>absolute</Tab>
+              <Tab>Sales</Tab>
+              <Tab>Purchases</Tab>
             </TabList>
           </div>
         </div>
@@ -65,22 +76,22 @@ export default function Charts() {
           <TabPanel>
             <LineChart
               className="mt-8 h-80"
-              data={data.relative}
-              index="Date"
-              categories={["Customer Churn"]}
+              data={salesData}
+              index="date"
+              categories={["sale"]}
               colors={["blue"]}
               showLegend={false}
-              valueFormatter={valueFormatterRelative}
+              valueFormatter={valueFormatterAbsolute}
               yAxisWidth={40}
             />
           </TabPanel>
           <TabPanel>
             <LineChart
               className="mt-8 h-80"
-              data={data.absolute}
-              index="Date"
-              categories={["Customer Churn"]}
-              colors={["blue"]}
+              data={purchasesData}
+              index="date"
+              categories={["purchase"]}
+              colors={["red"]}
               showLegend={false}
               valueFormatter={valueFormatterAbsolute}
               yAxisWidth={40}
