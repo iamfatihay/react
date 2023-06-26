@@ -11,14 +11,14 @@ import PrivateRouter from "./PrivateRouter";
 const Router = () => {
   return (
     <BrowserRouter>
-      <NavBar/>
+      <NavBar />
       <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/details/:id" element={<PrivateRouter />}>
-          <Route path="" element={<Detail />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/detail/:id" element={<PrivateRouter />}>
+          <Route path="" element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>

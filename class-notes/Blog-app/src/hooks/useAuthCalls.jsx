@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import {
     fetchFail,
@@ -22,7 +23,7 @@ const useAuthCall = () => {
         dispatch(fetchStart());
         try {
             const { data } = await axios.post(
-                `${BASE_URL}account/auth/login/`,
+                `${BASE_URL}users/auth/login/`,
                 userInfo
             );
             dispatch(loginSuccess(data));
@@ -41,7 +42,7 @@ const useAuthCall = () => {
             // let headers = {
             //   Authorization: `Token ${token}`,
             // };
-            await axios.post(`${BASE_URL}account/auth/logout/`, null, {
+            await axios.post(`${BASE_URL}users/auth/logout/`, null, {
                 headers: {
                     Authorization: `Token ${token}`,
                 },
@@ -55,8 +56,8 @@ const useAuthCall = () => {
         }
     };
 
-    const register = async userInfo => {
-        dispatch(fetchStart());
+    const register = async(userInfo) => {
+        // dispatch(fetchStart());
         try {
             const { data } = await axios.post(
                 `${BASE_URL}users/register/`,
@@ -64,7 +65,8 @@ const useAuthCall = () => {
             );
             dispatch(registerSuccess(data));
             toastSuccessNotify("Register performed");
-            navigate("/stock");
+            navigate("/");
+            console.log(data);
         } catch (err) {
             dispatch(fetchFail());
             toastErrorNotify("Register can not be performed");

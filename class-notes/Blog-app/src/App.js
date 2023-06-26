@@ -1,14 +1,33 @@
 import React from "react";
 import AppRouter from "./router/AppRouter";
+import { grey, blueGrey } from "@mui/material/colors";
 import { Provider } from 'react-redux';
-import store from './app/store';
+import store, { persistor } from "./app/store";
+import { ToastContainer } from "react-toastify";
+import { ThemeProvider, createTheme } from "@mui/material";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: grey["900"],
+      },
+      secondary: {
+        main: blueGrey["900"],
+      },
+    },
+  });
   return (
     <>
-      <Provider store={store}>
-        <AppRouter />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <AppRouter />
+          </PersistGate>
+        </Provider>
+        <ToastContainer />
+      </ThemeProvider>
     </>
   );
 }
