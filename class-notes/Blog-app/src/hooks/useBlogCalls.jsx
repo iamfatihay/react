@@ -85,7 +85,7 @@ const useBlogCalls = () => {
   const getBlogData = async url => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken.get(`blog/${url}/`);
+      const { data } = await axiosWithToken.get(`api/${url}/`);
       console.log(data);
       dispatch(getSucces({ data, url }));
     } catch (error) {
@@ -96,7 +96,7 @@ const useBlogCalls = () => {
   const deleteBlogData = async (url, id) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.delete(`blog/${url}/${id}/`);
+      await axiosWithToken.delete(`api/${url}/${id}/`);
       getBlogData(url);
       toastSuccessNotify(`${url} successfuly deleted!`);
     } catch (error) {
@@ -108,7 +108,7 @@ const useBlogCalls = () => {
   const postBlogData = async (url, info) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`blog/${url}/`, info);
+      await axiosWithToken.post(`api/${url}/`, info);
       getBlogData(url);
       toastSuccessNotify(`${url} successfuly created!`);
     } catch (error) {
@@ -119,7 +119,7 @@ const useBlogCalls = () => {
   const putBlogData = async (url, info) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.put(`blog/${url}/${info.id}/`, info);
+      await axiosWithToken.put(`api/${url}/${info.id}/`, info);
       getBlogData(url);
       toastSuccessNotify(`${url} successfuly updated!`);
     } catch (error) {

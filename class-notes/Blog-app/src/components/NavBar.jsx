@@ -42,7 +42,7 @@ function NavBar() {
                 <Toolbar disableGutters>
 
                     <Box
-                        noWrap
+                        
                         component="a"
                         href="/"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, }}
@@ -104,8 +104,7 @@ function NavBar() {
                         </Menu>
                     </Box>
 
-                    <Box
-                        noWrap
+                    <Box                       
                         component="a"
                         href=""
                         sx={{
