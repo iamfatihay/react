@@ -159,7 +159,7 @@ const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
                             placeholder: "********",
                         }}
                     />
-                    <Button type="submit" variant="contained" size="large">
+                    <Button sx={{backgroundColor:"#fdd835"}} type="submit" variant="contained" size="large">
                         Submit
                     </Button>
                 </Box>

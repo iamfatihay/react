@@ -12,12 +12,23 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from "../assets/logo.gif";
-import { List, ListItem, ListItemText } from '@mui/material';
+import { List, ListItem } from '@mui/material';
+import useAuthCall from '../hooks/useAuthCalls';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const pages = ['Dashboard', 'New Blog', 'About'];
-const settings = ['Profile', 'My Blogs', 'Logout'];
 
 function NavBar() {
+    const navigate = useNavigate();
+    const {currentUser}=useSelector(state=>state.auth)
+    const {logout} =useAuthCall();
+
+    const handleLogin=()=>{
+        navigate("/login");
+    }
+
+
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -40,9 +51,7 @@ function NavBar() {
         <AppBar position="static" sx={{ backgroundColor: "white" }} >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-
                     <Box
-                        
                         component="a"
                         href="/"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, }}
@@ -81,7 +90,7 @@ function NavBar() {
                             }}
                         >
 
-                            <MenuItem sx={{ color: "black", "&:hover":{backgroundColor:"white"}, }} onClick={handleCloseNavMenu}>
+                            <MenuItem sx={{ color: "black", "&:hover": { backgroundColor: "white" }, }} onClick={handleCloseNavMenu}>
                                 <Typography textAlign="center"  >
                                     <Button
                                         onClick={handleCloseNavMenu}
@@ -104,7 +113,7 @@ function NavBar() {
                         </Menu>
                     </Box>
 
-                    <Box                       
+                    <Box
                         component="a"
                         href=""
                         sx={{
@@ -160,19 +169,23 @@ function NavBar() {
 
                             <List component="ul" sx={{ margin: 0, padding: 0 }}>
                                 <ListItem component="li" sx={{ marginBottom: -2 }} >
-                                    <Typography sx={{ p:1 ,borderRadius:"5px", "&:hover":{backgroundColor:"#fafafa"},}} variant="body1" component="button">
+                                    <Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" component="button">
                                         Profile
                                     </Typography>
                                 </ListItem>
                                 <ListItem component="li" sx={{ marginBottom: -2 }}>
-                                    <Typography sx={{ p:1 ,borderRadius:"5px", "&:hover":{backgroundColor:"#fafafa"},}} variant="body1" component="button">
+                                    <Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" component="button">
                                         My Blogs
                                     </Typography>
                                 </ListItem>
                                 <ListItem component="li" sx={{ marginBottom: 0 }}>
-                                    <Typography sx={{ p:1 ,borderRadius:"5px", "&:hover":{backgroundColor:"#fafafa"},}} variant="body1" component="button">
+                                {currentUser ? (<Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" onClick={()=>logout()} component="button">
                                         Logout
-                                    </Typography>
+                                    </Typography>)
+                                    : (<Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" onClick={handleLogin} component="button">
+                                        Login
+                                    </Typography>) }
+                                    
                                 </ListItem>
                             </List>
 
