@@ -6,11 +6,9 @@ const blogSlice = createSlice({
   initialState: {
     loading: false,
     error: false,
-    brands: [],
     blogs: [],
-    products: [],
-    purchases: [],
-    sales: [],
+    comments: [],
+    likes: [],
     categories: [],
     //! statelerimizin isimleri ile endpointlerimizin isimlerini aynı verdik. Bunun sebebi tek bir reducerla tüm stateleri dinamik bir şekilde doldurabilelim.
   },
@@ -19,11 +17,9 @@ const blogSlice = createSlice({
       state.loading = true;
       state.error = false;
     },
-    // brandsSuccess,
-    // blogsSuccess,
     getSucces: (state, { payload }) => {
       state.loading = false;
-      state[payload.url] = payload.data; // state["blogs"], state["brands"] anlamlarına gelerek tek bir reducerla tüm stateleri doldurabilmiş olduk.
+      state[payload.url] = payload.data; // state["blogs"],... anlamlarına gelerek tek bir reducerla tüm stateleri doldurabilmiş olduk.
     },
     fetchFail: state => {
       state.loading = false;

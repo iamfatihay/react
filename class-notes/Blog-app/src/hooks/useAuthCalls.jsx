@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import axios from "axios";
 import {
     fetchFail,
@@ -49,7 +49,7 @@ const useAuthCall = () => {
             });
             dispatch(logoutSuccess());
             toastSuccessNotify("Logout performed");
-            navigate("/");
+            navigate("/login");
         } catch (err) {
             dispatch(fetchFail());
             toastErrorNotify("Logout can not be performed");
