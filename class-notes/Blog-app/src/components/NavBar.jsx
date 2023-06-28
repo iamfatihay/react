@@ -47,6 +47,12 @@ function NavBar() {
         setAnchorElUser(null);
     };
 
+    const handleNavigation=(endpoint)=>{
+        navigate(`/${endpoint}`);
+        handleCloseNavMenu()
+    }
+
+
     return (
         <AppBar position="static" sx={{ backgroundColor: "white" }} >
             <Container maxWidth="xl">
@@ -128,17 +134,17 @@ function NavBar() {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={()=>handleNavigation("")}
                             sx={{ my: 2, ml: 2, color: 'black', display: 'block' }}
                         >Dashboard
                         </Button>
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={()=>handleNavigation("newblog")}
                             sx={{ my: 2, ml: 2, color: 'black', display: 'block' }}
                         >New Blog
                         </Button>
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={()=>handleNavigation("about")}
                             sx={{ my: 2, ml: 2, color: 'black', display: 'block' }}
                         >About
                         </Button>

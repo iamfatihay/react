@@ -1,5 +1,6 @@
 export const flex = {
   display: "flex",
+  flexDirection: { xs: "column"},
   justifyContent: "center",
   alignItems: "center",
   gap: 2,

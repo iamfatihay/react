@@ -98,10 +98,10 @@ const useBlogCalls = () => {
     try {
       await axiosWithToken.delete(`api/${url}/${id}/`);
       getBlogData(url);
-      toastSuccessNotify(`${url} successfuly deleted!`);
+      toastSuccessNotify(`Blog successfuly deleted!`);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} not successfuly deleted!`);
+      toastErrorNotify(`Blog not successfuly deleted!`);
     }
   };
 
