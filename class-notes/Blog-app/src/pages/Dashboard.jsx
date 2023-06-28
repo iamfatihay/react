@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { Grid } from '@mui/material';
 import Card from '../components/blog/Card';
+import { flexCenter } from "../styles/globalStyle";
 
 const Dashboard = () => {
     const { getBlogData } = useBlogCalls();
@@ -16,9 +17,9 @@ const Dashboard = () => {
       }, []);
   return (
     <div>
-      <Grid container sx={{display:"flex"}}>
+      <Grid container sx={flexCenter}>
         {blogs?.map(blog => (
-          <Grid item key={blog.id}>
+          <Grid sx={{mt:3}} item key={blog.id}>
             <Card blog={blog} />
           </Grid>
         ))}
