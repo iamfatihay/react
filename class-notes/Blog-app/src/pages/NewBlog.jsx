@@ -8,12 +8,15 @@ import Grid from "@mui/material/Grid";
 import RegisterForm, { registerSchema } from "../components/auth/RegisterForm";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
-import useAuthCall from "../hooks/useAuthCalls";
+
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import { flex } from "../styles/globalStyle";
 import NewBlogForm, { blogSchema } from "../components/blog/NewBlogForm";
+import useBlogCalls from "../hooks/useBlogCalls";
 
 const NewBlog = () => {
+    const { postBlogData } = useBlogCalls();
+
     return (
         <Grid sx={{
             backgroundImage: "url(https://images.unsplash.com/photo-1661956602868-6ae368943878?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)",
@@ -32,7 +35,8 @@ const NewBlog = () => {
                 p: 1,
                 m: "auto",
                 width: "500px",
-                backgroundColor:"white",
+                backgroundColor:"#fafafa",
+                borderRadius:"10px",              
             }}>
                 <Avatar
                     sx={{
@@ -57,13 +61,13 @@ const NewBlog = () => {
                         title: "",
                         content: "",
                         image: "",
-                        category: null,
+                        category: "",
                         status: "",
                     }}
                     validationSchema={blogSchema}
                     onSubmit={(values, actions) => {
                         //! submit islemi oldugunda yapilacaklari buraya yaziyoruz.
-                        // register(values);
+                        postBlogData("blogs",values);
                         console.log(values);
                         actions.resetForm();
 
