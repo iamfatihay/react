@@ -21,8 +21,7 @@ const Router = () => {
         <Route path="/profile" element={<Profile />} />
         
         <Route path="/detail/:id" element={<PrivateRouter />}>
-            <Route path="" element={<Detail />} />
-            
+            <Route index element={<Detail />} />         
         </Route>
         
         <Route path="/newblog" element={<NewBlog />} />

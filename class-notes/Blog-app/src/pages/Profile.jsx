@@ -3,13 +3,9 @@ import { useSelector } from "react-redux";
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
-import logo from "../assets/logo1.png";
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
+
 
 
 const Profile = () => {
@@ -41,33 +37,15 @@ const Profile = () => {
           <Typography variant="h4" color="text.primary">
           {firstName}
           </Typography>
+          <Typography variant="h4" color="text.primary">
+          {email}
+          </Typography>
           <Typography variant="p" color="text.primary">
           {bio}
           </Typography>
         </CardContent>
-
-        {/* <CardActions disableSpacing sx={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
-          <Grid >
-            <IconButton aria-label="linkedIn" >
-              <LinkedInIcon color='secondary' fontSize='large' />
-            </IconButton>
-            <IconButton aria-label="GitHub">
-              <GitHubIcon color='secondary' fontSize='large' />
-            </IconButton>
-
-          </Grid>
-        </CardActions> */}
       </Card>
     </Grid>
-    // <div>
-    //   <h2>{currentUser}</h2>
-      
-    //   <img src={image} alt="User Image" />
-    //   <p>First Name: {firstName}</p>
-    //   <p>Email: {email}</p>
-    //   <p>Bio: {bio}</p>
-   
-    // </div>
   )
 }
 

@@ -12,12 +12,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import MessageIcon from '@mui/icons-material/Message';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Button, Grid } from '@mui/material';
-import { btnStyle } from '../../styles/globalStyle';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function BlogCard({ blog }) {
+    const navigate = useNavigate();
     const truncatedContent = blog.content.length > 180 ? `${blog.content.substring(0, 180)}...` : blog.content;
-
+    
+    const handleMore = (id) => {
+        navigate(`detail/${id}`);
+    }
 
     return (
         <Card sx={{
@@ -62,7 +66,7 @@ export default function BlogCard({ blog }) {
                 </Grid>
 
                 <Grid>
-                    <Button sx={{
+                    <Button onClick={()=>handleMore(blog.id)} sx={{
                         cursor: "pointer",
                         bgcolor: "#dce775",
                         "&:hover": { color: "black" },

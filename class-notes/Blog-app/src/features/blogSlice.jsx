@@ -10,6 +10,7 @@ const blogSlice = createSlice({
     comments: [],
     likes: [],
     categories: [],
+    id:"",
     //! statelerimizin isimleri ile endpointlerimizin isimlerini aynı verdik. Bunun sebebi tek bir reducerla tüm stateleri dinamik bir şekilde doldurabilelim.
   },
   reducers: {
@@ -25,6 +26,10 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = true;
     },
+    getBlogDetail: (state, { payload }) => {
+      state.loading = false;
+      state[payload.id] = payload.data.id; // state["blogs"],... anlamlarına gelerek tek bir reducerla tüm stateleri doldurabilmiş olduk.
+    },
   },
 });
 
@@ -32,6 +37,7 @@ export const {
   fetchStart,
   getSucces,
   fetchFail,
+  getBlogDetail,
 } = blogSlice.actions;
 export default blogSlice.reducer;
 
