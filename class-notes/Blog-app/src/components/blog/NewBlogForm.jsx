@@ -11,8 +11,9 @@ export const blogSchema = object({
   title: string().max(100, "Title must be less than 100 characters").required("This field is required"),
   content: string().required("This field is required"),
   image: string().max(400, "URL must be less than 400 characters"),
-  category: string().required("This field is required"),
-  status: string().required("This field is required"),
+  category: string(),
+  status: string(),
+  // .required("This field is required"),
 });
 
 
@@ -29,7 +30,7 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
   return (
     <div>
       <Form>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px", maxHeight:"680px" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px", maxHeight: "680px" }}>
           <TextField
             label="Titel"
             name="title"
@@ -82,7 +83,7 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
               labelId="status-label"
               id="status"
               name="status"
-              value={values.status === "d" ? "draft" : "published"}
+              value={values.status === "d" ? "draft" : "published"} // Always use "draft" or "published" as the value
               onChange={(e) => {
                 const selectedStatus = e.target.value;
                 const newStatusValue = selectedStatus === "draft" ? "d" : "p";
@@ -100,9 +101,12 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
               <MenuItem value="draft">Draft</MenuItem>
               <MenuItem value="published">Published</MenuItem>
             </Select>
+
+
+
             {touched.status && errors.status && <span>{errors.status}</span>}
           </FormControl>
-          <TextareaAutosize
+          <TextField
             aria-label="Content"
             placeholder="Content"
             name="content"
@@ -112,13 +116,11 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
             onBlur={handleBlur}
             error={touched.content && Boolean(errors.content)}
             helperText={touched.content && errors.content}
-            rows={3}
+            multiline
+            rows={5}
             sx={{
               width: "100%",
               resize: "vertical",
-              minHeight: "100px",
-              padding: "30px",
-              border: touched.content && errors.content ? "1px solid red" : "1px solid",
               borderRadius: "4px",
               fontFamily: "inherit",
               fontSize: "inherit",

@@ -35,7 +35,7 @@ const NewBlog = () => {
                 p: 1,
                 m: "auto",
                 width: "500px",
-                backgroundColor:"#fafafa",
+                backgroundColor:"lightgray",
                 borderRadius:"10px",              
             }}>
                 <Avatar
