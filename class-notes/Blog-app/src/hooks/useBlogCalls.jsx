@@ -110,10 +110,10 @@ const useBlogCalls = () => {
     try {
       await axiosWithToken.post(`api/${url}/`, info);
       getBlogData(url);
-      toastSuccessNotify(`Blog successfuly created!`);
+      toastSuccessNotify(`successfuly performed!`);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`Blog not successfuly created!`);
+      toastErrorNotify(`not successfuly performed!`);
     }
   };
   const putBlogData = async (url, info) => {

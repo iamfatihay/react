@@ -9,8 +9,11 @@ import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 import NewBlog from "../pages/NewBlog";
 import Profile from "../pages/Profile";
+import Footer from "../components/Footer";
+import { useSelector } from "react-redux";
 
 const Router = () => {
+  const {currentUser}=useSelector(state=>state.auth);
   return (
     <BrowserRouter>
       <NavBar />
@@ -28,6 +31,8 @@ const Router = () => {
         <Route path="about" element={<About />} />
 
       </Routes>
+      {currentUser && <Footer/>}
+      
     </BrowserRouter>
   );
 };
