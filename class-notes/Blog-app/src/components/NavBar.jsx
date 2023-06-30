@@ -20,14 +20,8 @@ import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
     const navigate = useNavigate();
-    const {currentUser}=useSelector(state=>state.auth)
-    const {logout} =useAuthCall();
-
-    const handleLogin=()=>{
-        navigate("/login");
-    }
-
-
+    const { currentUser } = useSelector(state => state.auth)
+    const { logout } = useAuthCall();
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -47,7 +41,7 @@ function NavBar() {
         setAnchorElUser(null);
     };
 
-    const handleNavigation=(endpoint)=>{
+    const handleNavigation = (endpoint) => {
         navigate(`/${endpoint}`);
         handleCloseNavMenu()
     }
@@ -58,6 +52,7 @@ function NavBar() {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box
+                        onClick={()=>handleNavigation("")}
                         component="a"
                         href="/"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, }}
@@ -134,20 +129,24 @@ function NavBar() {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
-                            onClick={()=>handleNavigation("")}
+                            onClick={() => handleNavigation("")}
                             sx={{ my: 2, ml: 2, color: 'black', display: 'block' }}
                         >Dashboard
                         </Button>
-                        <Button
-                            onClick={()=>handleNavigation("newblog")}
-                            sx={{ my: 2, ml: 2, color: 'black', display: 'block' }}
-                        >New Blog
-                        </Button>
-                        <Button
-                            onClick={()=>handleNavigation("about")}
-                            sx={{ my: 2, ml: 2, color: 'black', display: 'block' }}
-                        >About
-                        </Button>
+                        {currentUser && (<>
+                            <Button
+                                onClick={() => handleNavigation("newblog")}
+                                sx={{ my: 2, ml: 2, color: 'black', display: 'block' }}
+                            >New Blog
+                            </Button>
+                            <Button
+                                onClick={() => handleNavigation("about")}
+                                sx={{ my: 2, ml: 2, color: 'black', display: 'block' }}
+                            >About
+                            </Button>
+                        </>)}
+
+
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -174,24 +173,31 @@ function NavBar() {
                         >
 
                             <List component="ul" sx={{ margin: 0, padding: 0 }}>
-                                <ListItem component="li" sx={{ marginBottom: -2 }} >
-                                    <Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" component="button">
-                                        Profile
-                                    </Typography>
-                                </ListItem>
-                                <ListItem component="li" sx={{ marginBottom: -2 }}>
-                                    <Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" component="button">
-                                        My Blogs
-                                    </Typography>
-                                </ListItem>
+                                {currentUser && <>
+                                    <ListItem component="li" sx={{ marginBottom: -2 }} >
+                                        <Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" component="button" onClick={()=>handleNavigation("profile")}>
+                                            Profile
+                                        </Typography>
+                                    </ListItem>
+                                    <ListItem component="li" sx={{ marginBottom: -2 }}>
+                                        <Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" component="button" >
+                                            My Blogs
+                                        </Typography>
+                                    </ListItem>
+                                </>}
+
+
+
+
+
                                 <ListItem component="li" sx={{ marginBottom: 0 }}>
-                                {currentUser ? (<Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" onClick={()=>logout()} component="button">
+                                    {currentUser ? (<Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" onClick={() => logout()} component="button">
                                         Logout
                                     </Typography>)
-                                    : (<Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" onClick={handleLogin} component="button">
-                                        Login
-                                    </Typography>) }
-                                    
+                                        : (<Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" onClick={()=>handleNavigation("login")} component="button">
+                                            Login
+                                        </Typography>)}
+
                                 </ListItem>
                             </List>
 

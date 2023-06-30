@@ -7,7 +7,11 @@ const authSlice = createSlice({
     currentUser: null,
     loading: false, // const [loading,setLoading] = useState(false)
     error: false,
-    isAdmin: false,
+    // isAdmin: false,
+    image:"",
+    first_name:"",
+    email:"",
+    bio:"",
     token: null,
   },
   reducers: {
@@ -20,6 +24,12 @@ const authSlice = createSlice({
       state.currentUser = payload?.user?.username;
       // state.isAdmin = payload?.user?.is_superuser;
       state.token = payload?.key;
+    },
+    profileSuccess: (state, { payload }) => {
+      state.image = payload?.user?.image;
+      state.first_name = payload?.user?.first_name;
+      state.email = payload?.user?.email;
+      state.bio = payload?.user?.bio;
     },
     // prop drilling
     logoutSuccess: state => {
@@ -46,6 +56,7 @@ export const {
   logoutSuccess,
   registerSuccess,
   fetchFail,
+  profileSuccess,
 } = authSlice.actions;
 export default authSlice.reducer;
 

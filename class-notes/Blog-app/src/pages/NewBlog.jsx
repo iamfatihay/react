@@ -57,6 +57,7 @@ const NewBlog = () => {
                 </Typography>
 
                 <Formik
+                
                     initialValues={{
                         title: "",
                         content: "",

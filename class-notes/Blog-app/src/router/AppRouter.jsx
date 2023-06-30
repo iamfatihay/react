@@ -8,6 +8,7 @@ import About from "../pages/About";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 import NewBlog from "../pages/NewBlog";
+import Profile from "../pages/Profile";
 
 const Router = () => {
   return (
@@ -17,10 +18,13 @@ const Router = () => {
         <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
+        
         <Route path="/detail/:id" element={<PrivateRouter />}>
-          <Route index element={<Dashboard />} /> 
-          <Route path="" element={<Detail />} />
+            <Route path="" element={<Detail />} />
+            
         </Route>
+        
         <Route path="/newblog" element={<NewBlog />} />
         <Route path="about" element={<About />} />
 

@@ -5,6 +5,7 @@ import {
     fetchStart,
     loginSuccess,
     logoutSuccess,
+    profileSuccess,
     registerSuccess,
 } from "../features/authSlice";
 
@@ -27,6 +28,7 @@ const useAuthCall = () => {
                 userInfo
             );
             dispatch(loginSuccess(data));
+            dispatch(profileSuccess(data));
             toastSuccessNotify("Login performed");
             navigate("/");
             console.log(data);
@@ -49,7 +51,7 @@ const useAuthCall = () => {
             });
             dispatch(logoutSuccess());
             toastSuccessNotify("Logout performed");
-            navigate("/login");
+            navigate("/");
         } catch (err) {
             dispatch(fetchFail());
             toastErrorNotify("Logout can not be performed");
@@ -64,8 +66,9 @@ const useAuthCall = () => {
                 userInfo
             );
             dispatch(registerSuccess(data));
+            dispatch(profileSuccess(data));
             toastSuccessNotify("Register performed");
-            navigate("/");
+            navigate("/login");
             console.log(data);
         } catch (err) {
             dispatch(fetchFail());
