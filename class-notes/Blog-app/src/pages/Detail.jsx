@@ -25,6 +25,7 @@ const Detail = () => {
   const [blogDetail, setBlogDetail] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+  
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const blogDetailBaseUrl = `${BASE_URL}api/blogs/${id}`;
 

@@ -16,9 +16,10 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function BlogCard({ blog }) {
+    const { content, title, publish_date, image, likes, id, post_views } = blog;
     const navigate = useNavigate();
-    const truncatedContent = blog.content.length > 180 ? `${blog.content.substring(0, 180)}...` : blog.content;
-    
+    const truncatedContent = content.length > 180 ? `${blog.content.substring(0, 180)}...` : blog.content;
+
     const handleMore = (id) => {
         navigate(`detail/${id}`);
     }
@@ -37,13 +38,13 @@ export default function BlogCard({ blog }) {
                         R
                     </Avatar>
                 }
-                title={blog.title}
-                subheader={blog.publish_date.substring(0, 10)}
+                title={title}
+                subheader={publish_date.substring(0, 10)}
             />
             <CardMedia
                 sx={{ height: 130, objectFit: "contain" }}
                 component="img"
-                image={blog.image}
+                image={image}
                 alt="image"
             />
             <CardContent sx={{ height: 130 }} >
@@ -54,19 +55,31 @@ export default function BlogCard({ blog }) {
 
             <CardActions disableSpacing sx={{ display: "flex", justifyContent: "space-between" }} >
                 <Grid>
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
+                    <IconButton aria-label="add to favorites" >
+                        <FavoriteIcon 
+                        // color={isLiked ? "error" : "inherit"} 
+
+                        />
+                        <Typography variant="span" color="text.secondary">
+                            {likes}
+                        </Typography>
                     </IconButton>
                     <IconButton aria-label="share">
                         <MessageIcon />
+                        <Typography variant="span" color="text.secondary">
+                            {1}
+                        </Typography>
                     </IconButton>
                     <IconButton aria-label="views">
                         <RemoveRedEyeIcon />
+                        <Typography variant="span" color="text.secondary">
+                            {post_views}
+                        </Typography>
                     </IconButton>
                 </Grid>
 
                 <Grid>
-                    <Button onClick={()=>handleMore(blog.id)} sx={{
+                    <Button onClick={() => handleMore(id)} sx={{
                         cursor: "pointer",
                         bgcolor: "#dce775",
                         "&:hover": { color: "black" },
