@@ -44,6 +44,7 @@ function NavBar() {
     const handleNavigation = (endpoint) => {
         navigate(`/${endpoint}`);
         handleCloseNavMenu()
+        handleCloseUserMenu()
     }
 
 
@@ -180,7 +181,7 @@ function NavBar() {
                                         </Typography>
                                     </ListItem>
                                     <ListItem component="li" sx={{ marginBottom: -2 }}>
-                                        <Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" component="button" >
+                                        <Typography sx={{ p: 1, borderRadius: "5px", "&:hover": { backgroundColor: "#fafafa" }, }} variant="body1" component="button" onClick={()=>handleNavigation("my-blogs")}>
                                             My Blogs
                                         </Typography>
                                     </ListItem>

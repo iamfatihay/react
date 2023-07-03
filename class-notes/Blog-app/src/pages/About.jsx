@@ -21,16 +21,17 @@ const handleGitHubClick = () => {
 
 const About = () => {
   return (
-    <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 3 }}>
+    <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 3,mb:3 }}>
       <Card sx={{
         width: "500px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        height: "71.5vh",
       }}>
 
         <CardMedia
-          sx={{ height: 330, objectFit: "contain" }}
+          sx={{ height: 500, objectFit: "contain" }}
           component="img"
           image={logo}
           alt="image"

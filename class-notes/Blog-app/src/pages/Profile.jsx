@@ -16,9 +16,10 @@ const Profile = () => {
     const bio = useSelector(state => state.auth.bio);
 
   return (
-    <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 3 }}>
+    <Grid container
+     sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 3,height: "74.5vh" }}>
       <Card sx={{
-        width: "500px",
+        width: "700px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",

@@ -1,22 +1,23 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import React from "react";
+import { useDispatch} from "react-redux";
 import {
   fetchFail,
   fetchStart,
-  getProCatBrandSucces,
-  getProPurcFirBrandsSucces,
-  getProSalBrandsSucces,
-  getPurcSalesSucces,
   getSucces,
+  // getProCatBrandSucces,
+  // getProPurcFirBrandsSucces,
+  // getProSalBrandsSucces,
+  // getPurcSalesSucces,
+  
 } from "../features/blogSlice";
-import axios from "axios";
+// import axios from "axios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
 const useBlogCalls = () => {
   const dispatch = useDispatch();
-  const { token } = useSelector(state => state.auth);
-  const { axiosWithToken } = useAxios();
+  // const { token } = useSelector(state => state.auth);
+  const { axiosWithToken,axiosWithPublic } = useAxios();
 
   //   const getFirms = async () => {
   //     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -51,7 +52,7 @@ const useBlogCalls = () => {
   //     }
   //   };
   //! yukarıdaki gib her seferinde yazmak yerine daha modüler bir yapı kurarak tek bir fonksiyonla bir den fazla get işlemini gerçekleştirebiliyoruz
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  // const BASE_URL = process.env.REACT_APP_BASE_URL;
   // const getBlogData = async (url) => {
   //   dispatch(fetchStart());
   //   try {
@@ -86,6 +87,16 @@ const useBlogCalls = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithToken.get(`api/${url}/`);
+      console.log(data);
+      dispatch(getSucces({ data, url }));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  const getBlogDataPublic = async url => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithPublic.get(`api/${url}/`);
       console.log(data);
       dispatch(getSucces({ data, url }));
     } catch (error) {
@@ -202,6 +213,7 @@ const useBlogCalls = () => {
 
   return {
     getBlogData,
+    getBlogDataPublic,
     deleteBlogData,
     postBlogData,
     putBlogData,

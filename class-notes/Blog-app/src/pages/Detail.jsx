@@ -60,7 +60,7 @@ const Detail = () => {
   return (
     <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
       <Card sx={{
-        width: "500px",
+        width: "600px",
         // height: "420px",
         display: "flex",
         flexDirection: "column",

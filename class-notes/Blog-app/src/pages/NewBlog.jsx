@@ -24,7 +24,7 @@ const NewBlog = () => {
             backgroundSize: "cover",
             opacity: 0.8,
             // filter: "blur(2px)",
-            height: "87.5vh",
+            height: "77vh",
         }}>
             <Grid container sx={{
                 display: "flex",

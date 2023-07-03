@@ -11,9 +11,10 @@ import NewBlog from "../pages/NewBlog";
 import Profile from "../pages/Profile";
 import Footer from "../components/Footer";
 import { useSelector } from "react-redux";
+import MyBlogs from "../pages/MyBlogs";
 
 const Router = () => {
-  const {currentUser}=useSelector(state=>state.auth);
+  const { currentUser } = useSelector(state => state.auth);
   return (
     <BrowserRouter>
       <NavBar />
@@ -22,17 +23,20 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
-        
         <Route path="/detail/:id" element={<PrivateRouter />}>
-            <Route index element={<Detail />} />         
+          <Route path="" element={<Detail />} />
         </Route>
-        
-        <Route path="/newblog" element={<NewBlog />} />
+        <Route path="/newblog" element={<PrivateRouter />}>
+          <Route path="" element={<NewBlog />} />
+        </Route>
+        <Route path="/my-blogs" element={<PrivateRouter />}>
+          <Route path="" element={<MyBlogs />} />
+        </Route>
         <Route path="about" element={<About />} />
 
       </Routes>
-      {currentUser && <Footer/>}
-      
+      {currentUser && <Footer />}
+
     </BrowserRouter>
   );
 };

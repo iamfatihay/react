@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MessageIcon from '@mui/icons-material/Message';
+import AccountCircle from "@mui/icons-material/AccountCircle";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Button, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -21,16 +22,17 @@ export default function BlogCard({ blog }) {
     const truncatedContent = content.length > 180 ? `${blog.content.substring(0, 180)}...` : blog.content;
 
     const handleMore = (id) => {
-        navigate(`detail/${id}`);
+        navigate(`/detail/${id}`);
     }
 
     return (
         <Card sx={{
-            width: "300px",
-            height: "420px",
+            width: "400px",
+            height: "450px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
+            boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.3)',
         }}>
             <CardHeader
                 avatar={
@@ -52,11 +54,16 @@ export default function BlogCard({ blog }) {
                     {truncatedContent}
                 </Typography>
             </CardContent>
+            <Grid sx={{ display: "flex", ml:2 }}>
+                <AccountCircle />
+                <span>{blog.author ?? "No author"}</span>
+            </Grid>
+
 
             <CardActions disableSpacing sx={{ display: "flex", justifyContent: "space-between" }} >
                 <Grid>
                     <IconButton aria-label="add to favorites" >
-                        <FavoriteIcon 
+                        <FavoriteIcon
                         // color={isLiked ? "error" : "inherit"} 
 
                         />
