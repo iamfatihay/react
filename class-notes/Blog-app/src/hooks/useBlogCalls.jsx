@@ -1,14 +1,9 @@
 // import React from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import {
   fetchFail,
   fetchStart,
   getSucces,
-  // getProCatBrandSucces,
-  // getProPurcFirBrandsSucces,
-  // getProSalBrandsSucces,
-  // getPurcSalesSucces,
-  
 } from "../features/blogSlice";
 // import axios from "axios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
@@ -18,6 +13,7 @@ const useBlogCalls = () => {
   const dispatch = useDispatch();
   // const { token } = useSelector(state => state.auth);
   const { axiosWithToken,axiosWithPublic } = useAxios();
+  const { currentUser,currentUserId } = useSelector(state => state.auth);
 
   //   const getFirms = async () => {
   //     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -83,16 +79,31 @@ const useBlogCalls = () => {
   //! istek atarken ortak olan base_url  ve token gibi değerleri her seferinde yazmak yerine axios instance kullanarak bunları orada tanımlıyoruz. Ve sonrasında sadece istek atmak istediğimiz end pointi yazmamız yeterli oluyor.
 
   
-  const getBlogData = async url => {
+  const getBlogData = async (url, id="") => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken.get(`api/${url}/`);
+      let requestUrl = `api/${url}`;
+      if (id) {
+        requestUrl += `/${id}/`;
+      }
+      const { data } = await axiosWithToken.get(requestUrl);
       console.log(data);
-      dispatch(getSucces({ data, url }));
+      dispatch(getSucces({ data, url}));
     } catch (error) {
       dispatch(fetchFail());
     }
   };
+  const getBlogDataDraft = async () => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.get(`api/blogs/?author=${currentUserId}`);
+      console.log(data);
+      dispatch(getSucces({ data, url:"blogs" }));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  
   const getBlogDataId = async (id) => {
     dispatch(fetchStart());
     try {
@@ -137,10 +148,15 @@ const useBlogCalls = () => {
     }
   };
 
-  const postBlogData = async (url, info) => {
+  const postBlogData = async (url, info,id="") => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`api/${url}/`, info);
+      let requestUrl = `api/${url}/`;
+          if (id) {
+            requestUrl += `${id}/`;
+          }
+      const { data } = await axiosWithToken.post(requestUrl,info);
+      console.log(data);
       getBlogData(url);
       toastSuccessNotify(`successfuly performed!`);
     } catch (error) {
@@ -148,6 +164,18 @@ const useBlogCalls = () => {
       toastErrorNotify(`not successfuly performed!`);
     }
   };
+
+  const postBlogDataLike = async (url, id="") => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.post(`api/${url}/${id}/`);
+      console.log(data);
+      getBlogData("blogs")
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
   const putBlogData = async (url, info) => {
     dispatch(fetchStart());
     try {
@@ -239,10 +267,8 @@ const useBlogCalls = () => {
     deleteBlogData,
     postBlogData,
     putBlogData,
-    // getProCatBrand,
-    // getProSalBrands,
-    // getProPurcFirBrands,
-    // getPurcSales,
+    getBlogDataDraft,
+    postBlogDataLike,
   };
   
 };

@@ -5,6 +5,7 @@ const authSlice = createSlice({
 
   initialState: {
     currentUser: null,
+    currentUserId:null,
     loading: false, // const [loading,setLoading] = useState(false)
     error: false,
     // isAdmin: false,
@@ -22,6 +23,7 @@ const authSlice = createSlice({
     loginSuccess: (state, { payload }) => {
       state.loading = false;
       state.currentUser = payload?.user?.username;
+      state.currentUserId=payload?.user?.id;
       // state.isAdmin = payload?.user?.is_superuser;
       state.token = payload?.key;
     },

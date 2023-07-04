@@ -9,17 +9,23 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import MessageIcon from '@mui/icons-material/Message';
+import { toastWarnNotify } from "../../helper/ToastNotify";
+// import MessageIcon from '@mui/icons-material/Message';
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+// import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Button, Grid } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import { useNavigate } from "react-router-dom";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import useBlogCalls from '../../hooks/useBlogCalls';
 
 
 export default function BlogCard({ blog }) {
-    const { content, title, publish_date, image, likes, id, post_views} = blog;
-    // const { currentUser } = useSelector(state => state.auth);
+    const { author, comment_count, content, title, publish_date, image, likes, likes_n, id, post_views } = blog;
+    const { currentUserId } = useSelector(state => state.auth);
+    const { postBlogDataLike} = useBlogCalls();
+
     const navigate = useNavigate();
     const truncatedContent = content.length > 180 ? `${blog.content.substring(0, 180)}...` : blog.content;
 
@@ -30,7 +36,10 @@ export default function BlogCard({ blog }) {
     // const isCurrentUserAuthor = (blogAuthor) => {
     //     return currentUser.id === blogAuthor;
     // };
-
+    const handleClick =async() => {
+        await postBlogDataLike("likes",id);
+        }
+       
     return (
         <Card sx={{
             width: "400px",
@@ -62,34 +71,39 @@ export default function BlogCard({ blog }) {
             </CardContent>
             <Grid sx={{ display: "flex", ml: 2 }}>
                 <AccountCircle />
-                <span>{blog.author ?? "No author"}</span>
+                <span>{author ?? "No author"}</span>
             </Grid>
 
 
             <CardActions disableSpacing sx={{ display: "flex", justifyContent: "space-between" }} >
-                <Grid>
-                    <IconButton aria-label="add to favorites" >
+                <Typography component="div">
+                    <IconButton
+                        aria-label="add to favorites"
+                        sx={{ textAlign: "left", alignItems: "left" }}
+                        onClick={handleClick}>
                         <FavoriteIcon
-                        // color={isLiked ? "error" : "inherit"} 
-
+                            sx={{
+                                color: `${likes_n?.filter((like) => like.user_id === currentUserId).length > 0
+                                        ? "red"
+                                        : "gray"
+                                    }`,
+                            }}
                         />
-                        <Typography variant="span" color="text.secondary">
-                            {likes}
-                        </Typography>
+                        <span>{likes ?? "0"}</span>
                     </IconButton>
-                    <IconButton aria-label="share">
-                        <MessageIcon />
-                        <Typography variant="span" color="text.secondary">
-                            {1}
-                        </Typography>
+
+                    <IconButton
+                        onClick={() => handleMore(id)}
+                        aria-label="add to favorites"
+                        sx={{ textAlign: "left", alignItems: "left" }}>
+                        <ChatBubbleOutlineOutlinedIcon />
+                        <span>{comment_count ?? "0"}</span>
                     </IconButton>
-                    <IconButton aria-label="views">
-                        <RemoveRedEyeIcon />
-                        <Typography variant="span" color="text.secondary">
-                            {post_views}
-                        </Typography>
+                    <IconButton aria-label="view">
+                        <RemoveRedEyeOutlinedIcon />
+                        <span>{post_views}</span>
                     </IconButton>
-                </Grid>
+                </Typography>
 
                 <Grid>
                     <Button onClick={() => handleMore(id)} sx={{

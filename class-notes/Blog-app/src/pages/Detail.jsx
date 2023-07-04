@@ -10,29 +10,27 @@ import { red } from '@mui/material/colors';
 import { Avatar, Button, CardActions, Grid, IconButton } from '@mui/material';
 import useBlogCalls from '../hooks/useBlogCalls';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import MessageIcon from '@mui/icons-material/Message';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import UpdateModal from "../components/blog/UpdateModal";
 import DeleteModal from '../components/blog/DeleteModal';
+import CommentForm from '../components/blog/CommentForm';
 
 
 const Detail = () => {
-  const { getBlogDataId } = useBlogCalls();
+  const { getBlogDataId, postBlogDataLike } = useBlogCalls();
   // const { blogs } = useSelector(state => state.blog);
   const { id } = useParams();
+  const [showComment, setShowComment] = useState(false);
   const [blogDetail, setBlogDetail] = useState(null);
-
+  const { currentUser, currentUserId } = useSelector(state => state.auth)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [openDelete, setOpenDelete] = useState(false);
-  const handleOpenDelete = () => {
-    setOpenDelete(true);
-  };
-  const handleCloseDelete = () => {
-    setOpenDelete(false);
-  };
+  const handleOpenDelete = () => { setOpenDelete(true) };
+  const handleCloseDelete = () => { setOpenDelete(false) };
 
   const [info, setInfo] = useState({
     title: "",
@@ -42,7 +40,11 @@ const Detail = () => {
     status: "",
     slug: "",
   });
-
+  const handleClick = async () => {
+    await postBlogDataLike("likes", id);
+    const response = await getBlogDataId(id);
+    setBlogDetail(response);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,7 +60,7 @@ const Detail = () => {
 
 
   return (
-    <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "76.5vh" }}>
+    <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
       <Card sx={{
         width: "600px",
         display: "flex",
@@ -91,68 +93,80 @@ const Detail = () => {
 
         <CardActions disableSpacing sx={{ display: "flex", justifyContent: "space-between" }} >
           <Grid>
-            <IconButton aria-label="add to favorites" >
+            <IconButton
+              onClick={handleClick}
+              aria-label="add to favorites">
               <FavoriteIcon
-              // color={isLiked ? "error" : "inherit"} 
-
+                sx={{
+                  color: `${blogDetail.likes_n?.filter((like) => like.user_id === currentUserId).length > 0
+                    ? "red"
+                    : "gray"
+                    }`,
+                }}
               />
-              <Typography variant="span" color="text.secondary">
-                {blogDetail.likes}
+              <Typography sx={{ marginLeft: 1 }}>{blogDetail.likes}</Typography>
+            </IconButton>
+            <IconButton
+              aria-label="comment"
+              onClick={() => setShowComment(!showComment)}>
+              <ChatOutlinedIcon />
+              <Typography sx={{ marginLeft: 1 }}>
+                {blogDetail.comment_count}
               </Typography>
             </IconButton>
-            <IconButton aria-label="share">
-              <MessageIcon />
-              <Typography variant="span" color="text.secondary">
-                {1}
-              </Typography>
-            </IconButton>
-            <IconButton aria-label="views">
-              <RemoveRedEyeIcon />
-              <Typography variant="span" color="text.secondary">
+            <IconButton aria-label="view">
+              <RemoveRedEyeOutlinedIcon />
+              <Typography sx={{ marginLeft: 1 }}>
                 {blogDetail.post_views}
               </Typography>
             </IconButton>
           </Grid>
 
-          <Grid sx={{display:"flex"}} >
-            <Button
-              onClick={() => {
-                const updatedInfo = { ...blogDetail };
-                if (!updatedInfo.status) {
-                  updatedInfo.status = ""; // Eğer status tanımlı değilse, boş bir dizeye ayarlayın
-                }
-                const validStatusValues = ["", "draft", "published"];
-                if (!validStatusValues.includes(updatedInfo.status)) {
-                  updatedInfo.status = ""; // Geçerli bir değer yoksa, boş bir değere ayarlayın
-                }
-                setInfo(updatedInfo);
-                handleOpen();
-              }}
-              sx={{
-                cursor: "pointer",
-                bgcolor: "green",
-                color: "white",
-                padding: "3px 12px",
-                "&:hover": { color: "black" },
-              }} >
-              UPDATE
-            </Button>
-            <DeleteModal open={openDelete} handleCloseDelete={handleCloseDelete} id={id} />
-            <UpdateModal info={info} setInfo={setInfo} open={open} handleClose={handleClose} id={id} handleOpen={handleOpen} />
-            <Button
-              onClick={handleOpenDelete}
-              sx={{
-                cursor: "pointer",
-                bgcolor: "red",
-                color: "white",
-                padding: "3px 12px",
-                marginLeft: "1rem",
-                "&:hover": { color: "black" },
-              }} >
-              DELETE
-            </Button>
-          </Grid>
+          {blogDetail.author === currentUser && (
+            <Grid sx={{ display: "flex" }} >
+              <Button
+                onClick={() => {
+                  const updatedInfo = { ...blogDetail };
+                  if (!updatedInfo.status) {
+                    updatedInfo.status = ""; // Eğer status tanımlı değilse, boş bir dizeye ayarlayın
+                  }
+                  const validStatusValues = ["", "draft", "published"];
+                  if (!validStatusValues.includes(updatedInfo.status)) {
+                    updatedInfo.status = ""; // Geçerli bir değer yoksa, boş bir değere ayarlayın
+                  }
+                  setInfo(updatedInfo);
+                  handleOpen();
+                }}
+                sx={{
+                  cursor: "pointer",
+                  bgcolor: "green",
+                  color: "white",
+                  padding: "3px 12px",
+                  "&:hover": { color: "black" },
+                }} >
+                UPDATE
+              </Button>
+
+              <Button
+                onClick={handleOpenDelete}
+                sx={{
+                  cursor: "pointer",
+                  bgcolor: "red",
+                  color: "white",
+                  padding: "3px 12px",
+                  marginLeft: "1rem",
+                  "&:hover": { color: "black" },
+                }} >
+                DELETE
+              </Button>
+            </Grid>
+          )}
+
         </CardActions>
+        {showComment && <CommentForm setBlogDetail={setBlogDetail} blogDetail={blogDetail} id={id} />}
+
+        <DeleteModal open={openDelete} handleCloseDelete={handleCloseDelete} id={id} />
+        <UpdateModal info={info} setInfo={setInfo} open={open} handleClose={handleClose} id={id} handleOpen={handleOpen} />
       </Card>
     </Grid>
   )
