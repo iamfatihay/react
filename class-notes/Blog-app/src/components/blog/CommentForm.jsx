@@ -9,8 +9,8 @@ const CommentFormWrapper = styled(Box)(({ theme }) => ({
   overflowY: "auto",
 }));
 
-const CommentForm = ({ setBlogDetail , blogDetail, id }) => {
-  const { postBlogData,getBlogData,getBlogDataId } = useBlogCalls();
+const CommentForm = ({ setBlogDetail, blogDetail, id }) => {
+  const { postBlogData, getBlogDataId } = useBlogCalls();
   const [commentData, setComment] = useState("");
 
   const handleSubmit = async (e) => {
@@ -24,16 +24,10 @@ const CommentForm = ({ setBlogDetail , blogDetail, id }) => {
       await postBlogData("comments", data, id);
       const response = await getBlogDataId(id);
       setBlogDetail(response);
-    //   setBlogDetail((prevBlogDetail) => ({
-    //     ...prevBlogDetail,
-    //     comments: [...prevBlogDetail.comments, data],
-    //   }));
-    //   await getBlogDataId(id);
       setComment("");
 
     } catch (error) {
       console.error(error);
-      // Hata durumunda gerekli işlemler yapılabilir
     }
   };
 
@@ -102,9 +96,9 @@ const CommentForm = ({ setBlogDetail , blogDetail, id }) => {
             sx={{
               mt: 3,
               mb: 2,
-              color:"black",
+              color: "black",
               bgcolor: "darkgray",
-              "&:hover": { bgcolor: "secondary.main",  color:"white"},
+              "&:hover": { bgcolor: "secondary.main", color: "white" },
             }}
           >
             Add Comment

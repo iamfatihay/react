@@ -7,7 +7,7 @@ const blogSlice = createSlice({
     loading: false,
     error: false,
     blogs: [],
-    detail:[],     //?
+    detail:[],     
     comments: [],
     likes: [],
     categories: [],
@@ -21,7 +21,7 @@ const blogSlice = createSlice({
     },
     getSucces: (state, { payload }) => {
       state.loading = false;
-      state[payload.url] = payload.data; // state["blogs"],... anlamlarına gelerek tek bir reducerla tüm stateleri doldurabilmiş olduk.
+      state[payload.url] = payload.data; 
     },
     fetchFail: state => {
       state.loading = false;
@@ -37,4 +37,3 @@ export const {
 } = blogSlice.actions;
 export default blogSlice.reducer;
 
-// async-thunk yerine manuel dispatclerle yapıyoruz. extra reducerlarla yapmadan da bu şekilde yapabiliyoruz. İki yönteminde avantajı ve dezavantajı var.

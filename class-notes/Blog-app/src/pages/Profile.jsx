@@ -5,19 +5,23 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
+import { Helmet } from "react-helmet";
 
 
 
 const Profile = () => {
-    const currentUser = useSelector(state => state.auth.currentUser);
-    const image = useSelector(state => state.auth.image);
-    const firstName = useSelector(state => state.auth.first_name);
-    const email = useSelector(state => state.auth.email);
-    const bio = useSelector(state => state.auth.bio);
+  const currentUser = useSelector(state => state.auth.currentUser);
+  const image = useSelector(state => state.auth.image);
+  const firstName = useSelector(state => state.auth.first_name);
+  const email = useSelector(state => state.auth.email);
+  const bio = useSelector(state => state.auth.bio);
 
   return (
     <Grid container
-     sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 3,height: "74.5vh" }}>
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 3, height: "74.5vh" }}>
+      <Helmet>
+        <title>Profile</title>
+      </Helmet>
       <Card sx={{
         width: "700px",
         display: "flex",
@@ -33,16 +37,16 @@ const Profile = () => {
         />
         <CardContent sx={{ textAlign: "center" }} >
           <Typography variant="h2" color="text.primary">
-          {currentUser}
+            {currentUser}
           </Typography>
           <Typography variant="h4" color="text.primary">
-          {firstName}
+            {firstName}
           </Typography>
           <Typography variant="h4" color="text.primary">
-          {email}
+            {email}
           </Typography>
           <Typography variant="p" color="text.primary">
-          {bio}
+            {bio}
           </Typography>
         </CardContent>
       </Card>

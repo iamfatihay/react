@@ -4,7 +4,7 @@ import useBlogCall from "../../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
 import { Form } from "formik";
 import { object, string } from "yup";
-import { Box, Button, TextField, FormControl, InputLabel, MenuItem, Select, TextareaAutosize } from "@mui/material";
+import { Box, Button, TextField, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect } from "react";
 
 export const blogSchema = object({
@@ -13,7 +13,6 @@ export const blogSchema = object({
   image: string().max(400, "URL must be less than 400 characters"),
   category: string(),
   status: string(),
-  // .required("This field is required"),
 });
 
 
@@ -24,6 +23,7 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
 
   useEffect(() => {
     getBlogData("categories");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const [selectedStatus, setSelectedStatus] = useState(values.status === "d" ? "draft" : "published");
 
@@ -98,7 +98,6 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
               onBlur={handleBlur}
               label="Status"
             >
-              {/* <MenuItem value="">Select a status</MenuItem> */}
               <MenuItem value="draft">Draft</MenuItem>
               <MenuItem value="published">Published</MenuItem>
             </Select>

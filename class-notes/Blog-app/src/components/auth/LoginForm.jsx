@@ -39,7 +39,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           helperText={touched.password && errors.password}
           error={touched.password && Boolean(errors.password)}
         />
-        <Button variant="contained" sx={{backgroundColor:"#ff6333"}} type="submit">
+        <Button variant="contained" sx={{ backgroundColor: "#ff6333" }} type="submit">
           Submit
         </Button>
       </Box>

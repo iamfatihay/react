@@ -9,12 +9,17 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCalls";
 import LoginForm, { loginScheme } from "../components/auth/LoginForm";
+import { Helmet } from "react-helmet";
+
 
 const Login = () => {
   const { login } = useAuthCall();
 
   return (
     <Container maxWidth="lg">
+    <Helmet>
+          <title>Login</title>
+        </Helmet>
       <Grid
         container
         justifyContent="center"

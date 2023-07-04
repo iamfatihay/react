@@ -9,10 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { toastWarnNotify } from "../../helper/ToastNotify";
-// import MessageIcon from '@mui/icons-material/Message';
 import AccountCircle from "@mui/icons-material/AccountCircle";
-// import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Button, Grid } from '@mui/material';
 import { useSelector } from 'react-redux';
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
@@ -23,8 +20,8 @@ import useBlogCalls from '../../hooks/useBlogCalls';
 
 export default function BlogCard({ blog }) {
     const { author, comment_count, content, title, publish_date, image, likes, likes_n, id, post_views } = blog;
-    const { currentUserId } = useSelector(state => state.auth);
-    const { postBlogDataLike} = useBlogCalls();
+    const { currentUserId, currentUser } = useSelector(state => state.auth);
+    const { postBlogDataLike } = useBlogCalls();
 
     const navigate = useNavigate();
     const truncatedContent = content.length > 180 ? `${blog.content.substring(0, 180)}...` : blog.content;
@@ -33,13 +30,10 @@ export default function BlogCard({ blog }) {
         navigate(`/detail/${id}`);
     }
 
-    // const isCurrentUserAuthor = (blogAuthor) => {
-    //     return currentUser.id === blogAuthor;
-    // };
-    const handleClick =async() => {
-        await postBlogDataLike("likes",id);
-        }
-       
+    const handleClick = async () => {
+        await postBlogDataLike("likes", id);
+    }
+
     return (
         <Card sx={{
             width: "400px",
@@ -51,7 +45,9 @@ export default function BlogCard({ blog }) {
         }}>
             <CardHeader
                 avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"
+                        src={currentUser ? image : <AccountCircle />}
+                    >
                         R
                     </Avatar>
                 }
@@ -69,7 +65,7 @@ export default function BlogCard({ blog }) {
                     {truncatedContent}
                 </Typography>
             </CardContent>
-            <Grid sx={{ display: "flex", ml: 2 }}>
+            <Grid sx={{ display: "flex", alignItems: "center", ml: 2 }}>
                 <AccountCircle />
                 <span>{author ?? "No author"}</span>
             </Grid>
@@ -84,8 +80,8 @@ export default function BlogCard({ blog }) {
                         <FavoriteIcon
                             sx={{
                                 color: `${likes_n?.filter((like) => like.user_id === currentUserId).length > 0
-                                        ? "red"
-                                        : "gray"
+                                    ? "red"
+                                    : "gray"
                                     }`,
                             }}
                         />

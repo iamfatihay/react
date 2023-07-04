@@ -15,11 +15,12 @@ import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import UpdateModal from "../components/blog/UpdateModal";
 import DeleteModal from '../components/blog/DeleteModal';
 import CommentForm from '../components/blog/CommentForm';
+import { Helmet } from "react-helmet";
+
 
 
 const Detail = () => {
   const { getBlogDataId, postBlogDataLike } = useBlogCalls();
-  // const { blogs } = useSelector(state => state.blog);
   const { id } = useParams();
   const [showComment, setShowComment] = useState(false);
   const [blogDetail, setBlogDetail] = useState(null);
@@ -52,6 +53,7 @@ const Detail = () => {
       setBlogDetail(response);
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!blogDetail) {
@@ -61,6 +63,9 @@ const Detail = () => {
 
   return (
     <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <Helmet>
+          <title>Details</title>
+        </Helmet>
       <Card sx={{
         width: "600px",
         display: "flex",
@@ -81,7 +86,7 @@ const Detail = () => {
             </Avatar>
           }
           title={blogDetail.author}
-        // subheader={blogDetail.publish_date.substring(0, 10)}
+          subheader={blogDetail.publish_date.substring(0, 10)}
         />
 
         <CardContent sx={{ height: 'auto', maxHeight: 430, overflowY: 'auto' }}>

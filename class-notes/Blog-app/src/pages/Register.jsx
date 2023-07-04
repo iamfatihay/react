@@ -9,12 +9,16 @@ import RegisterForm, { registerSchema } from "../components/auth/RegisterForm";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import useAuthCall from "../hooks/useAuthCalls";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const { register } = useAuthCall();
 
     return (
         <Container maxWidth="lg">
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
             <Grid
                 container
                 justifyContent="center"
@@ -65,7 +69,7 @@ const Register = () => {
                             register(values);
                             console.log(values);
                             actions.resetForm();
-                            
+
                         }}
                         component={props => <RegisterForm {...props} />}>
                     </Formik>

@@ -8,11 +8,11 @@ import { useNavigate } from 'react-router-dom';
 const DeleteModal = ({ open, handleCloseDelete, id }) => {
   const { deleteBlogData } = useBlogCalls();
   const navigate = useNavigate();
- 
+
 
   const handleDelete = () => {
     handleCloseDelete();
-    deleteBlogData("blogs",id);
+    deleteBlogData("blogs", id);
     navigate('/');
   };
   return (

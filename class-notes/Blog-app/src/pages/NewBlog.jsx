@@ -1,22 +1,15 @@
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
-import LockIcon from "@mui/icons-material/Lock";
 import { Formik } from "formik";
-import image from "../assets/register_img.svg";
 import Grid from "@mui/material/Grid";
-import RegisterForm, { registerSchema } from "../components/auth/RegisterForm";
-import { Link } from "react-router-dom";
-import { Box } from "@mui/material";
-
 import PostAddIcon from '@mui/icons-material/PostAdd';
-import { flex } from "../styles/globalStyle";
 import NewBlogForm, { blogSchema } from "../components/blog/NewBlogForm";
 import useBlogCalls from "../hooks/useBlogCalls";
+import { Helmet } from "react-helmet";
 
 const NewBlog = () => {
     const { postBlogData } = useBlogCalls();
-    
+
 
     return (
         <Grid sx={{
@@ -24,9 +17,11 @@ const NewBlog = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             opacity: 0.8,
-            // filter: "blur(2px)",
             height: "77vh",
         }}>
+            <Helmet>
+                <title>New Blog</title>
+            </Helmet>
             <Grid container sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -36,8 +31,8 @@ const NewBlog = () => {
                 p: 1,
                 m: "auto",
                 width: "400px",
-                backgroundColor:"lightgray",
-                borderRadius:"10px",              
+                backgroundColor: "lightgray",
+                borderRadius: "10px",
             }}>
                 <Avatar
                     sx={{
@@ -45,7 +40,7 @@ const NewBlog = () => {
                         m: "auto",
                         width: 40,
                         height: 40,
-                        mt:2,
+                        mt: 2,
                     }}>
                     <PostAddIcon size="10" />
                 </Avatar>
@@ -53,12 +48,12 @@ const NewBlog = () => {
                     variant="h4"
                     align="center"
                     color="black"
-                    sx={{mb:3}}>
+                    sx={{ mb: 3 }}>
                     New Blog
                 </Typography>
 
                 <Formik
-                
+
                     initialValues={{
                         title: "",
                         content: "",
@@ -69,7 +64,7 @@ const NewBlog = () => {
                     validationSchema={blogSchema}
                     onSubmit={(values, actions) => {
                         //! submit islemi oldugunda yapilacaklari buraya yaziyoruz.
-                        postBlogData("blogs",values);
+                        postBlogData("blogs", values);
                         console.log(values);
                         actions.resetForm();
 

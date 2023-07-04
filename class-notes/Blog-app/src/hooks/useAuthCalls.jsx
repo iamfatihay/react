@@ -42,9 +42,6 @@ const useAuthCall = () => {
     const logout = async () => {
         dispatch(fetchStart());
         try {
-            // let headers = {
-            //   Authorization: `Token ${token}`,
-            // };
             await axios.post(`${BASE_URL}users/auth/logout/`, null, {
                 headers: {
                     Authorization: `Token ${token}`,
@@ -59,8 +56,8 @@ const useAuthCall = () => {
         }
     };
 
-    const register = async(userInfo) => {
-        // dispatch(fetchStart());
+    const register = async (userInfo) => {
+        dispatch(fetchStart());
         try {
             const { data } = await axios.post(
                 `${BASE_URL}users/register/`,

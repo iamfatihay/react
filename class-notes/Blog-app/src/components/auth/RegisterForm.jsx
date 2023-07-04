@@ -15,8 +15,8 @@ export const registerSchema = object({
 
     email: string().email().required("Email is required"),
     image: string().url("Invalid image URL")
-    .required("Image URL is required")
-    .max(400, "Image must be less than 400 characters"),
+        .required("Image URL is required")
+        .max(400, "Image must be less than 400 characters"),
     bio: string(),
     password: string()
         .required("Password is required")
@@ -159,7 +159,7 @@ const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
                             placeholder: "********",
                         }}
                     />
-                    <Button sx={{backgroundColor:"#fdd835"}} type="submit" variant="contained" size="large">
+                    <Button sx={{ backgroundColor: "#fdd835" }} type="submit" variant="contained" size="large">
                         Submit
                     </Button>
                 </Box>

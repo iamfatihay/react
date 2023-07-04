@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { Box, Button, TextField, Modal, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import { Box, Button, TextField, Modal, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import useBlogCalls from '../../hooks/useBlogCalls';
 import { useEffect } from 'react';
 
@@ -23,6 +23,7 @@ export default function UpdateModal({ info, setInfo, open, handleClose, handleOp
 
   useEffect(() => {
     getBlogData("categories");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 

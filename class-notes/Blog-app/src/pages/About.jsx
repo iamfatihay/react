@@ -9,6 +9,7 @@ import { Grid } from '@mui/material';
 import logo from "../assets/logo1.png";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import {Helmet} from "react-helmet";
 
 const handleLinkedInClick = () => {
   window.open('https://www.linkedin.com/in/fatih-ay1661/', '_blank');
@@ -22,6 +23,9 @@ const handleGitHubClick = () => {
 const About = () => {
   return (
     <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 3,mb:3 }}>
+    <Helmet>
+      <title>About Developer</title>
+    </Helmet>
       <Card sx={{
         width: "500px",
         display: "flex",

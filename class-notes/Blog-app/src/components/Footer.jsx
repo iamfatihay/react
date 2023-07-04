@@ -12,16 +12,14 @@ const FooterContainer = styled('footer')(({ theme }) => ({
 const Footer = () => {
     return (
         <div>
-            <div style={{ minHeight: '3vh', paddingBottom: '90px' }}>
-                {/* Sayfa içeriği buraya gelecek */}
-            </div>
+            <div style={{ minHeight: '3vh', paddingBottom: '90px' }}> </div>
             <FooterContainer>
                 <Container maxWidth="sm">
                     <Typography variant="body1" align="center" color="textSecondary">
                         Developed by Fatih Ay
                     </Typography>
                     <Typography variant="body1" align="center" color="textSecondary">
-                        © {new Date().getFullYear()} My Blog App. All rights reserved.
+                        © {new Date().getFullYear()} Blog App. All rights reserved.
                     </Typography>
                 </Container>
             </FooterContainer>
