@@ -14,16 +14,22 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Button, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 export default function BlogCard({ blog }) {
-    const { content, title, publish_date, image, likes, id, post_views } = blog;
+    const { content, title, publish_date, image, likes, id, post_views} = blog;
+    // const { currentUser } = useSelector(state => state.auth);
     const navigate = useNavigate();
     const truncatedContent = content.length > 180 ? `${blog.content.substring(0, 180)}...` : blog.content;
 
     const handleMore = (id) => {
         navigate(`/detail/${id}`);
     }
+
+    // const isCurrentUserAuthor = (blogAuthor) => {
+    //     return currentUser.id === blogAuthor;
+    // };
 
     return (
         <Card sx={{
@@ -54,7 +60,7 @@ export default function BlogCard({ blog }) {
                     {truncatedContent}
                 </Typography>
             </CardContent>
-            <Grid sx={{ display: "flex", ml:2 }}>
+            <Grid sx={{ display: "flex", ml: 2 }}>
                 <AccountCircle />
                 <span>{blog.author ?? "No author"}</span>
             </Grid>
@@ -94,8 +100,6 @@ export default function BlogCard({ blog }) {
                         READ MORE
                     </Button>
                 </Grid>
-
-
             </CardActions>
         </Card>
     );

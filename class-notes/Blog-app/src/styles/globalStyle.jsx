@@ -34,3 +34,15 @@ export const flexColumn = {
   flexDirection: "column",
   gap: 2,
 };
+export const styles = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "white",
+  border: "2px solid white",
+  borderRadius: "10px",
+  boxShadow: 24,
+  p: 4,
+};

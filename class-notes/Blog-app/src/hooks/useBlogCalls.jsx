@@ -93,6 +93,27 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
+  const getBlogDataId = async (id) => {
+    dispatch(fetchStart());
+    try {
+      const response = await axiosWithToken.get(`api/blogs/${id}/`);
+      console.log(response.data);
+      dispatch(getSucces({ data: response.data }));
+      return response.data;
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  // const getBlogDataId = async (id) => {
+  //   dispatch(fetchStart());
+  //   try {
+  //     const { data } = await axiosWithToken.get(`api/blogs/${id}/`);
+  //     console.log(data);
+  //     dispatch(getSucces({ data }));
+  //   } catch (error) {
+  //     dispatch(fetchFail());
+  //   }
+  // };
   const getBlogDataPublic = async url => {
     dispatch(fetchStart());
     try {
@@ -213,6 +234,7 @@ const useBlogCalls = () => {
 
   return {
     getBlogData,
+    getBlogDataId,
     getBlogDataPublic,
     deleteBlogData,
     postBlogData,

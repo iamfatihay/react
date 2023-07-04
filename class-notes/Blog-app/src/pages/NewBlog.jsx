@@ -16,6 +16,7 @@ import useBlogCalls from "../hooks/useBlogCalls";
 
 const NewBlog = () => {
     const { postBlogData } = useBlogCalls();
+    
 
     return (
         <Grid sx={{
@@ -34,7 +35,7 @@ const NewBlog = () => {
                 gap: 1,
                 p: 1,
                 m: "auto",
-                width: "500px",
+                width: "400px",
                 backgroundColor:"lightgray",
                 borderRadius:"10px",              
             }}>

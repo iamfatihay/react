@@ -7,16 +7,15 @@ const FooterContainer = styled('footer')(({ theme }) => ({
     padding: theme.spacing(2),
     borderTop: '1px solid lightgray',
     boxShadow: '0px -4px 6px -1px rgba(0, 0, 0, 0.1)',
-    // margin:"auto",
-    // maxHeight:"30px",
-    marginBottom: "1rem",
-
 }));
 
 const Footer = () => {
     return (
-        <div style={{ height: "100px" }}>
-            <FooterContainer >
+        <div>
+            <div style={{ minHeight: '3vh', paddingBottom: '90px' }}>
+                {/* Sayfa içeriği buraya gelecek */}
+            </div>
+            <FooterContainer>
                 <Container maxWidth="sm">
                     <Typography variant="body1" align="center" color="textSecondary">
                         Developed by Fatih Ay
@@ -31,3 +30,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+

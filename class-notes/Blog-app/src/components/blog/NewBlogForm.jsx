@@ -25,7 +25,17 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
   useEffect(() => {
     getBlogData("categories");
   }, [])
+  const [selectedStatus, setSelectedStatus] = useState(values.status === "d" ? "draft" : "published");
 
+  useEffect(() => {
+    const newStatusValue = selectedStatus === "draft" ? "d" : "p";
+    handleChange({
+      target: {
+        name: "status",
+        value: newStatusValue,
+      },
+    });
+  }, [selectedStatus, handleChange]);
 
   return (
     <div>
@@ -83,21 +93,12 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
               labelId="status-label"
               id="status"
               name="status"
-              value={values.status === "d" ? "draft" : "published"} // Always use "draft" or "published" as the value
-              onChange={(e) => {
-                const selectedStatus = e.target.value;
-                const newStatusValue = selectedStatus === "draft" ? "d" : "p";
-                handleChange({
-                  target: {
-                    name: "status",
-                    value: newStatusValue,
-                  },
-                });
-              }}
+              value={selectedStatus} // Always use "draft" or "published" as the value
+              onChange={(e) => setSelectedStatus(e.target.value)}
               onBlur={handleBlur}
               label="Status"
             >
-              <MenuItem value="">Select a status</MenuItem>
+              {/* <MenuItem value="">Select a status</MenuItem> */}
               <MenuItem value="draft">Draft</MenuItem>
               <MenuItem value="published">Published</MenuItem>
             </Select>
