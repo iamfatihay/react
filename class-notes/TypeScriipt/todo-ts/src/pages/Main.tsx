@@ -51,6 +51,23 @@ const Main = () => {
 
   //     }
   // }
+  const deleteTodo:DeleteFn = async (id) => {
+    try {
+        await axios.delete(`${url}/${id}`);
+        getTodos()
+    } catch (error) {
+        console.log(error);     
+    }
+  };
+
+  const toggleTodo:ToggleFn = async (item) => {
+    try {
+        await axios.put(`${url}/${item.id}`, {...item, isDone:!item.isDone});
+        getTodos()
+    } catch (error) {
+        console.log(error);     
+    }
+  };
 
   useEffect(() => {
     getTodos();
@@ -68,7 +85,7 @@ const Main = () => {
         Todo App with Typescript
       </Typography>
       <AddTodoComp addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
     </Container>
   );
 };

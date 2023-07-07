@@ -10,3 +10,9 @@ interface TodoType{
 
 type AddFn=(text:string)=>void;
 
+type DeleteFn=(id: string | number)=>void;
+
+type ToggleFn=(item:TodoType)=>void;
+
+
+

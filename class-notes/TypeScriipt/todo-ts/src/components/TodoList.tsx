@@ -5,9 +5,12 @@ import TodoListItem from "./TodoListItem";
 
 interface ITodos {
   todos: TodoType[];
+  deleteTodo:DeleteFn;
+  toggleTodo:ToggleFn;
+
 }
 
-const TodoList: FC<ITodos> = ({ todos }) => {
+const TodoList: FC<ITodos> = ({ todos, deleteTodo ,toggleTodo}) => {
   const [completedTodos, setCompletedTodos] = useState<TodoType[]>([]);
   const [progressTodos, setProgressTodos] = useState<TodoType[]>([]);
 
@@ -42,7 +45,7 @@ const TodoList: FC<ITodos> = ({ todos }) => {
         </Typography>
         {progressTodos.length ? (
           progressTodos.map((item) => (
-            <TodoListItem key={item.id} item={item} />
+            <TodoListItem key={item.id} item={item} deleteTodo={deleteTodo} toggleTodo={toggleTodo}/>
           ))
         ) : (
           <Typography color="error" mt={3}>
@@ -66,7 +69,7 @@ const TodoList: FC<ITodos> = ({ todos }) => {
         </Typography>
         {completedTodos.length ? (
           completedTodos.map((item) => (
-            <TodoListItem key={item.id} item={item} />
+            <TodoListItem key={item.id} item={item} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
           ))
         ) : (
           <Typography color="error" mt={3}>
