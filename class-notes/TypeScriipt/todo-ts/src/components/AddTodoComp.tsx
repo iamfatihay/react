@@ -1,18 +1,26 @@
-import {useState} from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import SaveIcon from "@mui/icons-material/Save";
 import Container from "@mui/material/Container";
 
-const AddTodoComp = () => {
-    const [text,setText]=useState("");
+interface IAddTodo {
+  // addTodo:(text:string)=>void;
+  addTodo: AddFn;
+}
+//* React.FC<IAddTodo> yani diyoruz ki bu bir reactFunctional componenttir
+//* props oalrak da AddTodo interfaceine uygun olarak props gönderebilir hale getirdik.
+//* Props alan componentlerde React.FC yi belirtmemiz zorunlu
 
-    const handleClick=()=>{
-        console.log(text);
-        
-    }
+const AddTodoComp: React.FC<IAddTodo> = ({ addTodo }) => {
+  const [text, setText] = useState("");
 
+  const handleClick = () => {
+    addTodo(text);
+    setText("");
+    console.log(text);
+  };
 
   return (
     <Container>
@@ -31,7 +39,7 @@ const AddTodoComp = () => {
           sx={{ minWidth: { xs: "100%", sm: "50%" }, height: "50px", m: 1 }}
           inputProps={{ maxLength: 40 }}
           value={text}
-          onChange={(e)=>setText(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
         />
         <Button
           variant="contained"
