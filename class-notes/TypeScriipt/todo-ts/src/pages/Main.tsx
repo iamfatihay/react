@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import AddTodoComp from "../components/AddTodoComp";
 import TodoList from "../components/TodoList";
 import axios from "axios";
+import { notify } from "../helper/sweetAlert";
 
 // interface TodoType{
 //     id:string | number,
@@ -33,8 +34,10 @@ const Main = () => {
     };
     try {
       await axios.post(url, newTodo);
+      notify("Todo successfully created","success")
       getTodos();
     } catch (error) {
+     notify("Todo not successfully created","error")
       console.log(error);
     }
   };
@@ -54,8 +57,10 @@ const Main = () => {
   const deleteTodo:DeleteFn = async (id) => {
     try {
         await axios.delete(`${url}/${id}`);
+        notify("Todo successfully deleted","success")
         getTodos()
     } catch (error) {
+        notify("Todo not successfully deleted","error")
         console.log(error);     
     }
   };
@@ -63,8 +68,10 @@ const Main = () => {
   const toggleTodo:ToggleFn = async (item) => {
     try {
         await axios.put(`${url}/${item.id}`, {...item, isDone:!item.isDone});
+        notify("Todo successfully updated","success")
         getTodos()
     } catch (error) {
+        notify("Todo not successfully updated","error")
         console.log(error);     
     }
   };
