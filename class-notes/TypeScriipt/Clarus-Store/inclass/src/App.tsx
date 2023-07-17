@@ -5,11 +5,11 @@ import FavoritesPage from "./pages/FavoritesPage";
 import NavBar from "./components/NavBar";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
-import { Flip, ToastContainer, Zoom } from "react-toastify";
+import { Flip, ToastContainer} from "react-toastify";
 
 function App() {
   return (
-    <div className="bg-gray-400 min-h-screen">
+    <div className="bg-blue-300 min-h-screen">
       <Provider store={store}>
         <BrowserRouter>
           <NavBar />

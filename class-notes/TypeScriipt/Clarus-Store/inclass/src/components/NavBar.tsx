@@ -1,12 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const NavBar = () => {
+  const navigate = useNavigate();
+
+  const handleClick=()=>{
+    navigate("/")
+  }
+
+
   return (
-    <div className='flex justify-between items-center px-5 h-[50px] text-white bg-gray-500'>
-        <h3 className='font-bold italic'>Clarus Store</h3>
+    <div className='flex justify-between items-center sm:px-3 md:px-14  h-[80px] text-black bg-blue-100'>
+        <h3 className='font-bold hover:cursor-pointer' onClick={handleClick}>Anazon Store</h3>
         <div>
-            <Link to="/" className='mr-2' >Home</Link>
+            <Link to="/" className='mr-6' >Home</Link>
             <Link to="/favorites" >Favorites</Link>
         </div>
     </div>

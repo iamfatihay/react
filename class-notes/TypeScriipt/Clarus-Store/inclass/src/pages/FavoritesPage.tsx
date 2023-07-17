@@ -35,7 +35,7 @@ const FavoritesPage = () => {
           />
         ))}
         {favorites.length === 0 && (
-          <h3 className="font-bold text-2xl text-red-500 text-center mt-52">
+          <h3 className="font-bold text-2xl text-black-500 text-center mt-52">
            No favorites..
           </h3>
         )}
