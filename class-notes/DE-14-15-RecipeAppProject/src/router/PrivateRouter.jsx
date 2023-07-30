@@ -1,13 +1,10 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+import { AuthContext } from "../context/AuthContext";
 
 const PrivateRouter = () => {
-  return (
-    (localStorage.getItem("username")==="ipek" && localStorage.getItem("password")==="1234" )
-     ? (<Outlet/>) : (<Navigate to="/" />)
-  );
-  // kullanici doğru şifre ve isim girdiyse Outlet komponenti sayesinde istenilen sayfaya git,
-  // yanlışlık varsa Navigate ile bulunduğun yerde (Login) kal ya da başka path veriledebilir
+  const { currentUser } = useContext(AuthContext);
+  return currentUser ? <Outlet /> : <Navigate to="/login" />;
 }
 
 export default PrivateRouter

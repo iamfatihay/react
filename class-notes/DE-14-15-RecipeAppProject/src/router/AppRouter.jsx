@@ -8,6 +8,7 @@ import Details from "../pages/details/Details";
 import Login from "../pages/login/Login";
 import Footer from "../components/footer/Footer";
 import PrivateRouter from './PrivateRouter';
+import Register from '../pages/register/register';
 
 
 
@@ -17,6 +18,7 @@ const AppRouter = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
 
                 <Route path='/home' element={<PrivateRouter />}>
                     <Route path="" element={<Home />} />
