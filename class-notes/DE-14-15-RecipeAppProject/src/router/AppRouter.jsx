@@ -1,6 +1,6 @@
 import React from 'react'
 // import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
 import Home from "../pages/home/Home";
 import About from "../pages/about/About";
@@ -14,10 +14,10 @@ import Register from '../pages/register/register';
 
 const AppRouter = () => {
     return (
-        <Router >
+        <>
             <Navbar />
             <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
 
                 <Route path='/home' element={<PrivateRouter />}>
@@ -32,7 +32,7 @@ const AppRouter = () => {
 
             </Routes>
             <Footer />
-        </Router>
+        </>
     )
 }
 
