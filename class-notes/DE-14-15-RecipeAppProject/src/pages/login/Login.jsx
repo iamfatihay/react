@@ -30,7 +30,7 @@ const Login = () => {
     <LoginContainer>
       <FormContainer >
         <StyledImg src={mealSvg} />
-        <Header>{"<Clarusway/>"}Recipe</Header>
+        <Header>{"<Fatih Ay/>"}Recipe</Header>
 
         <StyledForm onSubmit={handleSubmit} >
           <StyledInput
@@ -48,6 +48,7 @@ const Login = () => {
           />
 
           <StyledButton type="submit">Login</StyledButton>
+          <button className="p-2" onClick={()=>navigate("/register")} >Don't you have an account?</button>
         </StyledForm>
       </FormContainer>
     </LoginContainer>
