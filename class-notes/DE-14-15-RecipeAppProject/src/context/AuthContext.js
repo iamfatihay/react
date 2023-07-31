@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
 import { createContext } from "react";
 import { auth } from '../auth/firebase';
 import { toastErrorNotify, toastSuccessNotify } from '../helpers/ToastNotify';
@@ -7,28 +7,62 @@ import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext()
 
-
-
 const AuthContextProvider = ({ children }) => {
     let navigate = useNavigate();
+    const [currentUser, setCurrentUser] = useState("")
+
+    useEffect(() => {
+      userObserver()
+    }, [])
+    console.log(currentUser);
+    
+
 
     const createUser = async (email, password) => {
         try {
             let userCredential = await createUserWithEmailAndPassword(auth, email, password)
             toastSuccessNotify("Registered successfully!")
-            navigate("/home")
+            navigate("/")
             console.log(userCredential);
         } catch (error) {
             console.log(error);
             toastErrorNotify(error.message)
         }
     }
+    const signIn = async (email, password) => {
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+            toastSuccessNotify("Logged in successfully!")
+            navigate("/home")
+        } catch (error) {
+            toastErrorNotify(error.message)
+        }
+    }
+    const logOut = () => {
+        try {
+            signOut(auth)
+            toastSuccessNotify("Logged out successfully!")
+        } catch (error) {
+            toastErrorNotify(error.message)
+        }
+    }
+    const userObserver = () => {
+        //! Kullanicinin signIn olup olmadigini kontrol edip, 
+        //! kullanici degistiginde yeni kullaniciyi response eden firebase methodu 
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const { email, displayName, photoURL } = user
+                setCurrentUser({ email, displayName, photoURL })
+            } else {
+                setCurrentUser(false)
+            }
+        });
+    }
 
 
 
 
-
-    const values = { createUser };
+    const values = { createUser, signIn, logOut };
     return (
         <AuthContext.Provider value={values} >
             {children}

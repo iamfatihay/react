@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Hamburger, Logo, Menu, MenuLink, Nav } from "./NavbarStyles";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
+
+  const { logOut } = useContext(AuthContext);
   const [acik, setAcik] = useState(false);
   //!!  setAcık stile props yollayınca dropdown ı açılır kapanır yapmış oluyor, height a 300px yada 0 vererek
   return (
@@ -30,7 +33,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="sekme">
-          <MenuLink to="/">Logout</MenuLink>
+          <MenuLink to="/" onClick={() => logOut()} >Logout</MenuLink>
         </div>
 
         {/* github linki için a tag i yerine, react-router-dom dan Link kullanmak istersek, alttaki yorumları açmalıyız */}
