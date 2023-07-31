@@ -34,7 +34,8 @@ const Home = () => {
 
   useEffect(() => {
     getData()
-  }, [url])
+    // eslint-disable-next-line
+  }, [])
 
   console.log(yemekler);
 

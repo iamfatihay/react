@@ -15,6 +15,7 @@ export const AboutContainer = styled.div`
     color: orange;
     font-family: "Girassol", sans-serif;
     font-size: 3rem;
+    padding-left:10px;
   }
 `;
 export const StyledImage = styled.img`
@@ -24,10 +25,11 @@ export const StyledImage = styled.img`
 
 export const HeaderContainer = styled.div`
   background-color: white;
+  padding:10px 50px;
 `;
 
 export const InfoContainer = styled.div`
-  text-align: right;
+  text-align: center;
   margin: 0 10px;
   max-width: 1000px;
   border: 1px solid white;
@@ -35,5 +37,10 @@ export const InfoContainer = styled.div`
   border-radius: 5px;
   a {
     color: orange;
+    padding:20px;
+    font-size: 1.5rem;
+    &:hover{
+      color:black;
+    }
   }
 `;

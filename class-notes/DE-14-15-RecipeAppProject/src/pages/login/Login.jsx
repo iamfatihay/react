@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   FormContainer,
   Header,
@@ -15,7 +15,7 @@ import { AuthContext } from "../../context/AuthContext";
 const Login = () => {
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
-  const { signIn } = useContext(AuthContext);
+  const { signIn, currentUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -24,6 +24,13 @@ const Login = () => {
     signIn(email, pass);
     // navigate("/home");
   };
+
+  useEffect(() => {
+    // Check if currentUser is present and navigate to the home page
+    if (currentUser) {
+      navigate("/home");
+    }
+  }, [currentUser, navigate]);
 
   return (
     <LoginContainer>

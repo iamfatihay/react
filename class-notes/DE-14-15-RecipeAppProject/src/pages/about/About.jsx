@@ -1,6 +1,7 @@
-import React from 'react'
-import { AboutContainer, HeaderContainer, InfoContainer, StyledImage } from './AboutStyles'
-import codingSvg from "../../assets/coding.svg"
+import React from 'react';
+import { AboutContainer, HeaderContainer, InfoContainer, StyledImage } from './AboutStyles';
+import codingSvg from "../../assets/coding.svg";
+import logo from "../../assets/logo.gif";
 
 const About = () => {
   return (
@@ -11,20 +12,18 @@ const About = () => {
 
         <HeaderContainer>
           <h1>
-            About Software Developer <span>AshleyMiller </span>
+            About Software Developer <span>Fatih AY </span>
           </h1>
         </HeaderContainer>
         <InfoContainer>
-          <h2>Hi, I'am Ashley Miller</h2>
-          <h3>I’m currently learning Full-Stack Development Languages.</h3>
-          <h4>
-            I've already known JS, ReactJS, ReactNative, NodeJS, MongoDB,SQL,
-            Java, Hibernate, SpringBoot, AWS Services.
-          </h4>
-          <h2>
-            <a href="mailto:Ashley@clarusway.com">Send email</a> :
-            Ashley@clarusway.com
-          </h2>
+          <div>
+            <img src={logo} alt="logo" width="300px"/>
+          </div>
+
+          <a href="https://github.com/iamfatihay">GitHub</a>
+          <a href="https://www.linkedin.com/in/fatih-ay1661/">LinkedIn</a>
+
+
           {/* whatsapp://tel:3216541234 */}
         </InfoContainer>
       </AboutContainer>
