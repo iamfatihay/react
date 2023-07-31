@@ -4,7 +4,13 @@ import { AuthContext } from "../context/AuthContext";
 
 const PrivateRouter = () => {
   const { currentUser } = useContext(AuthContext);
-  return currentUser ? <Outlet /> : <Navigate to="/home" />;
+
+  // Redirect to login page if there is no currentUser
+  if (!currentUser) {
+    return <Navigate to="/" />;
+  }
+  // Render the content if currentUser exists
+  return <Outlet />;
 }
 
-export default PrivateRouter
+export default PrivateRouter;

@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext()
 
 const AuthContextProvider = ({ children }) => {
+    
+    const [currentUser, setCurrentUser] = useState(null)
     let navigate = useNavigate();
-    const [currentUser, setCurrentUser] = useState("")
 
     useEffect(() => {
       userObserver()
@@ -32,8 +33,8 @@ const AuthContextProvider = ({ children }) => {
     const signIn = async (email, password) => {
         try {
             await signInWithEmailAndPassword(auth, email, password)
-            toastSuccessNotify("Logged in successfully!")
-            navigate("/home")
+            toastSuccessNotify("Logged in successfully!");
+            navigate("/home");
         } catch (error) {
             toastErrorNotify(error.message)
         }
@@ -46,15 +47,15 @@ const AuthContextProvider = ({ children }) => {
             toastErrorNotify(error.message)
         }
     }
-    const userObserver = () => {
+    const userObserver = async() => {
         //! Kullanicinin signIn olup olmadigini kontrol edip, 
         //! kullanici degistiginde yeni kullaniciyi response eden firebase methodu 
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                const { email, displayName, photoURL } = user
-                setCurrentUser({ email, displayName, photoURL })
+                const { email, displayName, photoURL } = user;
+                setCurrentUser({ email, displayName, photoURL });
             } else {
-                setCurrentUser(false)
+                setCurrentUser(null);
             }
         });
     }
@@ -62,7 +63,7 @@ const AuthContextProvider = ({ children }) => {
 
 
 
-    const values = { createUser, signIn, logOut };
+    const values = { createUser, signIn, logOut , currentUser};
     return (
         <AuthContext.Provider value={values} >
             {children}
