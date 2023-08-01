@@ -15,7 +15,7 @@ body {
   font-family: "Poppins", "sans-serif";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #00adb5;
+  background-color: #5c6f70;
 }
 
 code {
@@ -46,29 +46,16 @@ code {
   height: 40px;
 }
 
-/* .tag {
-  border-radius: 5px;
-  padding: 0.7rem;
-  font-weight: bold;
-  width: 3rem;
-  text-align: center;
-}
-
-.tag.green {
-  background-color: #1b5e20;
-}
-
-.tag.orange {
-  background-color: #f57f17;
-}
-
-.tag.red {
-  background-color: #7f0000;
-} */
-
 .form-image {
   min-width: 800px;
   min-height: 600px;
+}
+
+/** register page background */
+.custom-bg-image {   
+  background-image: url('https://picsum.photos/1600/900');
+  background-size: cover;
+  background-position: center;
 }
 
 .custom-linear-gradient::before {
@@ -96,7 +83,7 @@ code {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus input:-webkit-autofill {
-  -webkit-text-fill-color: white !important;
+  -webkit-text-fill-color: black !important;
   -webkit-box-shadow: 0 0 0px 0px #28292d inset !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }

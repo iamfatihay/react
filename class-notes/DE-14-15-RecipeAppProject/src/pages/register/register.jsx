@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import GoogleIcon from "../../assets/GoogleIcon";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState();
@@ -8,6 +9,7 @@ const Register = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const { createUser, signUpProvider } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,9 +18,9 @@ const Register = () => {
   };
 
   return (
-    <div className="overflow-hidden flex-1 h-97vh justify-center items-center bg-[#b6b9c9]">
+    <div className=" h-full justify-center items-center custom-bg-image">
       <div
-        className={`mt-[3vh] mx-auto overflow-hidden relative w-[380px] h-[620px] rounded-[8px] bg-[#753939] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient`}
+        className={`mt-[12vh]  opacity-80 mx-auto overflow-hidden relative w-[380px] h-[720px] rounded-[8px] bg-[#753939] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient`}
       >
         <form
           className="absolute inset-[2px] rounded-[8px] bg-gray-100 z-[0] flex flex-col py-[50px] px-[40px]"
@@ -85,6 +87,13 @@ const Register = () => {
           >
             Continue with Google
             <GoogleIcon color="currentColor" />
+          </button>
+          <button
+            className="btn-danger items-center"
+            type="button"
+            onClick={() => navigate("/")}
+          >
+            You have an account?
           </button>
         </form>
       </div>

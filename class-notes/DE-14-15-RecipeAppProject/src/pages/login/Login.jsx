@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import GoogleIcon from "../../assets/GoogleIcon";
 import {
   FormContainer,
   Header,
@@ -15,7 +16,7 @@ import { AuthContext } from "../../context/AuthContext";
 const Login = () => {
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
-  const { signIn, currentUser } = useContext(AuthContext);
+  const { signIn, currentUser, signUpProvider } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -68,6 +69,15 @@ const Login = () => {
           </div> */}
 
           <StyledButton type="submit">Login</StyledButton>
+          <button
+            style={{backgroundColor:"orange"}}
+            className="bg-red flex justify-center items-center"
+            type="button"
+            onClick={() => signUpProvider()}
+          >
+            Continue with Google
+            <GoogleIcon color="currentColor" />
+          </button>
           <button className="p-2" onClick={() => navigate("/register")} >Don't you have an account?</button>
         </StyledForm>
       </FormContainer>

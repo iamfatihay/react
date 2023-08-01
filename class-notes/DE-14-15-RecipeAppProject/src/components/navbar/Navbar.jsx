@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
 
-  const { logOut } = useContext(AuthContext);
+  const { logOut, currentUser } = useContext(AuthContext);
   const [acik, setAcik] = useState(false);
   //!!  setAcık stile props yollayınca dropdown ı açılır kapanır yapmış oluyor, height a 300px yada 0 vererek
   return (
@@ -32,9 +32,10 @@ const Navbar = () => {
             Github
           </a>
         </div>
-        <div className="sekme">
+        {currentUser ? (<div className="sekme">
           <MenuLink to="/" onClick={() => logOut()} >Logout</MenuLink>
-        </div>
+        </div>): null}
+        
 
         {/* github linki için a tag i yerine, react-router-dom dan Link kullanmak istersek, alttaki yorumları açmalıyız */}
         {/* <MenuLink

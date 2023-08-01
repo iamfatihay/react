@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 // import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
@@ -9,13 +9,16 @@ import Login from "../pages/login/Login";
 import Footer from "../components/footer/Footer";
 import PrivateRouter from './PrivateRouter';
 import Register from '../pages/register/register';
+import { AuthContext } from "../context/AuthContext";
 
 
 
 const AppRouter = () => {
+
+    const { currentUser } = useContext(AuthContext);
     return (
         <>
-            <Navbar />
+            {currentUser ? (<Navbar />) : null}
             <Routes>
 
                 <Route path="/" element={<Login />} />
@@ -32,7 +35,7 @@ const AppRouter = () => {
                 <Route path="/details" element={<Details />} />
 
             </Routes>
-            <Footer />
+            {currentUser ? (<Footer />) : null}
         </>
     )
 }
