@@ -8,6 +8,8 @@ import {
 } from "./HomeStyles";
 import { useNavigate } from "react-router-dom";
 
+const MAX_HEADER_LENGTH = 25;
+
 const RecipeCard = ({ yemekler }) => {
   console.log(yemekler);
   let navigate = useNavigate();
@@ -15,7 +17,11 @@ const RecipeCard = ({ yemekler }) => {
     <MainContainer>
       {yemekler.map((i) => (
         <Cards key={i.recipe.id}>
-          <RecipeHeader>{i.recipe.label}</RecipeHeader>
+        <RecipeHeader>
+            {i.recipe.label.length > MAX_HEADER_LENGTH
+              ? i.recipe.label.substring(0, MAX_HEADER_LENGTH) + "..."
+              : i.recipe.label}
+          </RecipeHeader>
           <RecipeImage src={i.recipe.image} />
           <Button
             onClick={() => {

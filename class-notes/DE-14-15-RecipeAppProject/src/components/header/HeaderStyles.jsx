@@ -14,6 +14,8 @@ export const HeaderContainer = styled.div`
 export const MainHeader = styled.h2`
   /* food app başlık */
   margin-top: 1rem;
+  letter-spacing:8px;
+  font-family: "Girassol", sans-serif;
   padding: 0 1rem;
   font-size: 3rem;
   background-color: yellow;
