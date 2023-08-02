@@ -34,6 +34,7 @@ const Header = ({ setQuery, setOgun, getData }) => {
           <option>Breakfast</option>
           <option>Lunch</option>
           <option>TeaTime</option>
+          <option>Dinner</option>
         </Select>
       </FormContainer>
     </HeaderContainer>
