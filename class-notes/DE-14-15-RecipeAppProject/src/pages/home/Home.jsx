@@ -6,13 +6,8 @@ import { HomeImg, ImgDiv } from "./HomeStyles";
 import homeSvg from "../../assets/home.svg";
 import { useEffect } from "react";
 
-const APP_ID = "a658d166";
-// bfbb3efc
-// a658d166
-const APP_KEY = "873bde986100aef8b561fc76713c9a2f";
-// 43faeee790f26cd82b28050d3031619d
-// 873bde986100aef8b561fc76713c9a2f
-
+const APP_ID = process.env.REACT_APP_APP_ID;
+const APP_KEY = process.env.REACT_APP_APP_KEY;
 
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -42,7 +37,6 @@ const Home = () => {
   return (
     <div>
       <Header setQuery={setQuery} setOgun={setOgun} getData={getData} />
-      sdvsdvsvsd
       {yemekler.length > 0 ? (
         <div>
           {/* {yemekler.map((i,index) => ( */}
