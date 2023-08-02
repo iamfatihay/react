@@ -45,12 +45,13 @@ export const StyledInput = styled.input`
   background-color: rgba(0, 0, 0, 0.6);
   border: none;
   color: white;
-  margin: 1rem;
+  margin: 0.7rem;
   text-indent: 20px;
 `;
 
 export const StyledForm = styled.form`
   /* 3 kutunun olduğu form */
+  border-radius: 15px;
   background: pink;
   display: flex;
   flex-direction: column;

@@ -14,6 +14,7 @@ export const HeaderContainer = styled.div`
 export const MainHeader = styled.h2`
   /* food app başlık */
   margin-top: 1rem;
+  padding: 0 1rem;
   font-size: 3rem;
   background-color: yellow;
 `;
@@ -25,9 +26,9 @@ export const FormContainer = styled.form`
   flex-wrap: wrap;
   /* ekran küçülünce sıkışmasınlar,alta geçsinler */
   justify-content: center;
-  border: 2px solid white;
-  border-radius: 3px;
-  margin: 20px;
+  /* border: 2px solid white; */
+  border-radius: 5px;
+  margin: 9px 20px;
   background-color:blue;
 `;
 
@@ -40,26 +41,26 @@ export const FoodInput = styled.input`
   text-indent: 10px;
   /* yazı 10px içten başlasın */
   margin: 5px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   background-color: lightblue;
 `;
 
 export const Button = styled.button`
   /* search butonu GRİ*/
   /* background-color: #e1f1dd; */
-  background-color: gray;
+  background-color: lightgray;
 
-  padding: 5px;
+  padding: 0px 10px;
   /* outline: none; */
   height: 3rem;
   border: none;
   margin: 5px;
   border-radius: 3px;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.8rem;
   &:hover {
     background-color: #00adb5;
-    transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in-out;
     border: 1px solid white;
   }
 `;
@@ -70,10 +71,10 @@ export const Select = styled.select`
 
   border-radius: 3px;
   margin: 5px;
-  padding: 5px;
+  padding: 0px 10px;
   height: 3rem;
   border: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
 
   
   

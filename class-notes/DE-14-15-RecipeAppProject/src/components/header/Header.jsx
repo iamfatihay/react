@@ -9,11 +9,6 @@ import {
 } from "./HeaderStyles";
 
 const Header = ({ setQuery, setOgun, getData }) => {
-  //query=pizza
-  //ögun=breakfast
-  // const getData=  async()=>{
-  // const veri=  await axios.get(url);
-  //  setYemekler(veri.data.hits)}
 
   const yapSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +17,7 @@ const Header = ({ setQuery, setOgun, getData }) => {
 
   return (
     <HeaderContainer>
-      <MainHeader>FOOD APP</MainHeader>
+      <MainHeader>RECIPE APP</MainHeader>
       <FormContainer onSubmit={yapSubmit}>
         <FoodInput
           type="text"

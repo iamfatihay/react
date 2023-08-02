@@ -16,7 +16,7 @@ import { AuthContext } from "../../context/AuthContext";
 const Login = () => {
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
-  const { signIn, currentUser, signUpProvider } = useContext(AuthContext);
+  const { signIn, currentUser, signUpProvider , forgotPassword} = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -53,25 +53,18 @@ const Login = () => {
             required
             onChange={(e) => setPass(e.target.value)}
           />
-          {/* <div className="flex justify-between">
-            <span
-              onClick={() => forgotPassword(email)}
-              className="py-3 font-[0.75em] cursor-pointer decoration-none text-gray-500 hover:text-[#ff4b45]"
-            >
-              Forgot Password
-            </span>
-            <Link
-              className="py-3 font-[0.75em] cursor-pointer decoration-none text-gray-500 hover:text-[#ff4b45]"
-              to="/register"
-            >
-              Sign Up
-            </Link>
-          </div> */}
-
           <StyledButton type="submit">Login</StyledButton>
           <button
+            style={{marginBottom:"1rem"}}
+            className="flex justify-center items-center"
+            type="button"
+            onClick={() => forgotPassword(email)}
+          >
+            Forgot Password
+          </button>
+          <button
             style={{backgroundColor:"orange"}}
-            className="bg-red flex justify-center items-center"
+            className="flex justify-center items-center"
             type="button"
             onClick={() => signUpProvider()}
           >
