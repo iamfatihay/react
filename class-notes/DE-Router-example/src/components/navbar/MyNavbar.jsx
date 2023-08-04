@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from "../../img/logo.png";
+import logo from "../../img/Fatih-Ay-1.png";
 import { Link, NavLink } from "react-router-dom";
 
 
@@ -18,7 +18,7 @@ function MyNavbar() {
         <Navbar className='border-bottom' bg="light" expand="md" fixed="top">
             <Container>
                 <Link to="/" onClick={handleLogoClick}>
-                    <img alt="" src={logo} />
+                    <img alt="logo" src={logo} width="100px" />
                 </Link>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
