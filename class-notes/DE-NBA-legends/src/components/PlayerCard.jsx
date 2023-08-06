@@ -19,8 +19,8 @@ const PlayerCard = (data) => {
   };
 
   return (
-    <div className='cards'>
-      <div className='image' onClick={toggleInfo}>
+    <div className='cards' onClick={toggleInfo}>
+      <div className='image' >
         {isImageVisible ? (
           <img src={data.img} alt="" />
         ) : null}
