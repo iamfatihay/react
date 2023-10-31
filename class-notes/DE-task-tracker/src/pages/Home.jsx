@@ -1,23 +1,34 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import GorevEkle from "../components/GorevEkle";
 import GorevleriGoster from "../components/GorevleriGoster";
 
-import Data from "../helper/Data";
+const Home = ({ baseUrl }) => {
+  const [array, setArray] = useState([]);
 
-const Home = () => {
-  const [array, setArray] = useState([])
+  // Verileri API'den çekmek için kullanılacak fonksiyon
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`${baseUrl}/todo`); // BASE_URL'i kullanarak API endpoint'ini belirtin
+      if (!response.ok) {
+        throw new Error("Veriler alınamadı.");
+      }
+      const data = await response.json();
+      setArray(data);
+    } catch (error) {
+      console.error("Hata:", error);
+    }
+  };
 
-  const getData=()=>{
-    setArray(Data)
-  }
-  useEffect(()=>{getData()},[])
-  
+  // Sayfa yüklendiğinde verileri çek
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
-      <GorevEkle array={array} setArray={setArray} />
-
-      <GorevleriGoster array={array} setArray={setArray} />
+      <GorevEkle array={array} setArray={setArray} baseUrl={baseUrl}/>
+      <GorevleriGoster array={array} setArray={setArray} baseUrl={baseUrl}/>
     </div>
   );
 };
